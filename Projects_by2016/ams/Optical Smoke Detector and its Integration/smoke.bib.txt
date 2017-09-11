@@ -1,0 +1,39 @@
+@article{Mie_theory,
+  author = {Graig F. Bohren, Donald R},
+  year = {1983},
+  title = {Absorption and Scattering of Light by Small Particles},
+}
+
+
+@patent{patent_depolarization,
+  author = {},
+  year = {},
+  title = {Photoelectric smoke-sensitive fire detecting device based on depolarization rate},
+}
+
+
+@article{experiment1_depolarization,
+  author = {Lu N, Sorensen CM.},
+  year = {},
+  title = {Depolarized light scattering from fractal soot aggregates},
+}
+
+@article{experiment2_depolarization,
+  author = {di Stasio S.},
+  year = {2013},
+  title = {Experiments on depolarized optical scattering to sense in situ the onset of early agglomeration between nano-size soot particles},
+}
+
+@article{Dynamic_DLS,
+  author = {N. Lu, C. M. Sorensen},
+  journal = "Physical Review E"
+  year = {1994},
+  title = {Depolarized dynamic light scattering from optically anisotropic reaction-limited aggregates},
+}
+
+@article{Li_Liu,
+  author = {Li Liu},
+  journal = "JOURNAL OF GEOPHYSICAL RESEARCH"
+  year = 2014,
+  title = {Effects of aggregation on scattering and radiative properties of soot aerosols},
+}

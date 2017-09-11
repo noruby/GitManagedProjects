@@ -1,0 +1,15 @@
+\contentsline {section}{\numberline {1}実験手法}{1}
+\contentsline {subsection}{\numberline {1.1}磁性体のシミュレーション}{1}
+\contentsline {subsubsection}{\numberline {1.1.1}自発磁化の温度変化}{1}
+\contentsline {subsubsection}{\numberline {1.1.2}磁化曲線}{1}
+\contentsline {subsubsection}{\numberline {1.1.3}磁化率と磁化のゆらぎ}{2}
+\contentsline {section}{\numberline {2}実験結果}{2}
+\contentsline {subsection}{\numberline {2.1}磁性体のシミュレーション}{2}
+\contentsline {subsubsection}{\numberline {2.1.1}自発磁化の温度変化}{2}
+\contentsline {subsubsection}{\numberline {2.1.2}磁化曲線}{3}
+\contentsline {subsubsection}{\numberline {2.1.3}磁化率と磁化のゆらぎ}{3}
+\contentsline {section}{\numberline {3}考察}{5}
+\contentsline {subsection}{\numberline {3.1}磁性体のシミュレーション}{5}
+\contentsline {subsubsection}{\numberline {3.1.1}自発磁化の温度変化}{5}
+\contentsline {subsubsection}{\numberline {3.1.2}磁化曲線}{7}
+\contentsline {subsubsection}{\numberline {3.1.3}磁化率と磁化のゆらぎ}{7}

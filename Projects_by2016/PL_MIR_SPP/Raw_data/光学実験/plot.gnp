@@ -1,0 +1,38 @@
+set multiplot
+
+set xlabel "{/=20  {/Arial-Italic L} [mm]}"
+set xrange[2:12]
+set ylabel "{/=20 Normalized power}"
+set yrange[0:1]
+
+plot 'normalized_power.csv' using 1:2 title "As Grown" with points pt 7
+replot 'normalized_power.csv' using 1:3 title "Annealed (600C, 20min)"  with points pt 7
+replot 'normalized_power.csv' using 1:4 title "Annealed (700°C, 16min)" with points pt 7 lc 3
+replot  exp(-0.1110087366*x) with lines lw 2 notitle
+replot  exp(-0.0835850342*x) with lines lw 2 notitle
+replot  exp(-0.0678338552*x) with lines lw 2 notitle
+
+set size 0.3,0.3
+set origin 0.45,0.2
+set tmargin 0
+set bmargin 0
+set rmargin 0
+set lmargin 0
+set border 0
+set format x ""
+set format y ""
+unset xtics
+unset ytics
+unset xlabel
+unset ylabel
+set size ratio -1
+set autoscale xy
+
+plot "schematics2.png" binary filetype=png with rgbimage
+
+unset multiplot
+reset
+
+set terminal postscript eps color enhanced "Arial" 18
+set out "normalized_power.eps"
+replot

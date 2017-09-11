@@ -1,0 +1,70 @@
+This is pBibTeX, Version 0.99d-j0.33 (utf8.euc) (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Statement_of_interest.aux
+The style file: apsrev4-1.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: Statement_of_interestNotes.bib
+Database file #2: Statement_of_interest_bib.bib
+control{REVTEX41Control}, control.key{N/A}, control.author{N/A}, control.editor{N/A}, control.title{N/A}, control.pages{N/A}, control.year{N/A}, control.eprint{N/A}, 
+control{apsrev41Control}, control.key{N/A}, control.author{08}, control.editor{1}, control.title{}, control.pages{0}, control.year{1}, control.eprint{N/A}, 
+Warning--jnrlst (dependency: not reversed) set 1
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+merlin.mbs apsrev4-1.bst 2010-07-25 4.21a (PWD, AO, DPC) hacked
+Control: key (0) 
+Control: author (8) initials jnrlst
+Control: editor formatted (1) identically to author
+Control: production of article title (-1) disabled
+Control: page (0) single
+Control: year (1) truncated
+Control: production of eprint (0) enabled
+Warning--empty note in Ozawa
+Warning--empty chapter and pages in Barklow
+You've used 10 entries,
+            5847 wiz_defined-function locations,
+            1658 strings with 15823 characters,
+and the built_in function-call counts, 7527 in all, are:
+= -- 485
+> -- 143
+< -- 71
++ -- 51
+- -- 47
+* -- 1074
+:= -- 769
+add.period$ -- 10
+call.type$ -- 10
+change.case$ -- 36
+chr.to.int$ -- 24
+cite$ -- 12
+duplicate$ -- 763
+empty$ -- 530
+format.name$ -- 84
+if$ -- 1419
+int.to.chr$ -- 1
+int.to.str$ -- 17
+missing$ -- 105
+newline$ -- 77
+num.names$ -- 24
+pop$ -- 335
+preamble$ -- 1
+purify$ -- 40
+quote$ -- 0
+skip$ -- 288
+stack$ -- 0
+substring$ -- 182
+swap$ -- 648
+text.length$ -- 10
+text.prefix$ -- 0
+top$ -- 10
+type$ -- 112
+warning$ -- 3
+while$ -- 31
+width$ -- 0
+write$ -- 115
+is.kanji.str$ -- 0
+(There were 3 warnings)

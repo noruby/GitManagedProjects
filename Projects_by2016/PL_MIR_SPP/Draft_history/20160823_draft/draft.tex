@@ -1,0 +1,172 @@
+\documentclass[aip,apl,reprint]{revtex4-1}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{color}
+
+\begin{document}
+
+\title{Propagation length of mid-infrared surface plasmon polaritons on gold: impact of morphology change by thermal annealing}
+\author{Nobuyoshi Hiramatsu}
+%\author{N. Hiramatsu}
+\altaffiliation[Also at ]{Department of Applied Physics, Faculty of Engineering, the University of Tokyo, 7-3-1 Hongo, Bunkyo-ku, Tokyo 113-8656, Japan}
+\affiliation{Institute of Industrial Science, the University of Tokyo, 4-6-1 Komaba, Meguro-ku, Tokyo 153-8505, Japan}
+\author{Fumiya Kusa}
+%\author{F. Kusa}
+\affiliation{Institute of Industrial Science, the University of Tokyo, 4-6-1 Komaba, Meguro-ku, Tokyo 153-8505, Japan}
+\author{Akinobu Takegami}
+%\author{A. Takegami}
+\affiliation{Institute of Industrial Science, the University of Tokyo, 4-6-1 Komaba, Meguro-ku, Tokyo 153-8505, Japan}
+\author{Kotaro Imasaka}
+%\author{K. Imasaka}
+\affiliation{Institute of Industrial Science, the University of Tokyo, 4-6-1 Komaba, Meguro-ku, Tokyo 153-8505, Japan}
+\author{Ikki Morichika}
+%\author{I. Morichika}
+\affiliation{Institute of Industrial Science, the University of Tokyo, 4-6-1 Komaba, Meguro-ku, Tokyo 153-8505, Japan}
+\author{Satoshi Ashihara}
+%\author{S. Ashihara}
+%\thanks{Corresponding author.}
+\email{ashihara@iis.u-tokyo.ac.jp}
+\affiliation{Institute of Industrial Science, the University of Tokyo, 4-6-1 Komaba, Meguro-ku, Tokyo 153-8505, Japan}
+
+\date{\today}
+
+\begin{abstract}
+We studied propagation length of surface plasmon polaritons (SPPs) at gold/air interface in the mid-infrared range. We showed that SPPs propagate for a distance about or above $10\:\mathrm{mm}$ at a wavelength of $10.6\:\mathrm{\mu m}$, in good agreement with the value predicted from the dielectric constant of polycrystalline gold. We also demonstrated that simple treatment of thermal annealing led to noticeable elongation of the SPP propagation length, which was correlated with increased crystallite grain size and decreased surface roughness. Quantitative evaluation of the SPP propagation length, in correlation with material's morphology, is important in designing plasmonic devices and beneficial for deeper understandings on the mechanisms of losses which underly achievable electric-field enhancements.
+\end{abstract}
+
+\maketitle
+ 
+\section{Introduction}
+Plasmonics in the mid-infrared (IR) range has gained increasing attention,\cite{Stanley, Law} because of possible applications to surface-enhanced spectroscopy,\cite{Neubrech, Hoang} chemical/bio sensing,\cite{Cleary2008} thermal radiation control,\cite{Kusunoki} optoelectronic circuit,\cite{Ebbesen, Soref} nonlinear light-matter interactions,\cite{Kusa2015} etc. Surface plasmons (SPs), including surface plasmon polaritons (SPPs) and localized surface plasmons (LSPs), can be excited at mid-IR wavelengths on various materials.\cite{Law} The behaviors of SPs, however, significantly vary according to the material where they are excited.\cite{Law} 
+
+SPs on highly-doped semiconductors and graphenes that have plasma frequencies in the mid-IR range are closely bound to the material surface, exhibiting wavelength shortening and large Ohmic loss at mid-IR wavelengths. Therefore, these materials are suited for achieving subwavelength confinement. SPs on noble metals that have plasma frequencies in the visible range, on the other hand, are weakly bound to the material surface, exhibiting subtle wavelength shortening and small Ohmic loss at mid-IR wavelengths. Therefore noble metals are advantageous in applications where any of small loss, long propagation length, and large electric-field enhancement is required.\cite{Law, Kusa2014}
+Among noble metals, gold is an excellent plasmonic material, because of its high metallic conductivity and superior chemical stability.\cite{Zayats}
+
+Propagation length of SPPs is an important physical quantity because it sets available physical size of plasmonic devices in applications like sensors and optoelectronic circuits. It is also important as a direct measure of SPP's losses, which underly the degree of electric-field enhancement achievable upon excitations of SPPs and LSPs. Electric-field enhancement plays key roles in many plasmonic applications.
+
+In general, SPPs decay by radiative damping and irradiative damping. Radiative damping occurs by coupling with (or scattering into) free-propagating light and other SPP states. Irradiative damping originates from scattering of free electrons by electrons, phonons, defects, impurities, crystallite grain boundaries, etc., and is frequently referred to as the Ohmic loss. Both of the radiative and irradiative damping rates depend on microscopic structure of materials. Therefore, evaluation of the SPP propagation length, together with characterization of material morphology, helps us understand the loss mechanisms of SPPs.
+
+The early studies of 1970's and 1980's reported propagation length of mid-IR SPPs on polycrystalline metal films of gold,\cite{McMullen, Schlesinger1, Schlesinger2} silver,\cite{Schlesinger1, Schlesinger2} and copper.\cite{Schoenwald, Shiba} The reported values were, however, inconsistent with each other, and it was difficult to get deeper insights since material's morphology was not characterized. Nowadays it is possible to characterize material's morphology by a variety of scanning probe microscopy techniques. In fact, the propagation length of SPPs on gold at visible wavelengths\cite{Kuttge} and dielectric function of gold\cite{Trollmann, Olmon} have been studied in correlation with morphology observed by atomic force microscopy (AFM) in recent publications. There has been, however, no report on the propagation length of mid-IR SPPs on gold, with simultaneous characterization of morphology.
+
+In this study, we experimentally measured the propagation length of SPPs at gold/air interface at a mid-IR wavelength of $10.6\:\mathrm{\mu m}$ and correlated it with morphology of gold. Here we characterized the morphology by AFM, scanning electron microscopy (SEM), and electron backscatter diffraction (EBSD). We showed that the SPPs propagate for a distance about or above $10\:\mathrm{mm}$, in agreement with the value predicted from the dielectric constant of polycrystalline gold. Furthermore, we demonstrated that the SPP propagation length can be increased by a simple treatment of thermal annealing, accompanied by increased grain size.
+In this study, we designed and utilized surface-relief gratings as input/output couplers. Compared with the prism coupling technique,\cite{Schoenwald, Shiba} the grating coupling technique does not suffer from contamination of collinear radiative components.\cite{Schlesinger1, Schlesinger2} Compared with the edge coupling technique,\cite{Schlesinger1, Schlesinger2} the grating coupling technique provides higher coupling efficiency and the resultant better signal-to-noise ratio. 
+
+\section{Device design and fabrication}
+\label{sec:device}
+In order to measure the propagation length of SPPs, we designed a series of SPP waveguide devices. Each device consists of an input coupler, an SPP waveguide, and an output coupler.  The input and output couplers are surface relief gratings made of gold. SPPs are  excited at the input coupler from freely-propagating light, propagate along the SPP waveguide, and are re-converted to freely-propagating light at the output coupler, as illustrated in Fig. \ref{fig:device}(a). The input-output power ratio should be a product of light-SPP coupling efficiency, SPP propagation efficiency (or transmittance), and SPP-light coupling efficiency. 
+
+Therefore, if the input/output coupling efficiencies are identical among all devices, we can deduce the propagation length (the distance that SPP power falls to $1/e$ of its initial value), by measuring the input-output power ratio for devices with different waveguide lengths.  In the experiments, we assumed that the coupling efficiencies are identical among all devices and measured output optical power for each device, while keeping incident optical power constant. 
+
+Freely-propagating light and SPPs can be coupled to each other by using a grating structure which satisfies the condition\cite{Koev},
+\begin{equation}
+k_{\mathrm{SPPgr}}=k_0 \sin \theta + \frac{2m\pi}{d},
+\label{eq:phase-match}s
+\end{equation}
+where $k_{\mathrm{SPPgr}}$ and $k_0=2\pi/\lambda_0$ are the wavenumbers of SPPs at the grating and that of light in free space, respectively, $\lambda_0$ is the wavelength of light in free space, $\theta$ is an incident angle, $d$ is a grating pitch, and $m$ is an integer. Here we note that $k_{\mathrm{SPPgr}}$ is close to the SPP wavenumber on a flat film in the case of shallow gratings.
+
+Grating depth is known to be influential for the light-SPP (SPP-light) coupling efficiency\cite{Koev, Cleary2010}. To find the optimum grating depth for maximum coupling, we conducted numerical simulations on reflection efficiencies of surface relief gratings made of gold, by the rigorous coupled-wave analysis (RCWA)\cite{Moharam}. 
+
+Here, we assumed that each grating is made of polycrystalline gold, and has a rectangular profile, a pitch of $15\:\mathrm{\mu m}$, and a duty cycle of 0.5. Incident light was assumed to be a plane monochromatic wave at a wavelength of $10.6\:\mathrm{\mu m}$. 
+Figure \ref{fig:device}(b) shows the calculated energy reflection efficiency as a function of incident angle and grating depth. The reflection efficiency reveals a dip at the grating depth of 0.2-1.3 $\mathrm{\mu m}$ and at the incident angle of 17-18 degree. The energy loss in reflection is due to conversion from freely-propagating light to SPPs.
+Considering the possible beam convergence of the incident light, we chose the grating depth of $0.8\:\mathrm{\mu m}$ for efficient coupling. Our choice is close to the conclusion derived by Cleary et al.\cite{Cleary2010} that the optimum grating depth of a rectangular grating was 10\%-15\% of the wavelength in the mid-IR range.
+
+Physical dimensions of our devices are presented in Fig.\ref{fig:device}(a).  The SPP waveguides have a common width of $0.5\:\mathrm{mm}$ and varied lengths $L$ of $3, 5, 7, 9,$ and $11\:\mathrm{mm}$. The input (output) coupler is $1\:\mathrm{mm}$ in length and $0.5\:\mathrm{mm}$ ($1.5\:\mathrm{mm}$) in width. Both of the input and output couplers have rectangular profiles with a grating pitch of $15\:\mathrm{\mu m}$ and a duty cycle of 0.5. As will be described below, the waveguides and the gratings were fabricated to have a common hight of $0.8\:\mathrm{\mu m}$ from a gold base layer.
+
+The devices were fabricated by means of electron beam lithography, thermal evaporation, and lift-off process. A gold base layer with a thickness of $200\:\mathrm{nm}$ was thermally evaporated on a silica glass substrate with a 5-nm-thick chromium adhesion layer, after the substrate was cleaned with acetone and ethanol. Then, electron-beam resist (OEBR-CAP112PM, Tokyo Ohka Kogyo Co., Ltd) was spin-coated with a thickness of $1700\:\mathrm{nm}$, exposed by electron beam, and developed. Finally, gold with a thickness of $800\:\mathrm{nm}$ was deposited on the developed resist, which was then lifted off by acetone. During the evapolation process, the substrate was not heated. We maintained the evaporation rate of gold to be $0.4\:\mathrm{nm/s}$, and the pressure inside the vacuum chamber to be less than $4\:\mathrm{mPa}$.
+
+ \begin{figure}
+    \includegraphics[width=0.8\hsize]{device.eps}
+    \caption{(a) Schematic of the SPP waveguide devices. (b) Calculated reflection efficiency of a gold relief grating with a grating pitch of $15\:\mathrm{\mu m}$ and a duty cycle of 0.5, as a function of incident angle and grating depth.}
+     \label{fig:device}
+\end{figure}
+
+\section{Experiment}
+\label{sec:experiment}
+Figure \ref{fig:experiment} shows the schematic of our experimental setup. 
+A $\mathrm{CO_2}$ laser (L3SL, Access Laser Company) was used as a mid-IR light source generating linearly polarized light at a wavelength of $10.6\:\mathrm{\mu m}$. 
+SPP devices were attached to a rotational and 3D-translational stage. 
+The p-polarized light (electric field lies within the plane of incidence) was incident onto the input coupler at the angle that fulfills Eq. \ref{eq:phase-match} where $m=1$, being loosely focused by a spherical mirror with a curvature radius $R$ of $400\:\mathrm{mm}$.  Here the incident light converged with an angle of 1.3 degree to form the beam spot of $0.6\:\mathrm{mm}$ diameter at the sample position. This plane-like wavefront of the incident light and the homogeneous grating coupler should result in a SPP beam with plane-like wavefront. Because the focal depth of the excited SPP beam is about $10\:\mathrm{mm}$, and because the SPPs are confined in the waveguides, we ignored the propagation loss due to diffraction.
+The output light was collected by a spherical mirror of $R=150\:\mathrm{mm}$ and a power meter. 
+An aperture was placed at the conjugate point of the output coupler to avoid any stray light. 
+Time-averaged optical power sent to the input coupler was controlled to be $60\:\mathrm{mW}$ by adjusting the duty ratio of RF power modulation in the $\mathrm{CO_2}$ laser.
+
+In order to modify the morphology of the gold film, the sample containing a series of waveguide devices was annealed twice with a hotplate in argon atmosphere\cite{Nogues}.
+In the first annealing process, the sample was heated at $600\:^\circ\mathrm{C}$ for $20\:\mathrm{min}$., and gradually cooled down to room temperature on the hotplate. In the second annealing process, the sample was heated at $700\:^\circ\mathrm{C}$ for $16\:\mathrm{min}$., and cooled down in the same way. The morphology was characterized by AFM (SPA-300, Seiko Instruments Inc.) in tapping mode, and by SEM/EBSD (JSM-6510LV, JEOL Ltd.) with the acceleration voltage of $20\:\mathrm{kV}$.
+
+\begin{figure}
+    \includegraphics[width=0.85\hsize]{experiment.eps}
+    \caption{Schematic of the experimental setup. R400 and R150 denote the spherical mirrors with curvature radii of 400 mm and 150 mm, respectively.}
+     \label{fig:experiment}
+\end{figure}
+
+\section{Results}
+\label{sec:result}
+Figure \ref{fig:propagation_length} shows the measured output power as a function of the waveguide length $L$ for as-grown, once-annealed ($600\:^\circ\mathrm{C}$), and twice-annealed ($600\:^\circ\mathrm{C}$ and $700\:^\circ\mathrm{C}$) samples.
+Each trace was fitted with the exponential decay function $\exp(-L/L_{\mathrm{SPP}})$ and normalized by the value at $L=0$. Here, the propagation length $L_{\mathrm{SPP}}$ was evaluated to be $9.0\pm0.3\:\mathrm{mm}$, $12.0\pm0.4\:\mathrm{mm}$, and $14.7\pm0.7\:\mathrm{mm}$ for the as-grown, once-annealed, and twice-annealed samples, respectively.
+In this way, the SPP propagation length was shown to increase noticeably by the thermal annealing treatment.
+
+Figure \ref{fig:morphology} shows an AFM topography image (upper panels) of the waveguide surface and the corresponding cross-sectional height data (lower panels)  for (a) as-grown, (b) once-annealed ($600\:^\circ\mathrm{C}$), and (c) twice-annealed ($600\:^\circ\mathrm{C}$ and $700\:^\circ\mathrm{C}$) samples. Here the sectional surface is indicated as dashed lines in the topography images.
+It is evident from the cross-sectional height data that surface roughness was suppressed by the annealing treatment. By calculating root mean squares of deviations in height data, the surface roughness is estimated to be $5.7\:\mathrm{nm}$, $2.8\:\mathrm{nm}$, and $2.2\:\mathrm{nm}$ for the as-grown, once-annealed, and twice-annealed samples, respectively. 
+The granular pattern typical for polycrystalline gold was clearly observed for the as-grown sample, as shown in Fig. \ref{fig:morphology}(a). Here we estimated average diameter of crystallite grains to be $70\pm20\:\mathrm{nm}$ for the as-grown sample, by analyzing the height data with the watershed algorithm\cite{Petr} while assuming spherical shape for each grain. In contrast, grain boundaries were not identified for the annealed samples. Therefore, we proceeded to analyze the waveguide surface by using SEM and EBSD.
+
+Figure \ref{fig:morphology} (d) shows a SEM image for the twice-annealed sample. It does not identify grain boundaries, nor does the AFM topographic image shown in Fig.\ref{fig:morphology}(c).
+Figure \ref{fig:morphology} (e) shows the pattern quality map, constructed from the EBSD data, for the same sample and the area as shown in Fig.\ref{fig:morphology}(d). Here every point is assigned a brightness based on the EBSD pattern quality for that point. Bright area has high pattern quality (i.e., measured electron diffraction pattern matches well with ideal diffraction pattern of crystalline gold) and indicates crystalline gold. Dark area, in contrast, has low pattern quality and indicates grain boundary, dislocation, and void. The corresponding inverse pole figure (normal direction) is shown in Fig. \ref{fig:morphology} (f) for reference. In this way, the granular pattern is successfully identified by the EBSD measurement. By analyzing the pattern quality data with the watershed algorithm\cite{Petr}, while assuming spherical shape for each grain, we estimated average diameter of crystallite grains to be as large as $2\pm1\:\mathrm{\mu m}$. In this way, thermal annealing at $700\:^\circ\mathrm{C}$ or bellow was found to significantly increase the grain size and reduce the surface roughness.
+
+The SPP-light coupling efficiency of the coupler grating was estimated to be 0.18 from our experiments. Although optimum incident angle for the maximum coupling efficiency shifted by $\sim0.5^\circ$ upon annealing, the change in the maximum coupling efficiency was not observed. Additional AFM measurements confirmed that the coupler gratings had ideal rectangular profiles which did not change upon annealing. 
+
+ \begin{figure}
+    \includegraphics[width=0.85\hsize]{propagation_length.eps}
+    \caption{Semi-logarithmic plot of normalized output power as a function of the SPP waveguide length $L$ for the as-grown(squares), once-annealed (triangles), and twice-annealed (circles) samples. Exponential decay curves fitted to these data are also shown as solid lines. The propagation length of SPP was evaluated from each trace to be $9.0\pm0.3\:\mathrm{mm}$, $12.0\pm0.4\:\mathrm{mm}$, and $14.7\pm0.7\:\mathrm{mm}$.}
+       \label{fig:propagation_length}
+\end{figure}
+
+  \begin{figure}
+    \includegraphics[width=\hsize]{morphology.eps}
+        \caption{AFM topography images (upper panels) of the waveguide surface, and the corresponding cross-sectional height data (lower panels) for (a) as-grown, (b) once-annealed ($600\:^\circ\mathrm{C}$), and (c) twice-annealed ($600\:^\circ\mathrm{C}$ and $700\:^\circ\mathrm{C}$) samples. The sectional surface is indicated as dashed lines. A SEM image, an EBSD pattern quality map, and an inverse pole figure for the twice-annealed sample are shown in (d), (e), and (f), respectively.}
+    \label{fig:morphology}
+\end{figure}
+
+\section{Discussions}
+\label{sec:discussion}
+In the following, we discuss the physics behind the elongation of the SPP propagation length upon thermal annealing, based on our observations of increased grain size (from 70 nm to 2000 nm) and suppressed surface roughness (from 5.7 nm to 2.2 nm). 
+
+Considering the Ohmic losses, the SPP propagation length $L_{\mathrm{SPP}}$ at a metal/air interface is expressed by the following equation,
+\begin{equation}
+ L_{\mathrm{SPP}} = \frac{1}{2\:\mathrm{Im} k_{\mathrm{SPP}}},
+\label{eq:propagation_length}
+ \end{equation}
+where $k_{\mathrm{SPP}}=(\lambda/2\pi)\sqrt{\epsilon_g/(\epsilon_g+1)}$ is the complex wavenumber of the SPPs, and $\epsilon_g=\epsilon'_g+i\epsilon''_g$ is the relative dielectric constant of gold. 
+By substituting the dielectric constant of polycrystalline gold\cite{Palik} into Eqn. \ref{eq:propagation_length}, $L_{\mathrm{SPP}}$ is calculated to be $12.3\:\mathrm{mm}$ at a wavelength of $10.6\:\mathrm{\mu m}$.
+Our experimentally measured values of $9.0\pm0.3\:\mathrm{mm}$, $12.0\pm0.4\:\mathrm{mm}$, and $14.7\pm0.7\:\mathrm{mm}$ agree with this theoretical estimation, confirming that mid-IR SPPs at gold/air interface propagates for a distance about or above $>10\:\mathrm{mm}$. 
+This agreement, in other words, suggest that the Ohmic losses mainly describe the SPP attenuation behavior.
+
+The Ohmic losses originate from scattering of free electrons by electrons, phonons, crystallite grain boundaries, defects, impurities\cite{Yang}, etc. Trollmann et al.\cite{Trollmann} conducted systematic evaluation of the Drude parameters in relation to gold morphology in IR range, showing influence to the parameters both by grain boundaries and void inclusions in metal which increase surface roughness. 
+They reported that the electron scattering rate decreases by grain enlargement, and that if the grains are smaller than the bulk electron mean free path which estimated to be about $56\:\mathrm{nm}$ grain boundaries dominate the behavior of scattering rate. 
+Their estimation of bulk mean free path is a compatible value with the reported $35.9\:\mathrm{nm}$ measured by Canchal-Arias et. al.\cite{Canchal-Arias} for single crystalline gold in mid-IR range. Although our estimated grain size of $70\:\mathrm{nm}$ for the as-grown sample is comparative to or slightly bigger than the expected mean free path, we can still regard grain boundaries as an important cause to induce the Ohmic losses. In contrast, the enlarged grain size of $2000\:\mathrm{nm}$ for the twice-annealed sample is considerably larger than the mean free path, therefore the grain boundaries are less obstructive for electrons leading to elongated $L_{\mathrm{SPP}}$. 
+
+Trollmann et al. also showed that the plasma frequency and the dielectric background increase as the fraction of empty volume inclusions (correlated with surface roughness) decreases. According to their suggestions, suppression in the surface roughness leads to the increase in the dielectric constant of gold and therefore to the increase in the Ohmic loss. This hypothesis contradicts with our observations and we discard it as the origin of the elongation of $L_{\mathrm{SPP}}$. 
+
+For quantitative understanding of SPP attenuation, additional loss mechanisms have been studied. 
+Kuttge et al.\cite{Kuttge} determined contribution of SPP scattering at grain boundaries to the attenuation of visible SPPs on gold, by measuring both the propagation length and the dielectric function. 
+Lee et al.\cite{Lee} showed the existence of scattering hotspots on copper films owing to multiple SPP scattering or cavity effect, and associated them with triple junctions where three grain boundaries intersect on surface and large and deep boundary grooves. Here they finish the sample by chemical mechanical polishing (CMP) for reducing the surface roughness. 
+Our observations are consistent with their discussions, because the measured grain enlargement leads to the deduction in boundary density and boundary junction density, thus results in reduced SPP scattering and elongated $L_{\mathrm{SPP}}$. In addition, obscured grain boundaries may contribute to the shrink of hotspots. 
+ 
+Surface roughness can, in principle, also scatter SPPs, and suppressed surface roughness lead to elongated $L_{\mathrm{SPP}}$ by reducing the scattering of SPPs. This contribution, however, would be negligible in our observed elongation of $L_{\mathrm{SPP}}$, since attenuation due to SPP scattering by surface roughness of $<10 \mathrm{mm}$ is estimated to be smaller than the attenuation by many orders of magnitude\cite{Shiba, Kuttge, Mills}.
+
+As described above, we showed that grain boundaries play a significant role in understanding SPP attenuation by the Ohmic loss and SPP scattering, while neglecting the influence of surface roughness. In this study, we naturally attribute our observed elongation of $L_{\mathrm{SPP}}$ to grain size enlargement, and successfully demonstrated that the simple treatment of thermal annealing leads to noticeable elongation of SPP propagation length. 
+
+Hereafter, we consider phenomena during the annealing process.
+Observed enlargement of the grain size is understood as a result that smaller crystallite grains preferentially melt upon annealing\cite{Buffat} and re-crystallize into larger particles. 
+During such phenomena, each crystallite grain can be connected with each other by the necking formation, which would suppress the surface roughness and make unclear the grain boundaries observable with AFM. Here, we note the minor side effect of annealing that pinholes with diameters on the order of $100\:\mathrm{nm}$ may be generated on metal surface. They appeared with a number density of $0.16\:\mathrm{\mu m}^{-2}$ after the first annealing, and with a number density of $0.44\:\mathrm{\mu m}^{-2}$ after the second annealing. Such pinholes are much smaller than the SPP wavelength but may induce scattering of SPPs. Therefore the observed elongation of $L_{\mathrm{SPP}}$ should be the net increase, as a result of competition between contributions from increased grain size and pinholes.
+	
+\section{Conclusions}
+\label{sec:conclusion}
+We demonstrated that SPPs at gold/air interface propagate for a distance about or above $10\:\mathrm{mm}$ at a wavelength of $10.6\:\mathrm{\mu m}$. The measured propagation length is in good agreement with the value predicted from the dielectric constant of polycrystalline gold. We also successfully demonstrated that the SPP propagation length can be increased by the simple treatment of thermal annealing, accompanied by the increased grain size. Quantitative evaluation of the SPP propagation length, correlated with material's morphology, is important in designing plasmonic devices and beneficial for deeper understandings of the mechanism of the losses that underly electric-field enhancement achievable upon SP excitations.
+
+\section*{Acknowledgement}
+The authors thank K. Hirakawa and K. Yoshida (Institute of Industrial Science, the University of Tokyo: IIS-UTokyo) for technical supports in thermal evaporation and thermal annealing, T. Takahashi and Y. Shimada (IIS-UTokyo) for technical supports in AFM measurements, M. Maeda, H. Kimura, T. Yoshikawa and T. Narumi (IIS-UTokyo) for technical supports in SEM/EBSD measurements.
+The sample was fabricated at VLSI Design and Education Center (VDEC), the University of Tokyo. Financial support by the Japan Society for the Promotion of Science (MEXT KAKENHI 16K13694) is gratefully acknowledged.
+
+\bibliography{Reference}
+
+\end{document}

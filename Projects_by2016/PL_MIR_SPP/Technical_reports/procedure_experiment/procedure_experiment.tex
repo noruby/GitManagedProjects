@@ -1,0 +1,37 @@
+\documentclass[11pt]{article}
+\usepackage[top=30truemm,bottom=30truemm,left=25truemm,right=25truemm]{geometry}
+\usepackage[dvipdfmx]{graphicx}
+\begin{document}
+\title{実験の手続き}
+\author{平松}
+\maketitle
+
+\abstract
+実験手続きについてまとめる。
+
+\section{SPP励起について}
+\subsection{入射角度の最適化}
+伝搬光-SPPカップリングは、伝搬光の入射角に非常に敏感である。またその入射角は各導波路ごとに少しずつ異なる。なぜなら作成プロセスでの不完全性に起因して、それぞれのグレーティングの有効誘電率がばらつくからである。したがって、各導波路ごとに入射角度を一定の手続きで最適化しないといけない。
+
+\subsection{入射角度の測定方法}
+基板に光を入射し、反射してきた光の光路がその入射光のものと重なるとき、その入射光は基板に対して垂直入射だと言える。垂直入射時の回転ステージの目盛りを控えておけば、簡単な計算によって任意の角度で入射した光と基板との入射角が分かる。
+
+\subsection{入射スポット}
+励起光が完全な平面光でなくあるスポットサイズを持つなら、その励起光はグレーティング構造に対し、ある決まった位置に入射しなければならない。SPPの伝搬方向に対して平行な方向のずれは、SPPの強度を直接的に変化させる。SPPの伝搬方向に対して垂直な方向のずれは導波路構造での回折と反射により、無視できない誤差の原因となる。
+
+\section{SPP検出法}
+\section*{付録: 回転ステージの回転中心と光線の合わせ方}
+回転ステージ上にある基板に対し入射光が平行で、基板をかすめて通り、また180度基板を回転させても基板をかすめて通るように調整されているなら、基板は回転ステージの回転中心上にあり、その回転中心を入射光が通るといえる。
+
+\section*{付録: 焦点の合わせ方}
+本実験において、基板表面と検出器前のアイリスは光学的に共役な関係にある。しかしレーザー光の絞り角はたかだか0.6度程度で、光学系の調整が難しい。そこでグレーティングにより基板表面で回折されたHeNeレーザー光が、再びアイリスで一点に像を結ぶように、光学系を調整すると光学系の調整が簡単である。
+
+\begin{thebibliography}{99}
+\bibitem{Mie_theory} 
+
+\bibitem{depolarization}
+Photoelectric smoke-sensitive fire detecting device based on depolarization rate
+
+\end{thebibliography}
+
+\end{document}

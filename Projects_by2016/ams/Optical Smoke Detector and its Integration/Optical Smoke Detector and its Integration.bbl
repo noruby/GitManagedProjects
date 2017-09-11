@@ -1,0 +1,116 @@
+\begin{thebibliography}{10}
+
+\bibitem{Review}
+Howard G~. Barth and Richard~B. Flippen.
+\newblock Particle size analysis.
+\newblock {\em Analytical Chemistry}, 67, 1995.
+
+\bibitem{Review_pharmaceutics}
+Boris~Y. Shekunov, Pratibhash Chattopadhyay, Henry H.~Y. Tong, and Albert H.~L.
+  Chow.
+\newblock Particle size analysis in pharmaceutics: Principles, methods and
+  applications.
+\newblock {\em Pharmaceutical Research}, 24, 2007.
+
+\bibitem{Review_comparison}
+Comparison of particle sizing methods.
+\newblock {\em CPS Instrument Europe}.
+
+\bibitem{Review_Scattering_theory}
+Thomas Wriedt.
+\newblock A review of elastic light scattering theories.
+\newblock {\em Particle \& Particle Systems Characterization}, 15, 1998.
+
+\bibitem{Mie_theory_perturbation}
+Richard~J. Martin.
+\newblock Mie scattering formulae for non-spherical particles.
+\newblock {\em Journal of Modern Optics}, 40, 1993.
+
+\bibitem{Generalized_Mie_theory}
+Gerard Gouesbet.
+\newblock Generalized lorenz-mie theory and applications.
+\newblock {\em Particle \& Particle Systems Characterization}, 11, 1994.
+
+\bibitem{T-matrix_fractal}
+S.~Manickavasagam and M.~P. Menguc.
+\newblock Scattering matrix elements of fractal-like soot agglomerates.
+\newblock {\em Applied Optics}, 36, 1997.
+
+\bibitem{T-matrix_soot}
+Michael~I. Mishchenko, Li~Liu, and Daniel~W. Mackowski.
+\newblock T-matrix modeling of linear depolarization by morphologically complex
+  soot and soot-containing aerosols.
+\newblock {\em Journal of Quantitative Spectroscopy \& Radiative Transfer},
+  123, 2013.
+
+\bibitem{T-matrix_review}
+Michael~I. Mishchenko, Larry~D. Travis, and Daniel~W. Mackowski.
+\newblock T-matrix computations of light scattering by nonspherical particles:
+  A review.
+\newblock {\em Journal of Quantitative Spectroscopy \& Radiative Transfer}, 55,
+  1995.
+
+\bibitem{Experiment2_Depolarization}
+N.~Lu and C.~M. Sorensen.
+\newblock Depolarized light scattering from fractal soot aggregates.
+\newblock {\em Physcal Review E}, 50, 1994.
+
+\bibitem{Calculation1_Depolarization}
+Wenbo Sun, Zhaoyan Liu, Gorden Videen, Karri~Muinonen Qiang~Fu, David M.Winker,
+  Constantine Lukashin, Zhonghai Jin, Bing Lin, and Jianping Huang.
+\newblock For the depolarization of linearly polarized light by smoke
+  particles.
+\newblock {\em Journal of Quantitative Spectroscopy \& Radiative Transfer},
+  122, 2013.
+
+\bibitem{Calculation2_Depolarization}
+Qiyuan Xie, Heping Zhang, Yutian Wan, Yongming Zhang, and Lifeng Qiao.
+\newblock Characteristics of light scattering by smoke particles based on
+  spheroid models.
+\newblock {\em Journal of Quantitative Spectroscopy \& Radiative Transfer},
+  107, 2007.
+
+\bibitem{Brownian_DLS}
+van Veluwen, Aernout, Lekkerkerker, Hendrik~N. W., de~Kruif, Cornelus G., and
+  Agienus Vrij.
+\newblock Brownian diffusivities of interacting colloidal particles measured by
+  dynamic light scattering.
+\newblock {\em Faraday Discuss. Chem. Soc.}, 83:59--67, 1987.
+
+\bibitem{Depolarized_DLS}
+A.~Vailati, D.~Asnagh, M.~Giglio, and R.~Piazza.
+\newblock Depolarized dynamic light scattering from optically anisotropic
+  reaction-limited aggregates.
+\newblock {\em Phsical Review E}, 48, 1993.
+
+\bibitem{LD_size_shape}
+Zhenhua Ma, Henk~G. Merkus, Jan~G.A.E. de~Smet, Camiel Heffels, and Brian
+  Scarlett.
+\newblock New developments in particle characterization by laser diffraction:
+  size and shape.
+\newblock {\em Powder Technology}, 111, 2000.
+
+\bibitem{LD_shape_characterization}
+Zhenhua Ma, Henk~G. Merkus, and Brian Scarlett.
+\newblock Extending laser diffraction for particle shape characterization:
+  technical aspects and application.
+\newblock {\em Powder Technology}, 118, 2001.
+
+\bibitem{PDA1}
+Huihe Qiu and Chin~Tsau Hsu.
+\newblock Method of phase-doppler anemometry free from the measurement-volume
+  effect.
+\newblock {\em Applied Optics}, 38, 1999.
+
+\bibitem{Experiment1_Depolarization}
+Stefano di~Stasio.
+\newblock Experiments on depolarized optical scattering to sense in situ the
+  onset of early agglomeration between nano-size soot particles.
+\newblock {\em Journal of Quantitative Spectroscopy \& Radiative Transfer}, 73,
+  2002.
+
+\bibitem{Patent_Depolarization}
+Photoelectric smoke-sensitive fire detecting device based on depolarization
+  rate, October~24 2007.
+
+\end{thebibliography}

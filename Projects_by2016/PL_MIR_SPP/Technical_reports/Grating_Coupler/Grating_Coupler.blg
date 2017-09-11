@@ -1,0 +1,64 @@
+This is pBibTeX, Version 0.99d-j0.33 (utf8.euc) (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Grating_Coupler.aux
+The style file: unsrt.bst
+Database file #1: ../Reference.bib
+Unbalanced braces---line 134 of file ../Reference.bib
+ :   note="CN Patent 200,963,473
+ :                              }
+I'm skipping whatever remains of this entry
+Unbalanced braces---line 199 of file ../Reference.bib
+ :   note="US Patent 5,451,931
+ :                            }
+I'm skipping whatever remains of this entry
+Unbalanced braces---line 209 of file ../Reference.bib
+ :   note="US Patent 5,451,931
+ :                            }
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 227 of file ../Reference.bib
+ : title=Thickness 
+ :                 dependence of grain size and surface roughness for dc magnetron sputtered Au  lmsi",
+I'm skipping whatever remains of this entry
+You've used 2 entries,
+            1791 wiz_defined-function locations,
+            461 strings with 3925 characters,
+and the built_in function-call counts, 374 in all, are:
+= -- 26
+> -- 28
+< -- 0
++ -- 10
+- -- 8
+* -- 24
+:= -- 77
+add.period$ -- 6
+call.type$ -- 2
+change.case$ -- 2
+chr.to.int$ -- 0
+cite$ -- 2
+duplicate$ -- 16
+empty$ -- 29
+format.name$ -- 8
+if$ -- 75
+int.to.chr$ -- 0
+int.to.str$ -- 2
+missing$ -- 2
+newline$ -- 13
+num.names$ -- 2
+pop$ -- 2
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 8
+stack$ -- 0
+substring$ -- 0
+swap$ -- 2
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 2
+width$ -- 3
+write$ -- 24
+is.kanji.str$ -- 0
+(There were 4 error messages)

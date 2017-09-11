@@ -1,0 +1,60 @@
+This is pBibTeX, Version 0.99d-j0.33 (utf8.euc) (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Evaporation_Deposition_Methodology.aux
+The style file: unsrt.bst
+Database file #1: ../Reference.bib
+Unbalanced braces---line 134 of file ../Reference.bib
+ :   note="CN Patent 200,963,473
+ :                              }
+I'm skipping whatever remains of this entry
+Unbalanced braces---line 199 of file ../Reference.bib
+ :   note="US Patent 5,451,931
+ :                            }
+I'm skipping whatever remains of this entry
+Unbalanced braces---line 209 of file ../Reference.bib
+ :   note="US Patent 5,451,931
+ :                            }
+I'm skipping whatever remains of this entry
+You've used 10 entries,
+            1791 wiz_defined-function locations,
+            514 strings with 5779 characters,
+and the built_in function-call counts, 1827 in all, are:
+= -- 129
+> -- 149
+< -- 0
++ -- 53
+- -- 43
+* -- 114
+:= -- 359
+add.period$ -- 30
+call.type$ -- 10
+change.case$ -- 10
+chr.to.int$ -- 0
+cite$ -- 10
+duplicate$ -- 80
+empty$ -- 141
+format.name$ -- 43
+if$ -- 376
+int.to.chr$ -- 0
+int.to.str$ -- 10
+missing$ -- 10
+newline$ -- 53
+num.names$ -- 10
+pop$ -- 12
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 41
+stack$ -- 0
+substring$ -- 0
+swap$ -- 10
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 10
+width$ -- 12
+write$ -- 111
+is.kanji.str$ -- 0
+(There were 3 error messages)

@@ -1,0 +1,70 @@
+This is pBibTeX, Version 0.99d-j0.33 (utf8.euc) (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: draft.aux
+The style file: aipnum4-1.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: draftNotes.bib
+Database file #2: Reference.bib
+control{REVTEX41Control}, control.key{N/A}, control.author{N/A}, control.editor{N/A}, control.title{N/A}, control.pages{N/A}, control.year{N/A}, control.eprint{N/A}, 
+control{aip41Control}, control.key{N/A}, control.author{N/A}, control.editor{N/A}, control.title{}, control.pages{0}, control.year{N/A}, control.eprint{N/A}, 
+Warning--jnrlst (dependency: not reversed) set 1
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+merlin.mbs aipnum4-1.bst 2010-07-25 4.21a (PWD, AO, DPC) hacked
+Control: key (0) 
+Control: author (8) initials jnrlst
+Control: editor formatted (1) identically to author
+Control: production of article title (-1) disabled
+Control: page (0) single
+Control: year (1) truncated
+Control: production of eprint (0) enabled
+Warning--empty chapter and pages in Palik
+Warning--empty chapter and pages in Raether
+You've used 34 entries,
+            5918 wiz_defined-function locations,
+            1895 strings with 22388 characters,
+and the built_in function-call counts, 33081 in all, are:
+= -- 2057
+> -- 1061
+< -- 213
++ -- 338
+- -- 282
+* -- 5105
+:= -- 3419
+add.period$ -- 34
+call.type$ -- 34
+change.case$ -- 130
+chr.to.int$ -- 33
+cite$ -- 36
+duplicate$ -- 3011
+empty$ -- 2330
+format.name$ -- 546
+if$ -- 6473
+int.to.chr$ -- 2
+int.to.str$ -- 41
+missing$ -- 416
+newline$ -- 148
+num.names$ -- 96
+pop$ -- 1293
+preamble$ -- 1
+purify$ -- 160
+quote$ -- 0
+skip$ -- 1142
+stack$ -- 0
+substring$ -- 762
+swap$ -- 2913
+text.length$ -- 100
+text.prefix$ -- 0
+top$ -- 10
+type$ -- 464
+warning$ -- 3
+while$ -- 124
+width$ -- 0
+write$ -- 304
+is.kanji.str$ -- 0
+(There were 3 warnings)

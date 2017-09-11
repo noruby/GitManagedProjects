@@ -1,0 +1,93 @@
+\documentclass[12pt]{article}
+\usepackage[top=20truemm,bottom=30truemm,left=25truemm,right=25truemm]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+
+\begin{document}
+\title{Optical Aerosol Characterization: A Review for Integration and Smoke Detection}
+\author{Nobuyoshi Hiramatsu}
+\maketitle 
+
+\begin{abstract}
+We review several methods of optical aerosol characterization including angular scattering, depolarized scattering, dynamic light scattering, laser diffraction, and phase doppler anemometry, from the viewpoint of their scopes as briefly summarized in Table \ref{tab:summary}. Feasibilities of an integrated aerosol sensor and smoke detector are also discussed.
+\end{abstract}
+
+\begin{table}[H]
+ \begin{center}
+ \label{heading}
+\small
+\scalebox{0.85}{
+\begin{tabular}[t]{llllll}  \noalign{\hrule height 1pt}
+& \parbox[b]{7em}{\bf Observable\\quantity} & \parbox[b]{8em}{\bf Quantity\\to be estimated} & {\bf Size($\mu m$)} & {\bf Shape} & \parbox[b]{7em}{\bf Light\\source} \rule[0mm]{0mm}{9mm}\\ \noalign{\hrule height 1.5pt}
+\parbox[t]{8em}{\bf Angular\\Scattering}  & Angle dependence & Effective diameter & 0.5$\sim$ & Spherical & CW/Pulse Laser \rule[0mm]{0mm}{6mm}\\
+\parbox[t]{8em}{\bf Depolarized\\Scattering} &  Depolarization & Shape & 0.01$\sim$1000 & Non-spherical & \parbox[t]{8em}{Polarized LED/Laser} \rule[0mm]{0mm}{6mm}\\
+\parbox[t]{8em}{\bf Dynamic Light\\Scattering} & Fluctuation & Size distribution & 0.03$\sim$3 & Nearly-Spherical & CW Laser \rule[0mm]{0mm}{6mm} \\
+\parbox[t]{8em}{\bf Laser\\Diffraction} & Speckle pattern & \parbox[t]{8em}{Size distribution,\\Shape} & 0.5$\sim$1000 & Nearly-Spherical & \parbox[t]{8em}{CW/Pulse Laser} \rule[0mm]{0mm}{6mm} \\ 
+\parbox[t]{8em}{\bf Phase-Doppler\\Anemometry} & Interference & \parbox[t]{8em}{Size distribution,\\Velocity} & 1$\sim$ & Spherical & CW Laser \rule[0mm]{0mm}{6mm} \\ \noalign{\hrule height 1pt} \\
+ \end{tabular}
+ }
+ \caption{The principle and the scope of aerosol characterization systems\cite{Review}\cite{Review_pharmaceutics}\cite{Review_comparison}}
+\label{tab:summary}
+ \end{center}
+ \end{table}
+
+\section{Introduction}
+An aerosol is a colloid of fine solid particles or liquid droplets in air. Characterization techniques in aerosol historically have played an important role in the field of chemistry, biology, and environmental science.  In particular, a lot of the optical methodologies have been proposed to analyze different sized particles composed of various materials with different condensation rate, as optical characterization techniques have advantages of the long duration, fast response, low drift, and non intrusive property. These methodologies are applicable across the wide range of engineering applications from a fire alarming system, in situ monitoring of a combustion system to environmental sensor. 
+
+In Chapter \ref{sec:overview}, we summarized the principles, physical assumptions and scopes of the optical characterization techniques of aerosols including angular scattering, depolarized scattering, dynamic light scattering, laser diffraction, and phase doppler anemometry. In Chapter \ref{sec:discussion_conclusion}, we made discussions and drew conclusion of feasibility for the specific applications of particle characterization within an integrated sensor as well as smoke detection.
+
+\section{Overview of Optical Aerosol Characterizations}
+\label{sec:overview}
+
+\subsection{Angular Light Scattering}
+The angular intensity distribution of the scattered light is dependent on the particle size and shape in aerosol. Conversely, it is possible to estimate the effective diameter by mean of analyzing the angular distribution of the scattered light that collected through multiple light detectors.
+
+An appropriate scattering theory must be chosen for the estimation, so that it properly predicts the angular dependence of the scattered light intensity depending on the particle size and shape. Many scattering theories have been proposed: the celebrated Lorenz-Mie theory for a homogeneous spherical particle\cite{Review_Scattering_theory}, the generalized Lorenz-Mie theories for a non-spherical particle\cite{Mie_theory_perturbation}\cite{Generalized_Mie_theory}, and T-matrix theory for an arbitrary shaped particle\cite{T-matrix_fractal}\cite{T-matrix_soot}\cite{T-matrix_review}. Conventionally, spherical shape of the sample particle is assumed for calculation of the effective diameter. 
+
+The sample particle size should be bigger than about 500nm in visible or near-infrared range in this method, since slight angular dependence is predicted for the small particles compared with the wavelength of the incident light, according to the Lorenz-Mie theory and its Rayleigh approximation.
+Pulse laser as well as CW laser are available for a light source .
+Information of polarization is also meaningful for enhancing the accuracy of the diameter estimation, as most of scattering processes are polarization dependent.
+
+
+\subsection{Depolarized Light Scattering}
+\label{sec:depolarized_scattering}
+Depolarization of scattered light indicates the existence of non-spherical particles in aerosol, since the depolarized light cannot be originated from the spherical particles taking the central symmetry into consideration\cite{Experiment2_Depolarization}\cite{Calculation1_Depolarization}\cite{Calculation2_Depolarization}. In other words, non-spherical particles that break central symmetry may depolarize the linearly polarized light though homogeneous and spherical particles in the aerosol do not alter the light polarization in principle, and a convenient approach for detecting the non-spherical particles is utilized by sensing the depolarization of scattering light.
+
+One advantage of this method is the sensitivity for detecting of non-spherical particles from among the aerosols with spherical shape. It follows that, it is inherently possible to eliminate the cross-sensing problem against water droplets, since water droplets form the spherical shape due to the surface tension and that do not alter the polarization. Conversely, these advantages might be a problem that spherical particles with low condensation are not detectable.
+Other advantage is its simplicity and robustness. Variety of light sources such as LED and laser as well as a polychromatic one is applicable. 
+However, there are a limitation to determine the size distribution of the aerosol.
+
+\subsection{Dynamic Light Scattering}
+Brownian motion of the particles dynamically fluctuates scattered light intensity, and we may calculate the size distribution of aerosol by calculating autocorrelation function of the scattering signal with varying time delays\cite{Brownian_DLS}. The particle diameter is directly associated with the diffusion constant calculated in the autocorrelation function of the intensity, in accordance with the Stokes-Einstein equation.
+
+Broad sized particles ranging from 0.03$\mu m$ to 3$\mu m$ are measurable in this method, though spherical property of  is assumed for utilizing the Stokes-Einstein relation.
+Since the brownian motion play a important role in this method, the viscosity of the air or suspension need to be known, though optical information of the sample particles is not pre-required. The accuracy of the size estimation supposed to decrease for relatively bigger particles in a low viscous fluid.
+The good continuity of laser power is required for decreasing the fluctuation of the laser power. Information of polarization would increase the accuracy\cite{Depolarized_DLS}.
+
+\subsection{Laser Diffraction Analysis}
+Speckle pattern of a plane wave is associated with the spatial fourier transformation of the 2-D projection of particle distribution in a well designed optical system, according to the Fraunhofer diffraction theory. Hence, the size, spatial distribution, and shape information can be obtained by analyzing the speckle pattern\cite{LD_size_shape}\cite{LD_shape_characterization}.
+
+We may measure low concentrated particles ranging from 0.5$\mu m$ to 1000$\mu m$   in visible or near infrared range.
+Both continuous laser and pulsed laser are applicable in this method.
+
+\subsection{Phase Doppler Anemometry}
+As a particle passes through propagating light, the frequency of the scattered light will proportionally shifts with the velocity parallel to the light propagation due to the Doppler effect. By collecting scattered light coming from particles that pass through in the intersection of two focused laser beams, the light intensity beats in a certain frequency since the scattered lights originate from both beams interfere.  The phase of the beat has a information of the particle size that enables us the estimation of size distribution by comparing the phase in multiple angles\cite{PDA1}.
+
+Even though there are several beneficial advantages in the Phase-Dopper Anemometry, including precise size estimation and its wide feasibility, there also are strong limitations as follows.
+Phase-Doppler anemometry assume the particle in the sample aerosol to be spherical and enough big so that the geometrical ray approximation is applicable. The accuracy of the size estimation will be considerably impaired for non-spherical particles and the particles smaller than the wavelength of the incident light.
+Furthermore the optical property of the particle should be well-known before the measurement, conventionally either refractive or reflective are assumed.  The high monochromacity of the light is also required, as the interference of two coherent lights play a principal role in this method.
+
+
+\section{Discussion and Conclusion}
+\label{sec:discussion_conclusion}
+\subsection{Particle characterization within an integrated sensor}
+For the particle characterization in an integrated sensor, the method of dynamic scattering is the most suitable because of its advantages: wide range of particle size, no need of complex optical configuration, no pre-required information in the shape and the optical property of sample particle.
+\subsection{Smoke detection}
+Most of the characterization techniques described are not suitable for the smoke characterization except for the depolarized scattering, since smoke particle is known to form chain like aggregates or non-spherical soot. Besides, scattering theory are not applicable for the description of the light scattering process, as Li Liu showed that the aggregation of soot particles can result in a significant enhancement of extinction and scattering relative to those computed from the Lorenz-Mie theory\cite{Experiment1_Depolarization}. 
+We introduced the depolarized scattering as the shape sensitive aerosol characterization techniques, being utilized as a convenient methodology for detecting the existence of the smoke or soot particles, while avoiding a cross-sensing problem against water droplets\cite{Patent_Depolarization}.
+
+\newpage
+\bibliographystyle{unsrt}
+\bibliography{./Reference}
+
+\end{document}	
