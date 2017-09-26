@@ -1,0 +1,62 @@
+\documentclass[11pt]{jarticle}
+\usepackage[top=20truemm,bottom=30truemm,left=25truemm,right=25truemm]{geometry}
+
+\begin{document}
+
+\title{Liouville方程式とSemiconductor-Bloch方程式など}
+\author{平松信義}
+\maketitle
+
+Liouville方程式の基底表示を
+
+\section{Liouville方程式}
+(縮約)密度演算子$\hat{\rho}$とハミルトニアン$\hat{H}$はエルミート演算子だから、密度演算子の時間変化は$\hat{H}\hat{\rho}$の虚部に比例する。
+\begin{eqnarray*}
+\frac{\partial \hat{\rho} }{\partial t } &=& \frac{1}{i \hbar} ( \hat{H} \hat{\rho} - \hat{\rho} \hat{H} )\\
+&=& \frac{1}{i \hbar} [ \hat{H} \hat{\rho} - ( \hat{H} \hat{\rho} )^{\dag}  ]\\
+&=& \frac{2}{\hbar} {\bf Im}[ \hat{H} \hat{\rho} ]
+\end{eqnarray*}
+
+\section{Liouville方程式のBloch基底表示: Semiconductor-Bloch方程式 (SBE)でCoulomb相互作用を無視したものと一致}
+(Blochの定理より)ハミルトニアンの固有状態である。
+Bloch基底は完全系を張る。
+Bloch基底$|\Phi_{n,k}>$に関してLiouville方程式の行列要素をとったものがSBEである。
+\begin{eqnarray*}
+%\frac{\partial \rho_{n,k}}{\partial t } 
+\frac{ \partial }{\partial t } <\Phi_{n,k}| \hat{\rho} |\Phi_{n',k'}> &=& <\Phi_{n,k}| \frac{\partial \hat{\rho}}{\partial t } |\Phi_{n',k'}>\\
+&=& \frac{2}{i \hbar}  <\Phi_{n,k}| [ \hat{H} \hat{\rho} - ( \hat{H} \hat{\rho} )^{\dag} ] |\Phi_{n',k'}>\\
+&=& \frac{2}{i \hbar}  \Sigma_{m,l} [ <\Phi_{n,k}| \hat{H} |\Phi_{m,l}><\Phi_{m,l}| \hat{\rho} |\Phi_{n',k'}> - <\Phi_{n,k}| \hat{\rho} |\Phi_{m,l}><\Phi_{m,l}| \hat{H} |\Phi_{n',k'}>]\\
+&=& \frac{2}{i \hbar}  \Sigma_{m,l} [ H_{n,k; m,l}\rho_{m,l; n',k'} - \rho_{n,k; m,l}H_{m,l; n',k'} ]\\
+\end{eqnarray*}
+
+$\hat{H}=\hat{H_S}+\hat{H_I}$, $\hat{H_I}= E(x,t) \cdot \hat{x}$
+
+ここで$\rho_{n,k; n',k'} = <\Phi_{n,k}| \hat{\rho} |\Phi_{n',k'}>$, $H_{n,k; n',k'} = <\Phi_{n,k}| \hat{H} |\Phi_{n',k'}>$
+
+\section{Liouville方程式のWannier基底表示}
+Wannier基底は完全系を張る。時間に依存する
+\cite{Iafrate}
+\begin{eqnarray*}
+%\frac{\partial \rho_{n,k}}{\partial t } 
+\frac{ \partial \rho_{n',n}(l', l; t) }{\partial t } = \frac{1}{i \hbar} \Sigma_{n'',l''} \{ [ \epsilon_{n'}(l'-l'') \delta_{n'n''} ] - eE_0 \cdot \Delta_{n'n''}(l'-l'') + eV_{n'n''}(l', l'')] \rho_{n'',n}\\
+- [ \epsilon_{n}(l''-l) \delta_{n'n''} ] - eE_0 \cdot \Delta_{n'n''}(l'-l'') + eV_{n'n''}(l', l'')] \rho_{n'',n} \}
+\end{eqnarray*}
+%バンド内遷移は<n|Ex|n>に対応する。
+
+ここで$\Phi_{n,k}(x;t) = \frac{1}{\sqrt (N)} \Sigma_{l} exp(iK \dot l) A_n(x-l; t)$\\
+$\epsilon_{n}(l'-l'')$と$\Delta_{nn'}(l-l')$は双極子遷移のフーリエ展開に対応\\
+$\epsilon_{n}(l'-l'') =\frac{1}{N} \Sigma_K exp(-ik \cdot (l-l') ) \epsilon_n(k-\frac{e}{\hbar c}A_0)$\\
+$\Delta_{nn'}(l-l')=\frac{1}{N}\Sigma_K exp(-ik \cdot (l-l') ) R_{nn'})(k) $\\
+$V_{n'n}(l',l)= \int dx W^*_{n'}(x,l') V(x,t) W_n (x,l) $\\
+$R_{nn'}(k) = \frac{i}{\Omega} \int dx U^*_{n'k} \nabla_k U_{nk}$\\
+
+%\begin{eqnarray}
+%A_n(x-l; t) $=$ \frac{1}{\sqrt(N)} \Sigm
+%a_{k} exp(- iK \cdot l) \Phi_{n,k}(x;t)\\
+%$=$ exp(i \frac{e}{i \hbar c} A_0 \cdot (x-l))
+%\end{eqnarray}
+
+\bibliographystyle{unsrt}
+\bibliography{bibtex}
+
+\end{document}

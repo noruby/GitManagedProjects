@@ -17,26 +17,25 @@ lattice_constant_a_of_GaSe <- 3.755 * 2/sqrt(3) *10^-10# m (3.755 ångström)
 
 # Time t
 range_t <- 200 *10^(-15) # fs
-div_num_t <- 1000000 # n
+div_num_t <- 100000 # n
 delta_t <-  range_t/ div_num_t
 t_vector <- seq( -range_t/2, range_t/2, length= (div_num_t+1))
 t_vector2 <- seq( -range_t/2, range_t/2, length= (2*div_num_t+1))
 frequency <- seq(0, 1/delta_t, length= (div_num_t+1))
 
 # External electric field (assuming the gaussian envelope)
-E_amplitude_max <- 100* 10^8 # V/m
+E_amplitude_max <- 20* 10^8 # V/m
 envelope_width <- 50* 10^(-15) # 1/e^2 width; 50 fs 
 carrier_frequency <- 33 *10^12 # 33 THz
 carrier_envelope_phase <- 0 # [rad]
 E_vector <-  E_amplitude_max * exp(-t_vector^2/envelope_width^2) *cos(2*pi* carrier_frequency* t_vector+carrier_envelope_phase) 
 E_vector2 <-  E_amplitude_max * exp(-t_vector2^2/envelope_width^2) *cos(2*pi* carrier_frequency* t_vector2+carrier_envelope_phase) 
-E_spectrum <- fft(E_vector)
 
 # External electric field (step function)
-#E_vector[1:(div_num_t+1)] <-  rep(0,div_num_t+1)
-#E_vector[101:(div_num_t+1)] <-  rep(E_amplitude_max, div_num_t-99)
-#E_vector2[1:(2*div_num_t+1)] <-  rep(0,2*div_num_t+1)
-#E_vector2[201:(2*div_num_t+1)] <-  rep(E_amplitude_max, 2*div_num_t-199)
+E_vector[1:(div_num_t+1)] <-  rep(0,div_num_t+1)
+E_vector[101:(div_num_t+1)] <-  rep(E_amplitude_max, div_num_t-99)
+E_vector2[1:(2*div_num_t+1)] <-  rep(0,2*div_num_t+1)
+E_vector2[201:(2*div_num_t+1)] <-  rep(E_amplitude_max, 2*div_num_t-199)
 
 
 # k normalized by inverse lattice constant 1/a 
@@ -214,6 +213,7 @@ dP_dt <- (P-P_diff)/delta_t
 J <- J_hole + J_electron
 E_HHG <- J +dP_dt
 
+E_spectrum <- fft(E_vector)
 E_HHG_spectrum <- fft(E_HHG)
 J_spectrum <-  fft(J)
 dP_dt_spectrum <- fft(dP_dt)
@@ -299,4 +299,5 @@ plot(frequency/carrier_frequency, abs(dP_dt_spectrum)^2, xlim=frange, ylim=E_HHG
 abline(v=0:20, col='black', lty="dotted")
 dev.off()     
 
+max(abs(E_HHG_spectrum)^2)
 
