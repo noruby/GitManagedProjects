@@ -1,0 +1,48 @@
+This is pBibTeX, Version 0.99d-j0.33 (utf8.euc) (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Liouville_eqn_for_HHG.aux
+The style file: unsrt.bst
+Database file #1: Liouville_eqn_for_HHGNotes.bib
+Database file #2: bibtex.bib
+You've used 2 entries,
+            1791 wiz_defined-function locations,
+            465 strings with 3930 characters,
+and the built_in function-call counts, 472 in all, are:
+= -- 44
+> -- 12
+< -- 0
++ -- 5
+- -- 3
+* -- 36
+:= -- 80
+add.period$ -- 6
+call.type$ -- 2
+change.case$ -- 2
+chr.to.int$ -- 0
+cite$ -- 2
+duplicate$ -- 18
+empty$ -- 48
+format.name$ -- 3
+if$ -- 99
+int.to.chr$ -- 0
+int.to.str$ -- 2
+missing$ -- 2
+newline$ -- 13
+num.names$ -- 2
+pop$ -- 2
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 7
+stack$ -- 0
+substring$ -- 49
+swap$ -- 2
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 5
+width$ -- 3
+write$ -- 24
+is.kanji.str$ -- 0

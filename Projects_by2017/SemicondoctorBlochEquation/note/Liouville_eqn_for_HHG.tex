@@ -1,0 +1,140 @@
+\documentclass[aps,prb,reprint]{revtex4-1}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{color}
+\makeatletter
+
+\begin{document}
+
+\title{The Liouville equation for high harmonic generation in solid: the electromagnetic gauge dependence and the Bloch/Wannier representation}
+\author{Nobuyoshi Hiramatsu}
+\affiliation{B3, Department of Applied Physics, the University of Tokyo}
+\date{25 October 2017}
+\maketitle
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+\section{Introduction}
+Let $\hat{\rho}$ be the reduced density operator and $\hat{H}$ be the hamiltonian of the system, then the time development of the system is calculated by the Liouville equation.
+\begin{eqnarray*}
+\frac{\partial \hat{\rho} }{\partial t } &=& \frac{1}{i \hbar} ( \hat{H} \hat{\rho} - \hat{\rho} \hat{H} )\\
+&=& \frac{\hat{H}\hat{\rho} - (\hat{H}\hat{\rho})^{\dag} }{i \hbar}  \\
+\end{eqnarray*}
+The righthand side of the second row corresponds the anti-Ermite component of the $\hat{H}\hat{\rho}/ \hbar$.
+
+Let $|{\bf m}>$ be the time-independent orthonormal basis satisfying the complete relation $\sum_{\bf m} |{\bf m}><{\bf m}| = {\bf 1}$. Then we have the matrix representation of the Liouville equation as follows.
+\begin{eqnarray*}
+\frac{ \partial }{\partial t } <{\bf m}| \hat{\rho} |{\bf m'}> = \frac{1}{i \hbar}  <{\bf m}| \hat{H} \hat{\rho} - \hat{\rho} \hat{H} |{\bf m'}>\\
+= \frac{1}{i \hbar}  \sum_{{\bf m''}} ( <{\bf m}| \hat{H} |{\bf m''}><{\bf m''}| \hat{\rho} |{\bf m'}> \\
+ - <{\bf m}| \hat{\rho} |{\bf m''}><{\bf m''}| \hat{H} |{\bf m'}> ).\\
+\end{eqnarray*} 
+
+
+$n$ is the band index, $\bf k$ is the crystal momentum, ${\bf R} $ is the Bravais Lattice
+The Bloch states $\{ |n{\bf k}> \}$ and Wannier states $\{ |n{\bf R}> \}$ are related by the Fourier expansion. 
+\begin{eqnarray*}
+|n{\bf R}>=\frac{N}{\Omega}\int_{BZ} dk \; exp(i{\bf k} \cdot {\bf R})|n{\bf k}>\\
+|n{\bf k}>=\sum_{\bf R} \; exp(-i{\bf k} \cdot {\bf R}) \\
+\end{eqnarray*} 
+where $N$ is number of Bravais lattice points, and $\Omega$ is the volume of a Brillouin Zone. Here . 
+
+The Bloch states $\{ |n{\bf k}> \}$ and Wannier states $\{ |n{\bf R}> \}$ are the time-independent orthonormal basis.
+with the band index $n$ and c,
+When we consider a system interacting with electromagnetic field, the hamiltonian of the system is \begin{eqnarray*}
+ \hat{H} &=&\frac{ ({\bf \hat{p}} - e{\bf A})^2 }{2m} -e \phi + \hat{V}(x)\\ 
+ &=& H_0 + H_{int}\\
+ \end{eqnarray*}
+where ${\bf A}$ is the vector potential, $\phi$ is the scalar potential, $\hat{H}_0 = {\bf \hat{p}}^2/2m + \hat{V}(x)$ is the free hamiltonian without external electric filed, and $H_{int} =( - 2e{\bf A} \cdot {\bf \hat{p}} + e^2 |{\bf A}|^2)/2m -e \phi$ is the interaction hamiltonian with electric field.
+
+Considering the electromagnetic gauge freedom, the interaction hamiltonian is not uniqely determined (See Appendix). For convenience, we consider the length and velocity gauge from the Coulomb gauge (i.e. the divergence of the vector potential vanishes $\nabla \cdot {\bf A} = 0$). In the length gauge, the vector potential is set to be 0 (${\bf A} = {\bf 0}$). On the other hand, in the velocity gauge($\phi = 0$
+The corresponding interaction hamiltonian of the length gauge  $\hat{H}^{L}_{int}$ and that of the velocity gauge $\hat{H}^{V}_{int}$ are 
+ \begin{eqnarray*}
+ \hat{H}^{L}_{int} &=&  -e{\bf E} \cdot {\bf \hat{x}}, \\
+ \hat{H}^{V}_{int} &=& \frac{- 2e{\bf A} \cdot {\bf \hat{p}} + e^2 |{\bf A}|^2}{2m}. \\
+\end{eqnarray*}
+where ${\bf A} = - \int {\bf E} dt$ is the vector potential determined by the external electric filed. 
+
+\textcolor{red}{emitted field is proportional to electric current flowing through the solid}
+The current is separated into two parts: the interband current and intraband current.\cite{Foldi}
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+\section{Bloch representation-Length gauge}
+First we represent the Liouville equation in the Bloch state $|n{\bf k}>$ and we fix the gauge freedom to be the length gauge (i.e. ${\bf m} = \{n, {\bf k}\}$; $H_{int} =-e{\bf E} \cdot {\bf \hat{x}}$ ). 
+\begin{eqnarray*}
+\frac{ \partial }{\partial t } &&<n{\bf k}| \hat{\rho} |n'{\bf k'}> \\
+= && \frac{1}{i \hbar}  \sum_{n''{\bf k''}} ( <n{\bf k}| \hat{H}_0 -e{\bf E} \cdot {\bf \hat{x}} |n''{\bf k''}><n''{\bf k''}| \hat{\rho} |n'{\bf k'}> \\
+&&- <n{\bf k}| \hat{\rho} |n''{\bf k''}><n''{\bf k''}| \hat{H}_0 -e{\bf E} \cdot {\bf \hat{x}}  |n'{\bf k'}> )\\
+= &&\frac{1}{i \hbar} [ (\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}}) <n{\bf k}| \hat{\rho} |n'{\bf k'}> \\
+&& -e{\bf E} \cdot(<n{\bf k}| {\bf \hat{x}} |n{\bf k}> - <n'{\bf k'}| {\bf \hat{x}} |n'{\bf k'}> ) <n{\bf k}| \hat{\rho} |n'{\bf k'}>\\ 
+&&-e{\bf E} \cdot \{ \sum_{n'' \neq n; {\bf k''}} <n{\bf k}| {\bf \hat{x}} |n''{\bf k''}> <n''{\bf k''}| \hat{\rho} |n'{\bf k'}> \\
+&&- \sum_{n'' \neq n'; {\bf k''}} <n{\bf k}| \hat{\rho} |n''{\bf k''}> <n''{\bf k''}| {\bf \hat{x}} |n'{\bf k'}> \} ]\\
+\end{eqnarray*}
+where $\epsilon_{n{\bf k}}$ is the eigenenergy of the free hamiltonian corresponding to the eigenstate $|n{\bf k}>$, 
+\textcolor{red}{dipole approx., dipole transition, derivative}
+%SBEに対応。
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+\section{Bloch representation-Velocity gauge}
+Next we consider the velocity gauge with the Bloch representation (i.e. ${\bf m} = \{n, {\bf k}\}$; $H_{int} =( - 2e{\bf A} \cdot {\bf \hat{p}} + e^2 |{\bf A}|^2)/2m$ ), and apply the dipole approximation that we ignores the ${\bf A}|^2$ term. Then the Liouville equation become 
+\begin{eqnarray*}
+\frac{ \partial }{\partial t } &&<n{\bf k}| \hat{\rho} |n'{\bf k'}> \\
+= && \frac{1}{i \hbar}  \sum_{n''{\bf k''}} ( <n{\bf k}| \hat{H}_0 - \frac{e{\bf A} \cdot {\bf \hat{p}} }{m} |n''{\bf k''}><n''{\bf k''}| \hat{\rho} |n'{\bf k'}> \\
+&&- <n{\bf k}| \hat{\rho} |n''{\bf k''}><n''{\bf k''}| \hat{H}_0 - \frac{e{\bf A} \cdot {\bf \hat{p}} }{m}  |n'{\bf k'}> )\\
+= &&\frac{1}{i \hbar} [ (\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}}) <n{\bf k}| \hat{\rho} |n'{\bf k'}> \\
+&& -\frac{e{\bf A}}{i \hbar} \cdot \sum_{n''{\bf k''}} \{ <n{\bf k}|[ \hat{\bf x},\hat{H}] |n''{\bf k''}> <n''{\bf k''}| \hat{\rho} |n'{\bf k'}>\\ 
+&& - <n{\bf k}| \hat{\rho} |n''{\bf k''}><n''{\bf k''}|[ \hat{\bf x},\hat{H}] |n'{\bf k'}> \} ] \\
+= &&\frac{1}{i \hbar} \{ (\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}}) <n{\bf k}| \hat{\rho} |n'{\bf k'}> -\frac{e{\bf A}}{i \hbar} \cdot  \\
+&& \sum_{n''{\bf k''}} \{ (\epsilon_{n''{\bf k''}}-\epsilon_{n{\bf k}})  <n{\bf k}| \hat{\bf x} |n''{\bf k''}> <n''{\bf k''}| \hat{\rho} |n'{\bf k'}>\\ 
+&&+ (\epsilon_{n''{\bf k''}}-\epsilon_{n'{\bf k'}}) <n{\bf k}| \hat{\rho} |n''{\bf k''}><n''{\bf k''}| \hat{\bf x} |n'{\bf k'}> \} \\ 
+\end{eqnarray*}
+where we used the relation $\hat{\bf p} = \frac{m}{i \hbar}[\hat{\bf x},\hat{H}]$.
+%----------------------------------------------------------------------------------------------------------------------------------------
+\section{the Wannier representation -Length gauge }
+
+\begin{eqnarray*}
+\frac{ \partial }{\partial t } &&<n{\bf R}| \hat{\rho} |n'{\bf R'}> \\
+= && \frac{1}{i \hbar}  \sum_{n''{\bf R''}} ( <n{\bf R}| \hat{H}_0 -e{\bf E} \cdot {\bf \hat{x}} |n''{\bf R''}><n''{\bf R''}| \hat{\rho} |n'{\bf R'}> \\
+&&- <n{\bf R}| \hat{\rho} |n''{\bf R''}><n''{\bf R''}| \hat{H}_0 -e{\bf E} \cdot {\bf \hat{x}}  |n'{\bf R'}> )\\
+= &&\frac{1}{i \hbar} [ (\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}}) <n{\bf k}| \hat{\rho} |n'{\bf k'}> \\
+&& -e{\bf E} \cdot(<n{\bf k}| {\bf \hat{x}} |n{\bf k}> - <n'{\bf k'}| {\bf \hat{x}} |n'{\bf k'}> ) <n{\bf k}| \hat{\rho} |n'{\bf k'}>\\ 
+&&-e{\bf E} \cdot \{ \sum_{n'' \neq n; {\bf k''}} <n{\bf k}| {\bf \hat{x}} |n''{\bf k''}> <n''{\bf k''}| \hat{\rho} |n'{\bf k'}> \\
+&&- \sum_{n'' \neq n'; {\bf k''}} <n{\bf k}| \hat{\rho} |n''{\bf k''}> <n''{\bf k''}| {\bf \hat{x}} |n'{\bf k'}> \} ]\\
+\end{eqnarray*}
+
+\begin{eqnarray*}
+\frac{ \partial \rho_{n',n}(l', l; t) }{\partial t } = \frac{1}{i \hbar} \sum_{n'',l''} \{ [ \epsilon_{n'}(l'-l'') \delta_{n'n''} ] \\
+- eE_0 \cdot \Delta_{n'n''}(l'-l'') + eV_{n'n''}(l', l'')] \rho_{n'',n}\\
+- [ \epsilon_{n}(l''-l) \delta_{n'n''} ] - eE_0 \cdot \Delta_{n'n''}(l'-l'') \\
++ eV_{n'n''}(l', l'')] \rho_{n'',n} \}
+\end{eqnarray*}
+
+ここで${\bf m}(x;t) = \frac{1}{\sqrt (N)} \sum_{l} exp(iK \dot l) A_n(x-l; t)$\\
+$\epsilon_{n}(l'-l'')$と$\Delta_{nn'}(l-l')$は双極子遷移のフーリエ展開に対応\\
+$\epsilon_{n}(l'-l'') =\frac{1}{N} \sum_K exp(-ik \cdot (l-l') ) \epsilon_n(k-\frac{e}{\hbar c}A_0)$\\
+$\Delta_{nn'}(l-l')=\frac{1}{N}\sum_K exp(-ik \cdot (l-l') ) R_{nn'})(k) $\\
+$V_{n'n}(l',l)= \int dx W^*_{n'}(x,l') V(x,t) W_n (x,l) $\\
+$R_{nn'}(k) = \frac{i}{\Omega} \int dx U^*_{n'k} \nabla_k U_{nk}$\\
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+\section{the Wannier representation -Velocity gauge }\cite{Iafrate} 
+
+
+%\begin{eqnarray}
+%A_n(x-l; t) $=$ \frac{1}{\sqrt(N)} \Sigm
+%a_{k} exp(- iK \cdot l) {\bf m}(x;t)\\
+%$=$ exp(i \frac{e}{i \hbar c} A_0 \cdot (x-l))
+%\end{eqnarray}
+
+
+\newpage
+
+\begin{appendix}
+\section{variation principle and charge}
+\section{The gauge transformations}
+\section{The Maximally localized Wannier function}
+\end{appendix}
+
+
+\bibliographystyle{unsrt}
+\bibliography{bibtex}
+
+\end{document}

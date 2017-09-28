@@ -17,14 +17,14 @@ lattice_constant_a_of_GaSe <- 3.755 * 2/sqrt(3) *10^-10# m (3.755 ångström)
 
 # Time t
 range_t <- 200 *10^(-15) # fs
-div_num_t <- 100000 # n
+div_num_t <- 1000000 # n
 delta_t <-  range_t/ div_num_t
 t_vector <- seq( -range_t/2, range_t/2, length= (div_num_t+1))
 t_vector2 <- seq( -range_t/2, range_t/2, length= (2*div_num_t+1))
 frequency <- seq(0, 1/delta_t, length= (div_num_t+1))
 
 # External electric field (assuming the gaussian envelope)
-E_amplitude_max <- 20* 10^8 # V/m
+E_amplitude_max <- 100* 10^8 # V/m
 envelope_width <- 50* 10^(-15) # 1/e^2 width; 50 fs 
 carrier_frequency <- 33 *10^12 # 33 THz
 carrier_envelope_phase <- 0 # [rad]
@@ -69,14 +69,14 @@ dev.off()           
 
 
 #dipole transition matrix
-Rabi_energy_max <- 0.12 *1.60218*10^-19 #1.2eV; converstion from eV to J
+Rabi_energy_max <- 1.2 *1.60218*10^-19 #1.2eV; converstion from eV to J
 dipole_transition_max <- Rabi_energy_max / E_amplitude_max 
 dipole_transition <- dipole_transition_max * min(energy_diff) / energy_diff 
 
 #relaxation
-relaxation_constant <-  50 *10^(-15) # 7fs 
+relaxation_constant <-  500 *10^(-15) # 7fs 
 #dephasing 
-dephasing_constant <- 5 *10^(-15) # 1.1fs 
+dephasing_constant <- 150 *10^(-15) # 1.1fs 
 
 #parameters of calculation
 Courant_number <- delta_t * E_amplitude_max *  elementary_charge / Plank_constant / delta_k 
