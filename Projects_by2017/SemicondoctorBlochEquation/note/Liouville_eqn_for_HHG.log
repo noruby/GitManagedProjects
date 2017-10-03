@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2015.5.24)  29 SEP 2017 01:00
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2015.5.24)  4 OCT 2017 00:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -75,10 +75,10 @@ Class revtex4-1 Info: RevTeX society APS selected on input line 31.
 Class revtex4-1 Info: Selecting journal prb on input line 7544.
 Class revtex4-1 Info: APS journal PRB selected on input line 7545.
 
-(/usr/local/texlive/texmf-local/tex/latex/revtex/aps10pt4-1.rtx
-File: aps10pt4-1 2010/07/25/20:33:00 4.1r (http://publish.aps.org/revtex4/ for 
+(/usr/local/texlive/texmf-local/tex/latex/revtex/aps12pt4-1.rtx
+File: aps12pt4-1 2010/07/25/20:33:00 4.1r (http://publish.aps.org/revtex4/ for 
 documentation)
-Class revtex4-1 Info: RevTeX pointsize 10pt selected on input line 30.
+Class revtex4-1 Info: RevTeX pointsize 12pt selected on input line 30.
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/textcase/textcase.sty
 Package: textcase 2004/10/07 v0.07 Text only upper/lower case changing (DPC)
@@ -150,7 +150,11 @@ Class revtex4-1 Info: cite was not loaded (OK!) on input line 7.
 Class revtex4-1 Info: mcite was not loaded (OK!) on input line 7.
 Class revtex4-1 Info: multicol was not loaded (OK!) on input line 7.
 
-(./Liouville_eqn_for_HHG.aux)
+(./Liouville_eqn_for_HHG.aux
+
+LaTeX Warning: Label `eq:BL' multiply defined.
+
+)
 \openout1 = `Liouville_eqn_for_HHG.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
@@ -171,42 +175,38 @@ LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 7.
 LaTeX Font Info:    ... okay on input line 7.
 \openout3 = `Liouville_eqn_for_HHGNotes.bib'.
 
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 13.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 13.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 16.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 16.
 
 
 LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 13.
+(Font)              using `JT1/mc/m/n' instead on input line 16.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/it' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 13.
-
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 16.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 16.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 17.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 17.
-
-Overfull \hbox (6.3265pt too wide) in alignment at lines 62--70
- [][][] []
- []
+(Font)              using `JY1/mc/m/n' instead on input line 16.
 
 [1]
-Overfull \hbox (6.3265pt too wide) in alignment at lines 93--101
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10.95> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 19.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10.95> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 19.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 20.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 20.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 20.
+ [2] [3] [4] [5] [6]
+Overfull \hbox (12.2824pt too wide) in alignment at lines 209--215
  [][][] []
  []
 
-[2] (./Liouville_eqn_for_HHG.bbl
+[7] [8] (./Liouville_eqn_for_HHG.bbl [9]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 1.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 1.
+(Font)              <10.95> on input line 1.
 
 
 LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
@@ -216,22 +216,21 @@ LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
 LaTeX Font Warning: Font shape `JY1/gt/m/it' undefined
 (Font)              using `JY1/gt/m/n' instead on input line 7.
 
-) [3] (./Liouville_eqn_for_HHG.aux)
+) [10] (./Liouville_eqn_for_HHG.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right .
-
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2840 strings out of 493777
- 37003 string characters out of 6151334
- 127333 words of memory out of 5000000
- 6330 multiletter control sequences out of 15000+600000
- 16287 words of font info for 61 fonts, out of 8000000 for 9000
+ 2852 strings out of 493777
+ 37264 string characters out of 6151334
+ 124231 words of memory out of 5000000
+ 6350 multiletter control sequences out of 15000+600000
+ 18479 words of font info for 69 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 29i,8n,25p,443b,261s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,9n,25p,443b,274s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Liouville_eqn_for_HHG.dvi (3 pages, 16728 bytes).
+Output written on Liouville_eqn_for_HHG.dvi (10 pages, 34728 bytes).

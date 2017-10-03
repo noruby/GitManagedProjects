@@ -47,11 +47,11 @@ E_vector4 <-  Electric_field(t_vector4)
 #Vector potential
 A_vector <- rep(0, div_num_t+1)
 for(i in 1:div_num_t){
-	A_vector[i+1] <- A_vector[i] + (E_vector2[2*i+1]+4*E_vector2[2*i]+E_vector2[2*1-1])*delta_t/6
+	A_vector[i+1] <- A_vector[i] - (E_vector2[2*i+1]+4*E_vector2[2*i]+E_vector2[2*1-1])*delta_t/6
 }
 A_vector2 <- rep(0, 2*div_num_t+1)
 for(i in 1:(2*div_num_t)){
-	A_vector2[i+1] <- A_vector2[i] + (E_vector4[2*i+1]+4*E_vector4[2*i]+E_vector4[2*1-1])*delta_t/6
+	A_vector2[i+1] <- A_vector2[i] - (E_vector4[2*i+1]+4*E_vector4[2*i]+E_vector4[2*1-1])*delta_t/6
 }
 #debug plot
 if(0){
@@ -94,6 +94,8 @@ micro_current_valence <- function(ka){
 micro_current_conduction <- function(ka){
 	 -elementary_charge /Plank_constant_bar * band_width_conduction *lattice_constant_a_of_GaSe *sin(ka)/2
 }
+mcv0 <- micro_current_valence(fka)
+mcc0 <- micro_current_conduction(fka)
 
 #dipole transition matrix
 Rabi_energy_max <- 12 *1.60218*10^-19 #1.2eV; converstion from eV to J
@@ -114,12 +116,12 @@ Courant_number <- delta_t * E_amplitude_max *  elementary_charge / Plank_constan
 print("Courant number (length gauge): " )
 print( Courant_number )
 
-w_2 <- rep(0, div_num_fka)
+#---------------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------
+#calculate ---------------------------------------------------------------------------------------------------------------
+
 w_1 <- rep(0, div_num_fka)
 w1 <- rep(0, div_num_fka)
-w2 <- rep(0, div_num_fka)
-ww <- rep(0, div_num_fka)
-
 grad_midpoint <- function(w0){
 	w_1[1] <- w0[div_num_fka]
 	w_1[2:div_num_fka] <- w0[1:(div_num_fka-1)]
@@ -128,52 +130,11 @@ grad_midpoint <- function(w0){
 	return ((w1-w_1)/ 2 / delta_fk)
 }
 
-#comment out
-if(0){
-grad_k1 <- function(w0){
-	w1[div_num_ka] <- w0[1]
-	w1[1:(div_num_ka-1)] <- w0[2:div_num_ka]
-	return ((w0-w1) / delta_k)
-}
-grad_k2 <- function(w0){
-	w_2[1:2] <- w0[(div_num_ka-1):div_num_ka]
-	w_2[3:div_num_ka] <- w0[1:(div_num_ka-2)]		
-	w_1[1] <- w0[div_num_ka]
-	w_1[2:div_num_ka] <- w0[1:(div_num_ka-1)]
-	w1[div_num_ka] <- w0[1]
-	w1[1:(div_num_ka-1)] <- w0[2:div_num_ka]
-	w2[(div_num_ka-1):div_num_ka] <- w0[1:2]
-	w2[1:(div_num_ka-2)] <- w0[3:div_num_ka]
-
-	w_left <- 2*w1 + 3*w0  - 6*w_1 + w_2		
-	w_right <- - w2 + 6*w1 - 3*w0  - 2*w_1
-	ww <- w_left
-	for(i in 1:div_num_ka){
-		if(w_left[i] < 0)
-		ww[i] <- w_left[i]
-	}
-	return (ww / 6 / delta_k)
-}
-#	ww <- replace( w_right, which(w_right > 0), w_left )  
-grad_k3 <- function(E, w0){
-	w_2[1:2] <- w0[(div_num_ka-1):div_num_ka]
-	w_2[3:div_num_ka] <- w0[1:(div_num_ka-2)]		
-	w_1[1] <- w0[div_num_ka]
-	w_1[2:div_num_ka] <- w0[1:(div_num_ka-1)]
-	w1[div_num_ka] <- w0[1]
-	w1[1:(div_num_ka-1)] <- w0[2:div_num_ka]
-	w2[(div_num_ka-1):div_num_ka] <- w0[1:2]
-	w2[1:(div_num_ka-2)] <- w0[3:div_num_ka]
-
-	ww <- (- w2 + 8*w1 - 8*w_1 + w_2	)/ 12 / delta_k
-	return (ww)
-}
-}
-
 #relaxation
 relaxation_constant_length <-  50 *10^(-15) # 7fs 
 #dephasing 
 dephasing_constant_length <- 7 *10^(-15) # 1.1fs 
+
 diff_number_valence_length <- function(E, mpl, nvl){
 	dnvl <- ( 2*Im(E*dipole_transition_length*mpl) + elementary_charge* E* grad_midpoint(nvl) )  * delta_t/ Plank_constant_bar
 	dnvl <- dnvl - (nvl-1)* relaxation_constant_length
@@ -255,6 +216,7 @@ E_HHG_length_spectrum <- fft(E_HHG_length)
 Current_length_spectrum <-  fft(Current_length)
 Displacement_current_length_spectrum <- fft(Displacement_current_length)
 
+#---------------------------------------------------------------------------------------------------------------
 if(0){
 print("Exporting debug_np_length.gif ...")
 numt <- round( 2*10^-15 /delta_t )
@@ -301,13 +263,16 @@ dev.off()     
 }
 
 #---------------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------
 
 #smoothing time
 smoothing_time_velocity <- 0.5*10^-15 #fs
 #relxation time
 relaxation_constant_velocity <-7*10^-15 #fs
+
 xv1 <- rep(0, div_num_fka)
 xv_1 <- rep(0, div_num_fka)
+
 curvature <- function(xv){
 	xv1[1] <- xv[div_num_fka]
 	xv1[2:div_num_fka] <- xv[1:(div_num_fka-1)]
@@ -343,6 +308,8 @@ nvv <- rep(0.55, div_num_fka)
 ncv <- rep(0.45, div_num_fka) 
 mpv <- rep(0, div_num_fka)
 
+Charge_valence_velocity <- rep(0, (div_num_t+1))
+Charge_conduction_velocity <- rep(0, (div_num_t+1))
 Current_valence_velocity <- rep(0, (div_num_t+1))
 Current_conduction_velocity <- rep(0, (div_num_t+1))
 Polarization_velocity <- rep(0, (div_num_t+1))
@@ -357,10 +324,11 @@ for( j in 1:(div_num_t) ){
 	A_1 <- A_vector2[2*j]	
 	A_2 <- A_vector2[2*j+1]	
 	
-	ka <- fka_to_ka(fka_vector, A)
-	ka_0 <- fka_to_ka(fka_vector, A_0)
-	ka_1 <- fka_to_ka(fka_vector, A_1)
-	ka_2 <- fka_to_ka(fka_vector, A_2)
+	#ka <- fka_to_ka(fka_vector, A)
+	#ka_0 <- fka_to_ka(fka_vector, A_0)
+	#ka_1 <- fka_to_ka(fka_vector, A_1)
+	#ka_2 <- fka_to_ka(fka_vector, A_2)
+	ka <- ka_0 <- ka_1 <- ka_2 <- fka
 	
 	dnvv_0 <- diff_number_valence_velocity(A, ka, mpv)
 	dncv_0 <- diff_number_conduction_velocity(A, ka, mpv)
@@ -390,14 +358,16 @@ for( j in 1:(div_num_t) ){
 	mcc_velocity <- micro_current_conduction(ka)
 	k <- j+1
 	for(i in 1:(div_num_fka)){
-		
+		Charge_valence_velocity <- elementary_charge* mvv_velocity[i]
+		Charge_conduction_velocity <- elementary_charge* mcv_velocity[i]
 		Current_valence_velocity[k] <-  Current_valence_velocity[k] + mcv_velocity[i] * nvv_kt[i,k]
 		Current_conduction_velocity[k] <- Current_conduction_velocity[k] + mcc_velocity[i] * ncv_kt[i,k]
 		Polarization_velocity[k] <- Polarization_velocity[k] + mpv_kt[i,k] * dipole_transition_velocity[i]
 	}	
 }
 
-Current_velocity <- Current_valence_velocity + Current_conduction_velocity
+Current_vectorP_velocity <- elementary_charge / mass_of_electron* A_vector * (Charge_valence_velocity+ Charge_conduction_velocity)
+Current_velocity <- - elementary_charge / mass_of_electron* (Current_valence_velocity + Current_conduction_velocity)
 Displacement_current_velocity_short <- (Polarization_velocity[2:(div_num_t+1)] - Polarization_velocity[1:div_num_t]) /delta_t
 Displacement_current_velocity <- append( Displacement_current_velocity_short, c(0.0))
 E_HHG_velocity <- Current_velocity + Displacement_current_velocity_short
@@ -407,6 +377,7 @@ E_HHG_velocity_spectrum <- fft(E_HHG_velocity)
 Current_velocity_spectrum <-  fft(Current_velocity)
 Displacement_current_velocity_spectrum <- fft(Displacement_current_velocity)
 
+#---------------------------------------------------------------------------------------------------------------
 if(1){
 print("Exporting debug_np_velocity.gif ...")
 numt <- round( 2*10^-15 /delta_t ) #一コマ 2fs
@@ -488,5 +459,52 @@ if(0){
 #plot(number_electron_kt[], xlab="", ylab="")  
 #dev.off() 
 #comment out end
+}
+
+#comment out
+if(0){
+w_2 <- rep(0, div_num_fka)
+w_1 <- rep(0, div_num_fka)
+w1 <- rep(0, div_num_fka)
+w2 <- rep(0, div_num_fka)
+ww <- rep(0, div_num_fka)
+grad_k1 <- function(w0){
+	w1[div_num_ka] <- w0[1]
+	w1[1:(div_num_ka-1)] <- w0[2:div_num_ka]
+	return ((w0-w1) / delta_k)
+}
+grad_k2 <- function(w0){
+	w_2[1:2] <- w0[(div_num_ka-1):div_num_ka]
+	w_2[3:div_num_ka] <- w0[1:(div_num_ka-2)]		
+	w_1[1] <- w0[div_num_ka]
+	w_1[2:div_num_ka] <- w0[1:(div_num_ka-1)]
+	w1[div_num_ka] <- w0[1]
+	w1[1:(div_num_ka-1)] <- w0[2:div_num_ka]
+	w2[(div_num_ka-1):div_num_ka] <- w0[1:2]
+	w2[1:(div_num_ka-2)] <- w0[3:div_num_ka]
+
+	w_left <- 2*w1 + 3*w0  - 6*w_1 + w_2		
+	w_right <- - w2 + 6*w1 - 3*w0  - 2*w_1
+	ww <- w_left
+	for(i in 1:div_num_ka){
+		if(w_left[i] < 0)
+		ww[i] <- w_left[i]
+	}
+	return (ww / 6 / delta_k)
+}
+#	ww <- replace( w_right, which(w_right > 0), w_left )  
+grad_k3 <- function(E, w0){
+	w_2[1:2] <- w0[(div_num_ka-1):div_num_ka]
+	w_2[3:div_num_ka] <- w0[1:(div_num_ka-2)]		
+	w_1[1] <- w0[div_num_ka]
+	w_1[2:div_num_ka] <- w0[1:(div_num_ka-1)]
+	w1[div_num_ka] <- w0[1]
+	w1[1:(div_num_ka-1)] <- w0[2:div_num_ka]
+	w2[(div_num_ka-1):div_num_ka] <- w0[1:2]
+	w2[1:(div_num_ka-2)] <- w0[3:div_num_ka]
+
+	ww <- (- w2 + 8*w1 - 8*w_1 + w_2	)/ 12 / delta_k
+	return (ww)
+}
 }
 
