@@ -11,7 +11,7 @@
 \affiliation{Department of Applied Physics, the University of Tokyo}
 \date{25 October 2017}
 \begin{abstract}
-We provide representations of the Liouville equation in various basis and gauges .
+We provide a derivation of of the Liouville equation in various representations and gauges .
 \end{abstract}
 \maketitle
 
@@ -27,10 +27,7 @@ The righthand side of the second line corresponds the anti-Hermite component of 
 Let $|{\bf m}>$ be the time-independent orthonormal basis satisfying the complete relation $\sum_{\bf m} |{\bf m}><{\bf m}| = {\bf 1}$. Then we have the matrix representation of the Liouville equation as follows.
 \begin{eqnarray}
 i \hbar \frac{ \partial }{\partial t } <{\bf m}| \hat{\rho} |{\bf m'}> &=&  <{\bf m}| \hat{H} \hat{\rho} - \hat{\rho} \hat{H} |{\bf m'}> \nonumber\\
-&=&  \sum_{{\bf m''}} ( <{\bf m}| \hat{H} |{\bf m''}><{\bf m''}| \hat{\rho} |{\bf m'}> - <{\bf m}| \hat{\rho} |{\bf m''}><{\bf m''}| \hat{H} |{\bf m'}> ).\label{eq:LE2} 
-\end{eqnarray} 
-
-
+&=&  \sum_{{\bf m''}} ( <{\bf m}| \hat{H} |{\bf m''}><{\bf m''}| \hat{\rho} |{\bf m'}> - <{\bf m}| \hat{\rho} |{\bf m''}><{\bf m''}| \hat{H} |{\bf m'}> ).\label{eq:LE2} \end{eqnarray} 
 
 The Bloch states $\{ |n{\bf k}> \}$ and Wannier states $\{ |n{\bf R}> \}$ are the time-independent orthonormal basis.
 with the band index $n$ and c,
@@ -56,74 +53,228 @@ electric dipole is expressi
 
 In this report, we calculated the spectra of HHG from solid by numerically solving the Liouville equation with four scheme: the Bloch representation with the length and velocity gauges (Chap. \ref{sec:BL} and \ref{sec:BV}, respectively), and the wannier representation with the length and velocity gauges (Chap. \ref{sec:WL} and \ref{sec:WV}, respectively)
 %----------------------------------------------------------------------------------------------------------------------------------------
-\section{Bloch representation-Length gauge}
-\label{sec:BL}
-First we represent the Liouville equation in the Bloch state $|n{\bf k}>$ and we fix the length gauge (i.e. ${\bf m} = \{n, {\bf k}\}$; $H_{int} =-e{\bf E} \cdot {\bf \hat{x}}$ ). 
+
+\section{Result}
+
+\section{Discussion}
+
+\section{Conclusion}
+
+\newpage
+
+\begin{appendix}
+%----------------------------------------------------------------------------------------------------------------------------------------
+\section{Bloch-basis and length gauge}
+%In this section we provide the Liouville equation in the Bloch state $|n{\bf k}>$ and we fix the length gauge (i.e. ${\bf m} = \{n, {\bf k}\}$; $H_{int} =-e{\bf E} \cdot {\bf \hat{x}}$ ). 
 %We assume that the coherence between the different momentum $ <n{\bf k}| \hat{\rho} |n'{\bf k'}> ({\bf k} \neq {\bf k})$ is negligible.
-Then the equation \ref{eq:LE2} become
+%\textcolor{red}{dipole approx., dipole transition, derivative}
+%SBEに対応。
+%
+\begin{eqnarray}
+<n{\bf k}|\hat{\bf x}|n''{\bf k''}>&=& <n{\bf k}| \{ -i \nabla_{\bf k''} e^{i{\bf k'' \cdot \hat{x} }} \} |u_{n''{\bf k''}}>\nonumber \\
+&=&  -i \nabla_{\bf k''} <n{\bf k}|n''{\bf k''}> + i <u_{n{\bf k}}| e^{-i{\bf (k-k'') \cdot \hat{x} }} |\nabla_{\bf k''} u_{n''{\bf k''}}>\nonumber \\
+&=&  -i \nabla_{\bf k''} <n{\bf k}|n''{\bf k''}> + \delta({\bf k-k''}) {\bf d}_{nn''}({\bf k}) \\
+<n''{\bf k''}|\hat{\bf x}|n'{\bf k'}>&=& <u_{n''{\bf k''}}| \{ i \nabla_{\bf k''} e^{-i{\bf k'' \cdot \hat{x} }} \} |n'{\bf k'}>\nonumber \\
+&=&  i \nabla_{\bf k''} <n''{\bf k''}|n'{\bf k'}> - i <\nabla_{\bf k"} u_{n''{\bf k''}}| e^{-i{\bf (k''-k') \cdot \hat{x} }} |u_{n'{\bf k'}}>\nonumber \\
+&=&  i \nabla_{\bf k''} <n''{\bf k''}|n'{\bf k'}> + \delta({\bf k''-k'}) {\bf d}_{n''n'}({\bf k'})
+\end{eqnarray} 
+%where $\nabla_{\bf k''} <n{\bf k}|n''{\bf k''}>$ is the derivative of the generalized function.
+%\textcolor{red}{note: delta fuction; momentum; $<u_{n{\bf k}}|\nabla_{\bf k} u_{n''{\bf k}}>$ is a function?}
+%
+%Here ${\bf d}_{nn''}({\bf k})$ and ${\bf d}_{n'n''}^*({\bf k})$ is defined as follows.
+\begin{eqnarray}
+i <u_{n{\bf k}}| e^{-i{\bf (k-k'' )\cdot \hat{x}} }|\nabla_{\bf k''} u_{n''{\bf k''}}> &=& i \int d{\bf x} <u_{n{\bf k}}|{\bf x}> <{\bf x}|\nabla_{\bf k''} u_{n''{\bf k''}}> e^{-i{\bf (k-k'' )\cdot {x}} }\nonumber \\
+&=& i \sum_{\bf R} e^{-i{\bf (k-k'' )\cdot {\bf R}} } \int_{BL} d{\bf y} <u_{n{\bf k}}|{\bf y}> <{\bf y}|\nabla_{\bf k''} u_{n''{\bf k''}}> e^{-i{\bf (k-k'' )\cdot {y}} } \nonumber \\
+&=& \delta({\bf k-k''})  ( i \int_{BL} d{\bf y}  <u_{n{\bf k}}|{\bf y}> <{\bf y}|\nabla_{\bf k''} u_{n''{\bf k''}}> )\nonumber \\
+&\equiv& \delta({\bf k-k''}) {\bf d}_{nn''}({\bf k})\\
+%
+i <\nabla_{\bf k"} u_{n''{\bf k''}}| e^{-i{\bf (k''-k') \cdot \hat{x} }} |u_{n'{\bf k'}}> &=& i \int d{\bf x} <\nabla_{\bf k"} u_{n''{\bf k''}}|{\bf x}> <{\bf x}|u_{n'{\bf k'}}> e^{-i{\bf (k''-k' )\cdot {x}} }\nonumber \\
+&=& i\sum_{\bf R} e^{-i{\bf (k''-k' )\cdot {\bf R}} } \int_{BL} d{\bf y} <\nabla_{\bf k"} u_{n''{\bf k''}}|{\bf y}> <{\bf y}|u_{n'{\bf k'}}> e^{-i{\bf (k''-k' )\cdot {y}} }\nonumber \\
+&=& \delta({\bf k''-k'}) ( i \int_{BL} d{\bf y} <\nabla_{\bf k"} u_{n''{\bf k''}}|{\bf y}> <{\bf y}|u_{n'{\bf k'}}> )\nonumber \\
+&=& - \delta({\bf k''-k'})  (i \int_{BL} d{\bf y} <u_{n'{\bf k'}}|{\bf y}> <{\bf y}|\nabla_{\bf k"} u_{n''{\bf k''}}>)^*\nonumber \\
+&=& - \delta({\bf k''-k'}) {\bf d}_{n''n'}({\bf k'})
+\end{eqnarray} 
+%where the integral variable x runs in the entire space while y runs in a Blavais lattice.  
+%
+%We have a relation ${\bf d}_{n'n}({\bf k}) = {\bf d}_{nn'}^*({\bf k})$. Indeed, we obtain
+\begin{eqnarray}
+0 &=& i \nabla_{\bf k} <u_{n{\bf k}}|u_{n'{\bf k}}> \nonumber \\
+ &=& i <\nabla_{\bf k} u_{n{\bf k}}|u_{n'{\bf k}}> + i <u_{n{\bf k}}|  \nabla_{\bf k} u_{n'{\bf k}}> \nonumber \\
+ &=& - {\bf d}_{n'n}^*({\bf k}) + {\bf d}_{nn'}({\bf k}). 
+ \end{eqnarray} 
+ %
 \begin{eqnarray}\label{eq:BL} 
 i \hbar \frac{ \partial }{\partial t } &&<n{\bf k}| \hat{\rho} |n'{\bf k'}> \nonumber \\
-= && \sum_{n''{\bf k''}} \int_{BZ} dk''  ( <n{\bf k}| \hat{H}_0 -e{\bf E} \cdot {\bf \hat{x}} |n''{\bf k''}><n''{\bf k''}| \hat{\rho} |n'{\bf k'}> \nonumber  \\
+= && \sum_{n''} \int_{BZ} dk''  ( <n{\bf k}| \hat{H}_0 -e{\bf E} \cdot {\bf \hat{x}} |n''{\bf k''}><n''{\bf k''}| \hat{\rho} |n'{\bf k'}> \nonumber  \\
 &&- <n{\bf k}| \hat{\rho} |n''{\bf k''}><n''{\bf k''}| \hat{H}_0 -e{\bf E} \cdot {\bf \hat{x}}  |n'{\bf k'}> )\nonumber  \\
-= && [ (\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}}) <n{\bf k}| \hat{\rho} |n'{\bf k'}> \nonumber  \\
-%&& -e{\bf E} \cdot(<n{\bf k}| {\bf \hat{x}} |n{\bf k}> - <n'{\bf k'}| {\bf \hat{x}} |n'{\bf k'}> ) <n{\bf k}| \hat{\rho} |n'{\bf k'}>\\ 
-&&-e{\bf E} \cdot \sum_{n''}\int_{BZ} dk'' ( <n{\bf k}| {\bf \hat{x}} |n''{\bf k''}> <n''{\bf k''}| \hat{\rho} |n'{\bf k'}> \nonumber  \\
-&&- <n{\bf k}| \hat{\rho} |n''{\bf k''}> <n''{\bf k''}| {\bf \hat{x}} |n'{\bf k'}> ) ]
+= && (\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}}) <n{\bf k}| \hat{\rho} |n'{\bf k'}> \nonumber  \\
+&&-e{\bf E} \cdot \sum_{n''}\int_{BZ} dk'' ( <n{\bf k}| {\bf \hat{x}} |n''{\bf k''}> <n''{\bf k''}| \hat{\rho} |n'{\bf k'}> - <n{\bf k}| \hat{\rho} |n''{\bf k''}> <n''{\bf k''}| {\bf \hat{x}} |n'{\bf k'}> ) \nonumber  \\
+= && (\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}}) <n{\bf k}| \hat{\rho} |n'{\bf k'}> \nonumber  \\
+&&-e{\bf E} \cdot [  i ( \nabla_{\bf k} + \nabla_{\bf k'} ) <n{\bf k}|\hat{\rho}|n'{\bf k'}> + \sum_{n''}\{ {\bf d}_{nn''}({\bf k})<n''{\bf k}|\hat{\rho}|n'{\bf k'}> - {\bf d}_{n''n'}({\bf k'})<n{\bf k}|\hat{\rho}|n''{\bf k'}> \} ] \nonumber  \\
 \end{eqnarray}
-where $\epsilon_{n{\bf k}}$ is the eigenenergy of the free hamiltonian corresponding to the eigenstate $|n{\bf k}>$, 
-\textcolor{red}{dipole approx., dipole transition, derivative}
-%SBEに対応。
+%Here it is evident that the off-diagonal matrix elements respect to ${\bf k}$ does not couple diagonal elements. 
 
-Here we notice that
-\begin{eqnarray}
-\int_{BZ} &&dk'' <n{\bf k}| {\bf \hat{x}} |n''{\bf k''}><n''{\bf k''}| \hat{\rho} |n'{\bf k'}> \nonumber \\
-=&&  \int_{BZ} dk'' (- i \frac{\partial}{\partial {\bf k''}} <n{\bf k}|n''{\bf k''}> - i <u_{n{\bf k}}|  \frac{\partial}{\partial {\bf k}} u_{n''{\bf k''}}>) \nonumber \\
-&&\times <n''{\bf k''}| \hat{\rho} |n'{\bf k'}> \nonumber \\
-=&&  \int_{BZ} dk''  <n{\bf k}|n''{\bf k''}>( i\frac{\partial}{\partial {\bf k''}} <n''{\bf k''}| \hat{\rho} |n'{\bf k'}>) \nonumber \\
-&& + d_{nn''}(k)<n''{\bf k''}| \hat{\rho} |n'{\bf k'}> \nonumber \\
-=&& i \frac{\partial}{\partial {\bf k}} <n{\bf k}| \hat{\rho} |n'{\bf k'}> \nonumber \\
-&& - \int_{BZ} dk'' \; d_{nn''}(k)<n''{\bf k''}| \hat{\rho} |n'{\bf k'}>, \label{eq:F1} \\
+%We calculate the two band case. 
+ \begin{eqnarray}
+i \hbar \frac{ \partial }{\partial t } &&<v{\bf k}| \hat{\rho} |v{\bf k}> \nonumber \\
+= && -e{\bf E} \cdot [  i \nabla_{\bf k} <v{\bf k}|\hat{\rho}|v{\bf k}> + \{ {\bf d}_{vc}({\bf k})<c{\bf k}|\hat{\rho}|v{\bf k}> - {\bf d}_{cv}({\bf k})<v{\bf k}|\hat{\rho}|c{\bf k}> \} ] \nonumber  \\
+= && -e{\bf E} \cdot[  i \nabla_{\bf k} <v{\bf k}|\hat{\rho}|v{\bf k}> - 2i {\bf Im}\{ {\bf d}_{vc}^*({\bf k})<v{\bf k}|\hat{\rho}|c{\bf k}> \} ] \\
 %
-\int_{BZ} &&dk'' <n{\bf k}| \hat{\rho} |n''{\bf k''}><n''{\bf k''}| {\bf \hat{x}} |n'{\bf k'}> \nonumber \\
-=&&  \int_{BZ} dk'' <n{\bf k}| \hat{\rho} |n''{\bf k''}> \nonumber \\
-&&\times (i \frac{\partial}{\partial {\bf k''}} <n''{\bf k''}|n'{\bf k'}> + i <\frac{\partial}{\partial {\bf k''}} u_{n''{\bf k''}} |u_{n'{\bf k'}}>) \nonumber \\
-=&& - i \frac{\partial}{\partial {\bf k'}} <n{\bf k}| \hat{\rho} |n'{\bf k'}> \nonumber\\
-&& + \int_{BZ} dk''  <n{\bf k}| \hat{\rho} |n'{\bf k''}> d_{n''n'}(k') \label{eq:F2}
-\end{eqnarray}
-by using the fact\cite{Blount} 
-\begin{eqnarray*}
-<n{\bf k}| {\bf \hat{x}} |&&n''{\bf k''}> = - i <n{\bf k}| \{ \frac{\partial}{\partial {\bf k''}} exp(i{\bf k''} \;  \cdot \hat{\bf x}) \} |u_{n''{\bf k''}}> \\
-=&&  - i \frac{\partial}{\partial {\bf k''}} <n{\bf k}|n''{\bf k''}> + i <u_{n{\bf k}}| \frac{\partial}{\partial {\bf k''}} u_{n''{\bf k''}}>, \\
-<n''{\bf k''}| {\bf \hat{x}} |&&n'{\bf k'}> =  i <u_{n''{\bf k''}}| \{ \frac{\partial}{\partial {\bf k''}} exp(- i{\bf k''} \;  \cdot \hat{\bf x}) \} |n''{\bf k''}> \\
-=&&  i \frac{\partial}{\partial {\bf k''}} <n''{\bf k''}|n'{\bf k'}> - i <\frac{\partial}{\partial {\bf k''}} u_{n''{\bf k''}} |u_{n'{\bf k'}}>
-\end{eqnarray*}
-where $d_{nn''}(k)=<u_{n{\bf k}}| i \frac{\partial}{\partial {\bf k}} |u_{n''{\bf k''}}>$ is the dipole transition matrix.
-
-By using the formula \ref{eq:F1} and \ref{eq:F2} we finally obtain the expression
-\begin{eqnarray}\label{eq:BL} 
-\frac{ \partial }{\partial t } &&<n{\bf k}| \hat{\rho} |n'{\bf k'}> \nonumber \\
-= &&\frac{1}{i \hbar} [ (\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}}) <n{\bf k}| \hat{\rho} |n'{\bf k'}> \nonumber  \\
-%&& -e{\bf E} \cdot(<n{\bf k}| {\bf \hat{x}} |n{\bf k}> - <n'{\bf k'}| {\bf \hat{x}} |n'{\bf k'}> ) <n{\bf k}| \hat{\rho} |n'{\bf k'}>\\ 
-&&-e{\bf E} \cdot \sum_{n''}\int_{BZ} dk'' ( <n{\bf k}| {\bf \hat{x}} |n''{\bf k''}> <n''{\bf k''}| \hat{\rho} |n'{\bf k'}> \nonumber  \\
-&&- <n{\bf k}| \hat{\rho} |n''{\bf k''}> <n''{\bf k''}| {\bf \hat{x}} |n'{\bf k'}> ) ].
+i \hbar \frac{ \partial }{\partial t } &&<c{\bf k}| \hat{\rho} |c{\bf k}> \nonumber \\
+=&& -e{\bf E} \cdot [ i \nabla_{\bf k} <c{\bf k}|\hat{\rho}|c{\bf k}> + \{ {\bf d}_{cv}({\bf k})<v{\bf k}|\hat{\rho}|c{\bf k}> - {\bf d}_{vc}({\bf k})<c{\bf k}|\hat{\rho}|v{\bf k}> \} ] \nonumber  \\
+=&& -e{\bf E} \cdot [ i \nabla_{\bf k} <c{\bf k}|\hat{\rho}|c{\bf k}> + 2i {\bf Im}\{ {\bf d}_{vc}^*({\bf k})<v{\bf k}|\hat{\rho}|c{\bf k}> \} ] \\
+%
+i \hbar \frac{ \partial }{\partial t } &&<v{\bf k}| \hat{\rho} |c{\bf k}> \nonumber \\
+= && (\epsilon_{v{\bf k}}-\epsilon_{c{\bf k}}) <v{\bf k}| \hat{\rho} |c{\bf k}> \nonumber  \\
+&&-e{\bf E} \cdot [  i \nabla_{\bf k} <v{\bf k}|\hat{\rho}|c{\bf k}>  + \sum_{n''}\{ {\bf d}_{vn''}({\bf k})<n''{\bf k}|\hat{\rho}|c{\bf k}> - {\bf d}_{n''c}({\bf k})<v{\bf k}|\hat{\rho}|n''{\bf k}> \} ]\nonumber  \\
+= && - (\epsilon_{c{\bf k}}-\epsilon_{v{\bf k}}) <v{\bf k}| \hat{\rho} |c{\bf k}>  - i e{\bf E} \cdot \nabla_{\bf k} <v{\bf k}|\hat{\rho}|c{\bf k}> \nonumber  \\
+&&-e{\bf E} \cdot [ \{ {\bf d}_{vv}({\bf k})-{\bf d}_{cc}({\bf k}) \} <v{\bf k}|\hat{\rho}|c{\bf k}> - {\bf d}_{vc}({\bf k}) \{ <c{\bf k}|\hat{\rho}|c{\bf k}> - <v{\bf k}|\hat{\rho}|v{\bf k}>  \} ] 
 \end{eqnarray}
 
 %----------------------------------------------------------------------------------------------------------------------------------------
-\section{Bloch representation-Velocity gauge}
-\label{sec:BV}
-Next we consider the velocity gauge with the Bloch representation (i.e. ${\bf m} = \{n, {\bf k}\}$; $H_{int} =( - 2e{\bf A} \cdot {\bf \hat{p}} + e^2 |{\bf A}|^2)/2m$ ), and apply the dipole approximation that we ignores the |${\bf A}|^2$ term. Then the Liouville equation become 
-\begin{eqnarray*}
-\frac{ \partial }{\partial t } &&<n{\bf k}| \hat{\rho} |n'{\bf k'}> \\
-= && \frac{1}{i \hbar}  \sum_{n''{\bf k''}} ( <n{\bf k}| \hat{H}_0 - \frac{e{\bf A} \cdot {\bf \hat{p}} }{m} |n''{\bf k''}><n''{\bf k''}| \hat{\rho} |n'{\bf k'}> \\
-&&- <n{\bf k}| \hat{\rho} |n''{\bf k''}><n''{\bf k''}| \hat{H}_0 - \frac{e{\bf A} \cdot {\bf \hat{p}} }{m}  |n'{\bf k'}> )\\
-= &&\frac{1}{i \hbar} [ (\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}}) <n{\bf k}| \hat{\rho} |n'{\bf k'}> \\
-&& -\frac{e{\bf A}}{i \hbar} \cdot \sum_{n''{\bf k''}} \{ <n{\bf k}|[ \hat{\bf x},\hat{H}_0] |n''{\bf k''}> <n''{\bf k''}| \hat{\rho} |n'{\bf k'}>\\ 
-&& - <n{\bf k}| \hat{\rho} |n''{\bf k''}><n''{\bf k''}|[ \hat{\bf x},\hat{H}_0] |n'{\bf k'}> \} ] \\
-= &&\frac{1}{i \hbar} \{ (\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}}) <n{\bf k}| \hat{\rho} |n'{\bf k'}> -\frac{e{\bf A}}{i \hbar} \cdot  \\
-&& \sum_{n''{\bf k''}} \{ (\epsilon_{n''{\bf k''}}-\epsilon_{n{\bf k}})  <n{\bf k}| \hat{\bf x} |n''{\bf k''}> <n''{\bf k''}| \hat{\rho} |n'{\bf k'}>\\ 
-&&+ (\epsilon_{n''{\bf k''}}-\epsilon_{n'{\bf k'}}) <n{\bf k}| \hat{\rho} |n''{\bf k''}><n''{\bf k''}| \hat{\bf x} |n'{\bf k'}> \} 
-\end{eqnarray*}
-where we used the relation $\hat{\bf p} = \frac{m}{i \hbar}[\hat{\bf x},\hat{H}_0]$.
+\section{Bloch-basis and velocity gauge}
+\begin{eqnarray}
+[\hat{\bf x}, \hat{H}_0] = [\hat{\bf x}, \frac{\hat{\bf p}}{2m}]  =\frac{i \hbar}{m}\hat{\bf p}
+\end{eqnarray} 
+
+\begin{eqnarray}
+<n{\bf k}|\hat{\bf p}|n'{\bf k'}> &=&i \frac{m(\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}})}{\hbar} <n{\bf k}|\hat{\bf x}|n'{\bf k'}> \nonumber \\
+%&=& i\frac{m(\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}})}{\hbar}\{-i \nabla_{\bf k'} <n{\bf k}|n'{\bf k'}> + \delta({\bf k-k'}) {\bf d}_{nn'}({\bf k})\} \\
+&=&\left\{
+\begin{array}{l}
+\frac{m}{\hbar}(\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}})\{-\nabla_{\bf k} <n{\bf k}|n'{\bf k'}> + i \delta({\bf k-k'}) {\bf d}_{nn'}({\bf k})\}  \\
+\frac{m}{\hbar}(\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}})\{\nabla_{\bf k'} <n{\bf k}|n'{\bf k'}> + i \delta({\bf k-k'}) {\bf d}_{nn'}({\bf k})\} 
+\end{array}
+\right.
+\end{eqnarray} 
+
+%In particular if $\{n{\bf k}\}=\{n'{\bf k'}\}$ 
+\begin{eqnarray}
+<n{\bf k}|\hat{\bf p}|n{\bf k}> &=& \frac{m}{i \hbar} <n{\bf k}|[\hat{\bf x},\hat{H}_0]|n{\bf k}> \nonumber \\
+&=& \frac{m}{i \hbar} \{ <u_{n{\bf k}}| (i \nabla_{\bf k} e^{-i{\bf k \cdot \hat{x} }} ) \hat{H}_0 |n{\bf k}> - <n{\bf k}| \hat{H}_0 (-i\nabla_{\bf k} e^{i{\bf k \cdot \hat{x}} }) |u_{n{\bf k}}> \} \nonumber \\
+&=& \frac{m}{\hbar} \{  \nabla_{\bf k} <n{\bf k}|\hat{H}_0|n{\bf k}> - <\nabla_{\bf k} u_{n{\bf k}}| e^{-i{\bf k \cdot \hat{x}} } \hat{H}_0  |n{\bf k}> - <n{\bf k}| \hat{H}_0 e^{i{\bf k \cdot \hat{x}} }|\nabla_{\bf k} u_{n{\bf k}}> \} \nonumber \\
+&=& \frac{m}{\hbar} \{  \nabla_{\bf k} \epsilon_{n{\bf k}} -  \epsilon_{n{\bf k}} \nabla_{\bf k} <u_{n{\bf k}}| u_{n{\bf k}}>\}  \nonumber \\
+&=& \frac{m}{\hbar} \nabla_{\bf k} \epsilon_{n{\bf k}}
+\end{eqnarray} 
+
+%We derive general multi-band case in the velocity gauge and the Bloch representation (i.e. ${\bf m} = \{n, {\bf k}\}$; $H_{int} =( - 2e{\bf A} \cdot {\bf \hat{p}} + e^2 |{\bf A}|^2)/2m$ ), and apply the dipole approximation that we ignores the |${\bf A}|^2$ term. Then the Liouville equation become 
+\begin{eqnarray}
+i \hbar \frac{ \partial }{\partial t } &&<n{\bf k}| \hat{\rho} |n'{\bf k'}> \nonumber \\
+= &&  \sum_{n''} \int d{\bf k''} ( <n{\bf k}| \hat{H}_0 - \frac{e{\bf A} \cdot {\bf \hat{p}} }{m} |n''{\bf k''}><n''{\bf k''}| \hat{\rho} |n'{\bf k'}>  \nonumber \\
+&&-<n{\bf k}| \hat{\rho} |n''{\bf k''}><n''{\bf k''}| \hat{H}_0 - \frac{e{\bf A} \cdot {\bf \hat{p}} }{m}  |n'{\bf k'}> )\nonumber \\
+= && (\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}}) <n{\bf k}| \hat{\rho} |n'{\bf k'}> \nonumber \\
+&& -\frac{e{\bf A}}{m} \cdot \sum_{n''} \int d{\bf k''}\{ <n{\bf k}|\hat{\bf p}|n''{\bf k''}> <n''{\bf k''}| \hat{\rho} |n'{\bf k'}> - <n{\bf k}| \hat{\rho} |n''{\bf k''}><n''{\bf k''}|\hat{\bf p} |n'{\bf k'}> \}  \nonumber \\
+= && (\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}}) <n{\bf k}| \hat{\rho} |n'{\bf k'}> \nonumber  \\
+&& -\frac{e{\bf A}}{\hbar} \cdot \sum_{n''} \int d{\bf k''} [(\epsilon_{n{\bf k}}-\epsilon_{n''{\bf k''}})\{\nabla_{\bf k''} <n{\bf k}|n''{\bf k''}> + i \delta({\bf k-k''}) {\bf d}_{nn''}({\bf k})\} <n''{\bf k''}| \hat{\rho} |n'{\bf k'}>\nonumber  \\
+&& - <n{\bf k}| \hat{\rho} |n''{\bf k''}>(\epsilon_{n''{\bf k''}}-\epsilon_{n'{\bf k'}})\{-\nabla_{\bf k''} <n''{\bf k''}|n'{\bf k'}> + i \delta({\bf k''-k'}) {\bf d}_{n''n'}({\bf k'})\} ] \nonumber \\
+= && (\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}}) <n{\bf k}| \hat{\rho} |n'{\bf k'}> \nonumber  \\
+&& -\frac{e{\bf A}}{\hbar} \cdot (\nabla_{\bf k} \epsilon_{n{\bf k}} - \nabla_{\bf k'} \epsilon_{n'{\bf k'}}) <n{\bf k}| \hat{\rho} |n'{\bf k'}> \nonumber  \\
+&& -\frac{e{\bf A}}{\hbar} \cdot  \sum_{n''} [ (\epsilon_{n{\bf k}}-\epsilon_{n''{\bf k}}) {\bf d}_{nn''}({\bf k'}) <n''{\bf k}| \hat{\rho} |n'{\bf k'}>  -  (\epsilon_{n''{\bf k'}}-\epsilon_{n'{\bf k'}})<n{\bf k}| \hat{\rho} |n''{\bf k'}> {\bf d}_{n''n'}({\bf k'}) ] \nonumber \\
+\end{eqnarray}
+%Here it is evident that the off-diagonal matrix elements respect to ${\bf k}$ does not couple diagonal elements. 
+
+%We calculate the two band case. 
+\begin{eqnarray}
+i \hbar \frac{ \partial }{\partial t } &&<v{\bf k}| \hat{\rho} |v{\bf k}> \nonumber \\
+=&& -\frac{e{\bf A}}{\hbar} \cdot  \{ (\epsilon_{v{\bf k}}-\epsilon_{c{\bf k}}) {\bf d}_{vc}({\bf k}) <c{\bf k}| \hat{\rho} |v{\bf k}>  -  (\epsilon_{c{\bf k}}-\epsilon_{v{\bf k}})<v{\bf k}| \hat{\rho} |c{\bf k}> {\bf d}_{cv}({\bf k}) \nonumber \} \\
+=&& +\frac{e{\bf A}}{\hbar} \cdot [2 (\epsilon_{c{\bf k}}-\epsilon_{v{\bf k}}) {\bf Re}\{ {\bf d}_{vc}^*({\bf k}) <v{\bf k}| \hat{\rho} |c{\bf k}> \} ] \\
+%
+i \hbar \frac{ \partial }{\partial t } &&<c{\bf k}| \hat{\rho} |c{\bf k}> \nonumber \\
+=&& -\frac{e{\bf A}}{\hbar} \cdot \{ (\epsilon_{c{\bf k}}-\epsilon_{v{\bf k}}) {\bf d}_{cv}({\bf k}) <v{\bf k}| \hat{\rho} |c{\bf k}>  -  (\epsilon_{v{\bf k}}-\epsilon_{c{\bf k}})<c{\bf k}| \hat{\rho} |v{\bf k}> {\bf d}_{vc}({\bf k}) \} \nonumber \\
+=&& -\frac{e{\bf A}}{\hbar} \cdot [ 2 (\epsilon_{c{\bf k}}-\epsilon_{v{\bf k}}) {\bf Re}\{ {\bf d}_{vc}^*({\bf k}) <v{\bf k}| \hat{\rho} |c{\bf k}> \} ] \\
+%
+i \hbar \frac{ \partial }{\partial t } &&<v{\bf k}| \hat{\rho} |c{\bf k}> \nonumber \\
+= && (\epsilon_{v{\bf k}}-\epsilon_{c{\bf k}}) <v{\bf k}| \hat{\rho} |c{\bf k}>  -\frac{e{\bf A}}{\hbar} \cdot \{ (\nabla_{\bf k} \epsilon_{v{\bf k}} - \nabla_{\bf k} \epsilon_{c{\bf k}}) <v{\bf k}| \hat{\rho} |c{\bf k}> \} \nonumber  \\
+&& -\frac{e{\bf A}}{\hbar} \cdot  \{ (\epsilon_{v{\bf k}}-\epsilon_{c{\bf k}}) {\bf d}_{vc}({\bf k}) <c{\bf k}| \hat{\rho} |c{\bf k}>  -  (\epsilon_{v{\bf k}}-\epsilon_{c{\bf k}})<v{\bf k}| \hat{\rho} |v{\bf k}> {\bf d}_{vc}({\bf k}) \} \nonumber \\
+= && - (\epsilon_{c{\bf k}}-\epsilon_{v{\bf k}}) <v{\bf k}| \hat{\rho} |c{\bf k}>  + \frac{e{\bf A}}{\hbar} \cdot \{ (\nabla_{\bf k} \epsilon_{c{\bf k}} - \nabla_{\bf k} \epsilon_{v{\bf k}}) <v{\bf k}| \hat{\rho} |c{\bf k}> \} \nonumber  \\
+&& + \frac{e{\bf A}}{\hbar} \cdot  \{ (\epsilon_{c{\bf k}}-\epsilon_{v{\bf k}}) {\bf d}_{vc}({\bf k}) ( <c{\bf k}| \hat{\rho} |c{\bf k}> - <v{\bf k}| \hat{\rho} |v{\bf k}> ) \}
+\end{eqnarray}
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+\section{Intraband, Interband, and anomalous current}
+\begin{eqnarray}
+J &=&  -e\frac{\partial}{\partial t} tr(\hat{\rho}\hat{\bf x}) \nonumber \\
+&=&  -e\: tr(\frac{\partial \hat{\rho} }{\partial t}\hat{\bf x}) \nonumber \\
+&=&  -\frac{e}{i \hbar} tr([\hat{H}, \hat{\rho}] \hat{\bf x}) \nonumber \\
+&=&  -\frac{e}{i \hbar} tr\{\hat{\rho}(\hat{\bf x}\hat{H}-\hat{H}\hat{\bf x})\} \nonumber \\
+&=&  -\frac{e}{i \hbar} tr\{\hat{\rho}[\hat{\bf x},\hat{H}]\} \nonumber \\
+&=&  -\frac{e}{m} tr\{\hat{\rho}(\hat{\bf p}-e{\bf A})\} \nonumber \\
+&=&   - \frac{e}{m} \sum_{nn'}\int d{\bf k} \int d{\bf k'} <n{\bf k}|\hat{\rho}|n'{\bf k'}><n'{\bf k'}|\hat{\bf p}|n{\bf k}> +\frac{e^2{\bf A}}{m}tr(\hat{\rho}) \nonumber \\
+&=&   -\frac{e}{\hbar} \sum_{nn'} \int d{\bf k}\int d{\bf k'} <n{\bf k}|\hat{\rho}|n'{\bf k'}> (\epsilon_{n'{\bf k'}}-\epsilon_{n{\bf k}})\{\nabla_{\bf k} <n'{\bf k'}|n{\bf k}> + i \delta({\bf k'-k}) {\bf d}_{n'n}({\bf k})\}  \nonumber \\
+&& + \frac{e^2{\bf A}}{m}tr(\hat{\rho}) \nonumber \\
+&=&   +\frac{e}{\hbar} \sum_{nn'} \int d{\bf k}\int d{\bf k'} \nabla_{\bf k}\{<n{\bf k}|\hat{\rho}|n'{\bf k'}> (\epsilon_{n'{\bf k'}}-\epsilon_{n{\bf k}})\} <n'{\bf k'}|n{\bf k}>   \nonumber \\
+&&   -\frac{e}{\hbar} \sum_{nn'} \int d{\bf k} <n{\bf k}|\hat{\rho}|n'{\bf k}> (\epsilon_{n'{\bf k}}-\epsilon_{n{\bf k}}) \{i {\bf d}_{n'n}({\bf k})\}  + \frac{e^2{\bf A}}{m}tr(\hat{\rho}) \nonumber \\
+&=&  -\frac{e}{\hbar} \sum_{n} \int d{\bf k} <n{\bf k}|\hat{\rho}|n{\bf k}> \nabla_{\bf k} \epsilon_{n{\bf k}}  -\frac{e}{\hbar} \sum_{nn'} \int d{\bf k} <n{\bf k}|\hat{\rho}|n'{\bf k}> (\epsilon_{n'{\bf k}}-\epsilon_{n{\bf k}}) \{i {\bf d}_{n'n}({\bf k})\}  + \frac{e^2{\bf A}}{m}tr(\hat{\rho}) \nonumber \\
+\end{eqnarray} 
+
+\begin{eqnarray}
+J_{2} &=&  -\frac{e}{\hbar} \int d{\bf k} (<v{\bf k}|\hat{\rho}|v{\bf k}> \nabla_{\bf k} \epsilon_{v{\bf k}} +<c{\bf k}|\hat{\rho}|c{\bf k}> \nabla_{\bf k} \epsilon_{c{\bf k}} ) + \frac{e^2{\bf A}}{m}tr(\hat{\rho}) \nonumber \\
+&& -\frac{e}{\hbar} \int d{\bf k} [ <v{\bf k}|\hat{\rho}|c{\bf k}> (\epsilon_{c{\bf k}}-\epsilon_{v{\bf k}}) \{i {\bf d}_{cv}({\bf k})\} + <c{\bf k}|\hat{\rho}|v{\bf k}> (\epsilon_{v{\bf k}}-\epsilon_{c{\bf k}}) \{i {\bf d}_{vc}({\bf k})\} ]  \nonumber \\
+&=&  -\frac{e}{\hbar} \int d{\bf k} (<v{\bf k}|\hat{\rho}|v{\bf k}> \nabla_{\bf k} \epsilon_{v{\bf k}} +<c{\bf k}|\hat{\rho}|c{\bf k}> \nabla_{\bf k} \epsilon_{c{\bf k}} ) + \frac{e^2{\bf A}}{m}tr(\hat{\rho}) \nonumber \\
+&& + \frac{e}{\hbar} \int d{\bf k} (\epsilon_{c{\bf k}}-\epsilon_{v{\bf k}}) {\bf Im}[ <v{\bf k}|\hat{\rho}|c{\bf k}>{\bf d}_{vc} ]  
+\end{eqnarray} 
+\newpage
+
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+\section{The gauge transformations}
+\begin{eqnarray}
+|x> &\rightarrow& |x'> = U(x) |x> \\
+|k> &\rightarrow& |k'> = U(k) |k>
+\end{eqnarray} 
+where $U(x)$ and $U(k)$ are unitary.
+\textcolor{red}{note: I have no idea if U(x) and U(k) are independent. }
+
+\begin{eqnarray}
+\phi &\rightarrow& \phi' = \phi +\frac{\hbar}{e} \frac{\partial \chi}{\partial t} \\
+{\bf A} &\rightarrow& {\bf A}' = +\frac{\hbar}{e} {\bf \nabla} \chi
+\end{eqnarray} 
+\textcolor{red}{note: $H^V$ is not the hamilton of the whole system; what is does A mean?}
+
+\begin{eqnarray}
+\hat{O} &\rightarrow& U^{\dag} \hat{O} U \nonumber 
+\end{eqnarray} 
+
+\begin{eqnarray}
+e^A B e^{-A} = B+ [A,B] +\frac{1}{2}[A,[A,B]] + ... \nonumber  
+\end{eqnarray} 
+
+By Campbell-Baker-Hausdorff formula, the hamiltonian transforms as  
+\begin{eqnarray}
+\hat{H}^V &=& \frac{ ({\bf \hat{p}} - e{\bf A})^2 }{2m} + V(\hat{x}) \nonumber \nonumber \\ 
+\rightarrow \hat{H}^L &=& exp(-\frac{ i e {\bf \widetilde{A} \cdot \hat{x}} }{\hbar}) \hat{H}^V exp( \frac{ i e {\bf \widetilde{A} \cdot \hat{x}}}{\hbar}) \nonumber \\
+&=& \hat{H}^V + \frac{i e}{\hbar}[{\bf \widetilde{A} \cdot \hat{x} }, \hat{H}^V] + o^2 \nonumber \\
+&=& \hat{H}^V + \frac{i e}{\hbar} \{ {\bf \widetilde{A}} \cdot [ {\bf \hat{x} }, \hat{H}^V] + [ {\bf \widetilde{A}} , \hat{H}^V] \cdot {\bf \hat{x} } \}+ o^2 \nonumber \\
+&=& \hat{H}^V + \frac{i e}{\hbar} \{ {\bf \widetilde{A}} \cdot (i \hbar \frac{{\bf \hat{p}} - e{\bf A}}{m}) + (- i \hbar \frac{\partial \widetilde{\bf A}}{\partial t}) \cdot {\bf \hat{x} } \}+ o^2 \nonumber \\
+&=& \frac{ \hat{\bf p}^2 }{2m} -e {\bf E \cdot \hat{\bf x}} + V(\hat{\bf x})+ (constant).\nonumber \\
+\end{eqnarray} 
+where the vector potential ${\bf \widetilde{A}}$ is formally an operator. 
+\textcolor{red}{note: $H^V$ is not the hamilton of the whole system; what does A mean?}
+
+By Campbell-Baker-Hausdorff formula, the hamiltonian transforms as  
+\begin{eqnarray}
+\hat{\rho}^V &\rightarrow& \hat{\rho}^L =exp(-\frac{ i e {\bf \widetilde{A} \cdot \hat{x}} }{\hbar}) \hat{\rho}^V exp( \frac{ i e {\bf \widetilde{A} \cdot \hat{x}}}{\hbar}) \nonumber \\
+\end{eqnarray} 
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+\section{variation principle and charge}
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+\section{Wannier basis}
+$n$ is the band index, $\bf k$ is the crystal momentum, ${\bf R} $ is the Bravais Lattice
+The Bloch states $\{ |n{\bf k}> \}$ and Wannier states $\{ |n{\bf R}> \}$ are related by the Fourier expansion. 
+\begin{eqnarray}
+|n{\bf R}>&=&\frac{1}{\sqrt{\Omega}} \int_{BZ} dk \; exp(-i{\bf k} \cdot {\bf R})|n{\bf k}>\\
+|n{\bf k}>&=&\frac{1}{\sqrt{N}} \sum_{\bf R} \; exp(i{\bf k} \cdot {\bf R}) 
+\end{eqnarray} 
+where $N$ is number of Bravais lattice points, and $\Omega$ is the volume of a Brillouin Zone. 
+The matrix element of an operator $\hat{O}$ is transferred to 
+\begin{eqnarray}
+ < n{\bf R}| \hat{O} |n'{\bf R'}> \propto && \int \int_{BZ} dk dk'  \\
+&& \times  exp[i ({\bf k} \cdot {\bf R}- {\bf k'} \cdot {\bf R'} ) ]< n{\bf k}| \hat{O} |n'{\bf k'}>  \nonumber 
+\end{eqnarray} 
+where $|u_{n''{\bf k''}}> = exp(-i{\bf k} \cdot \hat{\bf x}) |n''{\bf k''}>$ is the periodic part of the Bloch states.
+
 %----------------------------------------------------------------------------------------------------------------------------------------
 \section{the Wannier representation -Length gauge }
 \label{sec:WL}
@@ -161,123 +312,6 @@ $R_{nn'}(k) = \frac{i}{\Omega} \int dx U^*_{n'k} \nabla_k U_{nk}$\\
 %$=$ exp(i \frac{e}{i \hbar c} A_0 \cdot (x-l))
 %\end{eqnarray}
 
-\section{Discussion}
-
-\section{Conclusion}
-
-\newpage
-
-\begin{appendix}
-%----------------------------------------------------------------------------------------------------------------------------------------
-\section{Fundamental formulas}
-\begin{eqnarray}
-<n{\bf k}|\hat{\bf x}|n''{\bf k''}>&=& <n{\bf k}| \{ -i \nabla_{\bf k''} e^{i{\bf k'' \cdot \hat{x} }} \} |u_{n''{\bf k''}}>\nonumber \\
-&=&  -i \nabla_{\bf k''} <n{\bf k}|n''{\bf k''}> + i <u_{n{\bf k}}| e^{-i{\bf (k-k'') \cdot \hat{x} }} |\nabla_{\bf k''} u_{n''{\bf k''}}>\nonumber \\
-&=&  -i \nabla_{\bf k''} <n{\bf k}|n''{\bf k''}> + i\delta({\bf k-k'}) <u_{n{\bf k}}|\nabla_{\bf k} u_{n''{\bf k}}> \\
-<n''{\bf k''}|\hat{\bf x}|n'{\bf k'}>&=& <u_{n''{\bf k''}}| \{ i \nabla_{\bf k''} e^{-i{\bf k'' \cdot \hat{x} }} \} |n'{\bf k'}>\nonumber \\
-&=&  i \nabla_{\bf k''} <n''{\bf k''}|n'{\bf k'}> - i <\nabla_{\bf k"} u_{n''{\bf k''}}| e^{-i{\bf (k''-k') \cdot \hat{x} }} |u_{n'{\bf k'}}>\nonumber \\
-&=&  i \nabla_{\bf k''} <n''{\bf k''}|n'{\bf k'}> - i\delta({\bf k-k'}) <\nabla_{\bf k"} u_{n''{\bf k''}}|u_{n'{\bf k'}}>\nonumber  
-\end{eqnarray} 
-$\nabla_{\bf k''} <n{\bf k}|n''{\bf k''}>$ is the derivative of the generalized function.
-\textcolor{red}{note: delta fuction; momentum; $<u_{n{\bf k}}|\nabla_{\bf k} u_{n''{\bf k}}>$ is a function?}
-
-\begin{eqnarray}
-\int d{\bf k''} && <n{\bf k}|\hat{\bf x}|n''{\bf k''}><n''{\bf k''}|\hat{\rho}|n'{\bf k'}> \nonumber \\
-=&& \int d{\bf k''}(-i \nabla_{\bf k''} <n{\bf k}|n''{\bf k''}> + i\delta({\bf k-k'}) <u_{n{\bf k}}|\nabla_{\bf k} u_{n''{\bf k}}>)<n''{\bf k''}|\hat{\rho}|n'{\bf k'}>\nonumber \\
-%= &&\int d{\bf k''}(-i \nabla_{\bf k''} <n{\bf k}|n''{\bf k''}><n''{\bf k''}|\hat{\rho}|n'{\bf k'}>)nonumber\\
- =&& \int d{\bf k''} <n{\bf k}|n''{\bf k''}>(i\nabla_{\bf k''} <n''{\bf k''}|\hat{\rho}|n'{\bf k'}>) \nonumber \\
- &&+ \int d{\bf k''} \delta({\bf k-k'}) <u_{n{\bf k}}|\nabla_{\bf k} u_{n''{\bf k}}><n''{\bf k''}|\hat{\rho}|n'{\bf k'}>\nonumber \\
-=&& i\nabla_{\bf k} <n{\bf k}|\hat{\rho}|n'{\bf k'}> +  i \sum_{n''}<u_{n{\bf k}}|\nabla_{\bf k} u_{n''{\bf k}}><n''{\bf k}|\hat{\rho}|n'{\bf k'}> \\
- %
- \int d{\bf k''} && <n{\bf k}|\hat{\rho}|n''{\bf k''}><n''{\bf k''}|\hat{\bf x}|n'{\bf k'}> \nonumber \\
-=&& \int d{\bf k''}<n{\bf k}|\hat{\rho}|n''{\bf k''}>( i \nabla_{\bf k''} <n''{\bf k''}|n'{\bf k'}> - i\delta({\bf k-k'}) <\nabla_{\bf k"} u_{n''{\bf k''}}|u_{n'{\bf k'}}>)\nonumber \\
-%= &&\int d{\bf k''}(-i \nabla_{\bf k''} <n{\bf k}|n''{\bf k''}><n''{\bf k''}|\hat{\rho}|n'{\bf k'}>)nonumber\\
- =&& \int d{\bf k''}(i \nabla_{\bf k''} <n{\bf k}|\hat{\rho}|n''{\bf k''}>) <n''{\bf k''}|n'{\bf k'}> - i\delta({\bf k-k'}) <\nabla_{\bf k"} u_{n''{\bf k''}}|u_{n'{\bf k'}}>\nonumber \\
- =&& (i\nabla_{\bf k} <n''{\bf k}|\hat{\rho}|n'{\bf k'}>) <u_{n{\bf k}}|\nabla_{\bf k} u_{n''{\bf k}}><n''{\bf k''}|\hat{\rho}|n'{\bf k'}>\nonumber \\
- \end{eqnarray} 
-
-\begin{eqnarray}
-[\hat{\bf x}, \hat{H}_0] = [\hat{\bf x}, \frac{\hat{\bf p}}{2m}]  =\frac{i \hbar}{m}\hat{\bf p}
-\end{eqnarray} 
-
-\begin{eqnarray}
-<n{\bf k}|\hat{\bf p}|n'{\bf k'}> &=& i\frac{m(\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}})}{\hbar} <n{\bf k}|\hat{\bf x}|n'{\bf k'}> \\
-&=& i\frac{m(\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}})}{\hbar}(-i \nabla_{\bf k''} <n{\bf k}|n''{\bf k''}> + i\delta({\bf k-k'}) <u_{n{\bf k}}|\nabla_{\bf k} u_{n''{\bf k}}>)
-\end{eqnarray} 
-
-In particular if $\{n{\bf k}\}=\{n'{\bf k'}\}$ 
-\begin{eqnarray}
-<n{\bf k}|\hat{\bf p}|n{\bf k}> &=& i\frac{m}{i \hbar} <n{\bf k}|[\hat{\bf x},\hat{H}_0]|n{\bf k}> \nonumber \\
-&=& i\frac{m}{i \hbar} \{ <u_{n{\bf k}}| (i \nabla_{\bf k} e^{-i{\bf k \cdot \hat{x} }} ) \hat{H}_0 |n{\bf k}> - <n{\bf k}| \hat{H}_0 (-i\nabla_{\bf k} e^{i{\bf k \cdot \hat{x}} }) |u_{n{\bf k}}> \} \nonumber \\
-&=& i\frac{m}{\hbar} \{  \nabla_{\bf k} <n{\bf k}|\hat{H}_0|n{\bf k}> - <\nabla_{\bf k} u_{n{\bf k}}| e^{-i{\bf k \cdot \hat{x}} }) \hat{H}_0  |n{\bf k}> - <n{\bf k}| \hat{H}_0 e^{i{\bf k \cdot \hat{x}} })|\nabla_{\bf k} u_{n{\bf k}}> \nonumber \\
-&=& i\frac{m}{\hbar} \{  \nabla_{\bf k} \epsilon_{n{\bf k}} - 2 \epsilon_{n{\bf k}} Re( <u_{n{\bf k}}|\nabla_{\bf k}  u_{n{\bf k}}> ) 
-\} \nonumber \\
-\end{eqnarray} 
-
-\begin{eqnarray}
-<u_{n{\bf k}}|&& e^{-i{\bf (k-k'' )\cdot \hat{x}} }) |\nabla_{\bf k''} u_{n''{\bf k''}}> = \int dx <u_{n{\bf k}}|x> <x|\nabla_{\bf k''} u_{n''{\bf k''}}> e^{-i{\bf (k-k'' )\cdot {x}} }) \nonumber \\
-&&= \sum_{\bf R} e^{-i{\bf (k-k'' )\cdot {\bf R}} } \int_{BL} dy <u_{n{\bf k}}|y> <y|\nabla_{\bf k''} u_{n''{\bf k''}}> e^{-i{\bf (k-k'' )\cdot {y}} }) \nonumber \\
-&&= <u_{n{\bf k}}| \nabla_{\bf k} u_{n''{\bf k}}> \delta(k-k'') 
-\end{eqnarray} 
-where the integral variable y runs in a Blavais lattice.
-
-%----------------------------------------------------------------------------------------------------------------------------------------
-\section{variation principle and charge}
-
-%----------------------------------------------------------------------------------------------------------------------------------------
-\section{Wannier basis}
-$n$ is the band index, $\bf k$ is the crystal momentum, ${\bf R} $ is the Bravais Lattice
-The Bloch states $\{ |n{\bf k}> \}$ and Wannier states $\{ |n{\bf R}> \}$ are related by the Fourier expansion. 
-\begin{eqnarray}
-|n{\bf R}>&=&\frac{1}{\sqrt{\Omega}} \int_{BZ} dk \; exp(-i{\bf k} \cdot {\bf R})|n{\bf k}>\\
-|n{\bf k}>&=&\frac{1}{\sqrt{N}} \sum_{\bf R} \; exp(i{\bf k} \cdot {\bf R}) 
-\end{eqnarray} 
-where $N$ is number of Bravais lattice points, and $\Omega$ is the volume of a Brillouin Zone. 
-The matrix element of an operator $\hat{O}$ is transferred to 
-\begin{eqnarray}
- < n{\bf R}| \hat{O} |n'{\bf R'}> \propto && \int \int_{BZ} dk dk'  \\
-&& \times  exp[i ({\bf k} \cdot {\bf R}- {\bf k'} \cdot {\bf R'} ) ]< n{\bf k}| \hat{O} |n'{\bf k'}>  \nonumber 
-\end{eqnarray} 
-where $|u_{n''{\bf k''}}> = exp(-i{\bf k} \cdot \hat{\bf x}) |n''{\bf k''}>$ is the periodic part of the Bloch states.
-
-%----------------------------------------------------------------------------------------------------------------------------------------
-\section{The gauge transformations}
-\begin{eqnarray}
-|x> &\rightarrow& |x'> = U(x) |x> \\
-|k> &\rightarrow& |k'> = U(k) |k>
-\end{eqnarray} 
-where $U(x)$ and $U(k)$ are unitary.
-\textcolor{red}{note: I have no idea if U(x) and U(k) are independent. }
-
-\begin{eqnarray}
-\phi &\rightarrow& \phi' = \phi +\frac{\hbar}{e} \frac{\partial \chi}{\partial t} \\
-{\bf A} &\rightarrow& {\bf A}' = +\frac{\hbar}{e} {\bf \nabla} \chi
-\end{eqnarray} 
-\textcolor{red}{note: $H^V$ is not the hamilton of the whole system; what is does A mean?}
-
-\begin{eqnarray}
-\hat{O} &\rightarrow& U^{\dag} \hat{O} U \nonumber 
-\end{eqnarray} 
-
-\begin{eqnarray}
-e^A B e^{-A} = B+ [A,B] +\frac{1}{2}[A,[A,B]] + ... \nonumber  
-\end{eqnarray} 
-
-By Campbell-Baker-Hausdorff formula, the hamiltonian transforms as  
-\begin{eqnarray}
-\hat{H}^V &=& \frac{ ({\bf \hat{p}} - e{\bf A})^2 }{2m} + V(\hat{x}) \nonumber \nonumber \\ 
-\rightarrow \hat{H}^L &=& exp(-\frac{ i e {\bf \widetilde{A} \cdot \hat{x}} }{\hbar}) \hat{H}^V exp( \frac{ i e {\bf \widetilde{A} \cdot \hat{x}}}{\hbar}) \nonumber \\
-&=& \hat{H}^V + \frac{i e}{\hbar}[{\bf \widetilde{A} \cdot \hat{x} }, \hat{H}^V] + o^2 \nonumber \\
-&=& \hat{H}^V + \frac{i e}{\hbar} \{ {\bf \widetilde{A}} \cdot [ {\bf \hat{x} }, \hat{H}^V] + [ {\bf \widetilde{A}} , \hat{H}^V] \cdot {\bf \hat{x} } \}+ o^2 \nonumber \\
-&=& \hat{H}^V + \frac{i e}{\hbar} \{ {\bf \widetilde{A}} \cdot (i \hbar \frac{{\bf \hat{p}} - e{\bf A}}{m}) + (- i \hbar \frac{\partial \widetilde{\bf A}}{\partial t}) \cdot {\bf \hat{x} } \}+ o^2 \nonumber \\
-&=& \frac{ \hat{\bf p}^2 }{2m} -e {\bf E \cdot \hat{\bf x}} + V(\hat{\bf x})+ (constant).\nonumber \\
-\end{eqnarray} 
-where the vector potential ${\bf \widetilde{A}}$ is formally an operator. 
-\textcolor{red}{note: $H^V$ is not the hamilton of the whole system; what is does A mean?}
-
-By Campbell-Baker-Hausdorff formula, the hamiltonian transforms as  
-\begin{eqnarray}
-\hat{\rho}^V &\rightarrow& \hat{\rho}^L =exp(-\frac{ i e {\bf \widetilde{A} \cdot \hat{x}} }{\hbar}) \hat{\rho}^V exp( \frac{ i e {\bf \widetilde{A} \cdot \hat{x}}}{\hbar}) \nonumber \\\end{eqnarray} 
 
 \section{The Maximally localized Wannier function}
 \end{appendix}
