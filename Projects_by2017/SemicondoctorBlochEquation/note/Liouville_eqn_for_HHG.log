@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2015.5.24)  6 OCT 2017 22:35
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2015.5.24)  7 OCT 2017 03:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -217,22 +217,27 @@ Overfull \hbox (26.75336pt too wide) in alignment at lines 106--114
  [][][] []
  []
 
-[4]
-Overfull \hbox (1.80193pt too wide) in alignment at lines 152--158
+[4] [5]
+Overfull \hbox (1.80193pt too wide) in alignment at lines 168--174
  [][][] []
  []
 
-[5]
-Overfull \hbox (2.85654pt too wide) in alignment at lines 161--173
+
+Overfull \hbox (2.85654pt too wide) in alignment at lines 177--189
  [][][] []
  []
 
 [6]
-Overfull \hbox (37.37685pt too wide) in alignment at lines 195--208
+Overfull \hbox (11.16814pt too wide) in alignment at lines 209--216
  [][][] []
  []
 
-[7] [8] [9] [10] (./Liouville_eqn_for_HHG.bbl
+[7]
+Overfull \hbox (37.37685pt too wide) in alignment at lines 226--239
+ [][][] []
+ []
+
+[8] [9] [10] [11] (./Liouville_eqn_for_HHG.bbl
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <10.95> on input line 1.
 
@@ -244,7 +249,7 @@ LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
 LaTeX Font Warning: Font shape `JY1/gt/m/it' undefined
 (Font)              using `JY1/gt/m/n' instead on input line 7.
 
-) [11] (./Liouville_eqn_for_HHG.aux)
+) [12] (./Liouville_eqn_for_HHG.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -255,10 +260,10 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  2851 strings out of 493777
  37266 string characters out of 6151334
- 127231 words of memory out of 5000000
+ 126231 words of memory out of 5000000
  6349 multiletter control sequences out of 15000+600000
  18479 words of font info for 69 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  29i,14n,25p,443b,274s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Liouville_eqn_for_HHG.dvi (11 pages, 38964 bytes).
+Output written on Liouville_eqn_for_HHG.dvi (12 pages, 45388 bytes).

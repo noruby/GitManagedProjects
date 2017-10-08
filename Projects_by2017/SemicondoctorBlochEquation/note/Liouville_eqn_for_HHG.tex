@@ -131,6 +131,22 @@ i \hbar \frac{ \partial }{\partial t } &&<v{\bf k}| \hat{\rho} |c{\bf k}> \nonum
 &&-e{\bf E} \cdot [ \{ {\bf d}_{vv}({\bf k})-{\bf d}_{cc}({\bf k}) \} <v{\bf k}|\hat{\rho}|c{\bf k}> - {\bf d}_{vc}({\bf k}) \{ <c{\bf k}|\hat{\rho}|c{\bf k}> - <v{\bf k}|\hat{\rho}|v{\bf k}>  \} ] 
 \end{eqnarray}
 
+ \begin{eqnarray}
+H_L &=& tr\{\hat{\rho}( \hat{H}_0 -e{\bf E \cdot \hat{x}}) \} \nonumber \\
+&=& \sum_n \int d{\bf k} <n{\bf k}| \hat{\rho} |n{\bf k}> \epsilon_{n{\bf k}} - e{\bf E} \cdot \{ \sum_{nn'} \int d{\bf k} \int d{\bf k'} <n{\bf k}| \hat{\rho} |n'{\bf k'}><n'{\bf k'}| \hat{\bf x} |n{\bf k}> \} \nonumber \\
+&=& \sum_n \int d{\bf k} <n{\bf k}| \hat{\rho} |n{\bf k}> \epsilon_{n{\bf k}} \nonumber \\
+&& - e{\bf E} \cdot [ \sum_{nn'} \int d{\bf k} \int d{\bf k'} <n{\bf k}| \hat{\rho} |n'{\bf k'}> \{ \frac{1}{2i}(\nabla_{\bf k}-\nabla_{\bf k'}) <n'{\bf k'}|n{\bf k}> + \delta({\bf k'-k}) {\bf d}_{n'n}({\bf k})\} ]\nonumber \\
+&=& \sum_n \int d{\bf k} <n{\bf k}| \hat{\rho} |n{\bf k}> \epsilon_{n{\bf k}} \nonumber \\
+&& - e{\bf E} \cdot \{ \sum_{n} \int d{\bf k} \:{\bf Im}( \nabla_{\bf k}  <n{\bf k}| \hat{\rho} |n{\bf k}> ) + \sum_{nn'} \int d{\bf k} <n{\bf k}| \hat{\rho} |n'{\bf k}> {\bf d}_{n'n}({\bf k})\} \nonumber \\
+&=& \sum_n \int d{\bf k} <n{\bf k}| \hat{\rho} |n{\bf k}> \epsilon_{n{\bf k}} - e{\bf E} \cdot \{ \sum_{nn'} \int d{\bf k} <n{\bf k}| \hat{\rho} |n'{\bf k}> {\bf d}_{n'n}({\bf k})\} 
+\end{eqnarray}
+
+ \begin{eqnarray}
+H_L^2 &=& \sum_n \int d{\bf k} <n{\bf k}| \hat{\rho} |n{\bf k}> \epsilon_{n{\bf k}} - e{\bf E} \cdot \{ \sum_{nn'} \int d{\bf k} <n{\bf k}| \hat{\rho} |n'{\bf k}> {\bf d}_{n'n}({\bf k})\} \nonumber \\
+&=&  \int d{\bf k} ( <v{\bf k}| \hat{\rho} |v{\bf k}> \epsilon_{v{\bf k}} + <c{\bf k}| \hat{\rho} |c{\bf k}> \epsilon_{c{\bf k}} ) \nonumber \\
+&& - e{\bf E} \cdot  \int d{\bf k} [ <v{\bf k}| \hat{\rho} |v{\bf k}> {\bf d}_{vv}({\bf k}) + <c{\bf k}| \hat{\rho} |c{\bf k}> {\bf d}_{cc}({\bf k}) + 2{\bf Re}\{ <v{\bf k}| \hat{\rho} |c{\bf k}> {\bf d}_{vc}^*({\bf k}) \} ]   \nonumber \\
+\end{eqnarray}
+
 %----------------------------------------------------------------------------------------------------------------------------------------
 \section{Bloch-basis and velocity gauge}
 \begin{eqnarray}
@@ -186,12 +202,27 @@ i \hbar \frac{ \partial }{\partial t } &&<c{\bf k}| \hat{\rho} |c{\bf k}> \nonum
 i \hbar \frac{ \partial }{\partial t } &&<v{\bf k}| \hat{\rho} |c{\bf k}> \nonumber \\
 = && (\epsilon_{v{\bf k}}-\epsilon_{c{\bf k}}) <v{\bf k}| \hat{\rho} |c{\bf k}>  -\frac{e{\bf A}}{\hbar} \cdot \{ (\nabla_{\bf k} \epsilon_{v{\bf k}} - \nabla_{\bf k} \epsilon_{c{\bf k}}) <v{\bf k}| \hat{\rho} |c{\bf k}> \} \nonumber  \\
 && -\frac{e{\bf A}}{\hbar} \cdot  \{ (\epsilon_{v{\bf k}}-\epsilon_{c{\bf k}}) {\bf d}_{vc}({\bf k}) <c{\bf k}| \hat{\rho} |c{\bf k}>  -  (\epsilon_{v{\bf k}}-\epsilon_{c{\bf k}})<v{\bf k}| \hat{\rho} |v{\bf k}> {\bf d}_{vc}({\bf k}) \} \nonumber \\
-= && - (\epsilon_{c{\bf k}}-\epsilon_{v{\bf k}}) <v{\bf k}| \hat{\rho} |c{\bf k}>  + \frac{e{\bf A}}{\hbar} \cdot \{ (\nabla_{\bf k} \epsilon_{c{\bf k}} - \nabla_{\bf k} \epsilon_{v{\bf k}}) <v{\bf k}| \hat{\rho} |c{\bf k}> \} \nonumber  \\
+= && - (\epsilon_{c{\bf k}}-\epsilon_{v{\bf k}}) <v{\bf k}| \hat{\rho} |c{\bf k}>  + \frac{e{\bf A}}{\hbar} \cdot \{ (\nabla_{\bf k} \epsilon_{c{\bf k}} - \nabla_{\bf k} \epsilon_{v{\bf k}}) <v{\bf k}| \hat{\rho} |c{\bf k}> \} \nonumber  \\w
 && + \frac{e{\bf A}}{\hbar} \cdot  \{ (\epsilon_{c{\bf k}}-\epsilon_{v{\bf k}}) {\bf d}_{vc}({\bf k}) ( <c{\bf k}| \hat{\rho} |c{\bf k}> - <v{\bf k}| \hat{\rho} |v{\bf k}> ) \}
 \end{eqnarray}
 
+ \begin{eqnarray}
+H_V &=& tr\{\hat{\rho}( \hat{H}_0 - \frac{e{\bf A \cdot \hat{p}}}{m}) \} \nonumber \\
+&=& \sum_n \int d{\bf k} <n{\bf k}| \hat{\rho} |n{\bf k}> \epsilon_{n{\bf k}} - \frac{e{\bf A}}{m} \cdot \{ \sum_{nn'} \int d{\bf k} \int d{\bf k'} <n{\bf k}| \hat{\rho} |n'{\bf k'}><n'{\bf k'}| \hat{\bf p} |n{\bf k}> \} \nonumber \\
+&=& \sum_n \int d{\bf k} <n{\bf k}| \hat{\rho} |n{\bf k}> \epsilon_{n{\bf k}}\\
+&& - \frac{e{\bf A}}{\hbar} \cdot [ \sum_{nn'} \int d{\bf k} \int d{\bf k'}  (\epsilon_{n'{\bf k'}}-\epsilon_{n{\bf k}}) <n{\bf k}| \hat{\rho} |n'{\bf k'}>\{\nabla_{\bf k} <n'{\bf k'}|n{\bf k}> + i \delta({\bf k'-k}) {\bf d}_{n'n}({\bf k}) \} ] \nonumber \\
+&=& \sum_n \int d{\bf k} <n{\bf k}| \hat{\rho} |n{\bf k}> \epsilon_{n{\bf k}}\\
+&& - \frac{e{\bf A}}{\hbar} \cdot [ \sum_{n} \int d{\bf k} \nabla_{\bf k} \epsilon_{n{\bf k}} <n{\bf k}| \hat{\rho} |n{\bf k}> + i \sum_{nn'} \int d{\bf k} (\epsilon_{n'{\bf k'}}-\epsilon_{n{\bf k}}) <n{\bf k}| \hat{\rho} |n'{\bf k}> {\bf d}_{n'n}({\bf k}) \} ] \nonumber \\
+\end{eqnarray}
+
+ \begin{eqnarray}
+H_V^2 &=& \int d{\bf k} (<v{\bf k}| \hat{\rho} |v{\bf k}> \epsilon_{v{\bf k}}+ <c{\bf k}| \hat{\rho} |c{\bf k}> \epsilon_{c{\bf k}}) \nonumber \\
+&& - \frac{e{\bf A}}{\hbar} \cdot \int d{\bf k} ( <v{\bf k}| \hat{\rho} |v{\bf k}> \nabla_{\bf k} \epsilon_{v{\bf k}} + <c{\bf k}| \hat{\rho} |c{\bf k}> \nabla_{\bf k} \epsilon_{c{\bf k}} ) \nonumber \\
+&& + \frac{2e{\bf A}}{\hbar} \cdot  \sum_{nn'} \int d{\bf k} (\epsilon_{c{\bf k}}-\epsilon_{v{\bf k}}) {\bf Im}\{<v{\bf k}| \hat{\rho} |c{\bf k}> {\bf d}_{vc}^*({\bf k}) \} \nonumber \\
+\end{eqnarray}
+
 %----------------------------------------------------------------------------------------------------------------------------------------
-\section{Intraband, Interband, and anomalous current}
+\section{velocity/current and position}
 \begin{eqnarray}
 J &=&  -e\frac{\partial}{\partial t} tr(\hat{\rho}\hat{\bf x}) \nonumber \\
 &=&  -e\: tr(\frac{\partial \hat{\rho} }{\partial t}\hat{\bf x}) \nonumber \\
@@ -208,13 +239,24 @@ J &=&  -e\frac{\partial}{\partial t} tr(\hat{\rho}\hat{\bf x}) \nonumber \\
 \end{eqnarray} 
 
 \begin{eqnarray}
-J_{2} &=&  -\frac{e}{\hbar} \int d{\bf k} (<v{\bf k}|\hat{\rho}|v{\bf k}> \nabla_{\bf k} \epsilon_{v{\bf k}} +<c{\bf k}|\hat{\rho}|c{\bf k}> \nabla_{\bf k} \epsilon_{c{\bf k}} ) + \frac{e^2{\bf A}}{m}tr(\hat{\rho}) \nonumber \\
+J^{2} &=&  -\frac{e}{\hbar} \int d{\bf k} (<v{\bf k}|\hat{\rho}|v{\bf k}> \nabla_{\bf k} \epsilon_{v{\bf k}} +<c{\bf k}|\hat{\rho}|c{\bf k}> \nabla_{\bf k} \epsilon_{c{\bf k}} ) + \frac{e^2{\bf A}}{m}tr(\hat{\rho}) \nonumber \\
 && -\frac{e}{\hbar} \int d{\bf k} [ <v{\bf k}|\hat{\rho}|c{\bf k}> (\epsilon_{c{\bf k}}-\epsilon_{v{\bf k}}) \{i {\bf d}_{cv}({\bf k})\} + <c{\bf k}|\hat{\rho}|v{\bf k}> (\epsilon_{v{\bf k}}-\epsilon_{c{\bf k}}) \{i {\bf d}_{vc}({\bf k})\} ]  \nonumber \\
 &=&  -\frac{e}{\hbar} \int d{\bf k} (<v{\bf k}|\hat{\rho}|v{\bf k}> \nabla_{\bf k} \epsilon_{v{\bf k}} +<c{\bf k}|\hat{\rho}|c{\bf k}> \nabla_{\bf k} \epsilon_{c{\bf k}} ) + \frac{e^2{\bf A}}{m}tr(\hat{\rho}) \nonumber \\
 && + \frac{e}{\hbar} \int d{\bf k} (\epsilon_{c{\bf k}}-\epsilon_{v{\bf k}}) {\bf Im}[ <v{\bf k}|\hat{\rho}|c{\bf k}>{\bf d}_{vc} ]  
 \end{eqnarray} 
-\newpage
 
+\begin{eqnarray}
+{\bf x} &=&  tr(\hat{\rho}\hat{\bf x}) \nonumber \\
+&=&  \sum_{nn'} \int d{\bf k} \int d{\bf k'} <n{\bf k}|\hat{\rho}|n'{\bf k'}><n'{\bf k'}|\hat{\bf x}|n{\bf k}> \nonumber \\
+&=&  \sum_{nn'} \int d{\bf k} \int d{\bf k'} <n{\bf k}|\hat{\rho}|n'{\bf k'}>\{ \frac{1}{2i}(\nabla_{\bf k}-\nabla_{\bf k'}) <n'{\bf k'}|n{\bf k}> + \delta({\bf k'-k}) {\bf d}_{n'n}({\bf k})\} \nonumber \\
+&=& \sum_{nn'} \int d{\bf k} <n{\bf k}|\hat{\rho}|n'{\bf k}> {\bf d}_{n'n}({\bf k})
+\end{eqnarray} 
+
+\begin{eqnarray}
+{\bf x}^2 &=& \int d{\bf k} \{<v{\bf k}|\hat{\rho}|v{\bf k}> {\bf d}_{vv}({\bf k}) + <c{\bf k}|\hat{\rho}|c{\bf k}> {\bf d}_{cc}({\bf k}) + 2{\bf Re} \{ <v{\bf k}|\hat{\rho}|c{\bf k}> {\bf d}_{vc}^*({\bf k}) \}]
+\end{eqnarray} 
+
+\newpage
 
 %----------------------------------------------------------------------------------------------------------------------------------------
 \section{The gauge transformations}
