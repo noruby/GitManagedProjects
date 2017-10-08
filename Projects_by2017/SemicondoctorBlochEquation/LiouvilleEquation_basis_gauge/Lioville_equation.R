@@ -19,7 +19,7 @@ Fermi_energy <- # Chemical potential
 lattice_constant_a_of_GaSe <- 3.755 * 2/sqrt(3) *10^-10# m (3.755 ångström)
 
 # Time t
-range_t <- 100 *10^(-15) # fs
+range_t <- 250 *10^(-15) # fs
 div_num_t <- 10000 # n
 delta_t <-  range_t/ div_num_t
 t_vector <- seq( -range_t/2, range_t/2, length= (div_num_t+1))
@@ -29,8 +29,8 @@ frequency <- seq(0, 1/delta_t, length= (div_num_t+1))
 
 # External electric field (assuming the gaussian envelope)
 E_amplitude_max <- 10* 10^8 # V/m
-envelope_width <- 30* 10^(-15) # 1/e^2 width; 50 fs 
-carrier_frequency <- 100 *10^12 # 33 THz
+envelope_width <- 50* 10^(-15) # 1/e^2 width; 50 fs 
+carrier_frequency <- 33 *10^12 # 33 THz
 carrier_envelope_phase <- 0 # [rad]
 Electric_field <- function(t){
 	EF <- E_amplitude_max*exp(-t^2/envelope_width^2) *cos(2*pi* carrier_frequency*t +carrier_envelope_phase) 
@@ -136,15 +136,34 @@ transition_matrix <- Rabi_energy_max/(50*10^8)/elementary_charge
 d_vv <- rep(0, div_num_ka)
 d_cc <- rep(0, div_num_ka)
 d_vc <- rep(transition_matrix, div_num_ka)
-#d_vc <- rep(0, div_num_ka)
 if(0){
+phase_valence <- function(ka){
+	#-i* cos(ka)
+	return (-1i* cos(ka))
+}
+phase_conduction <- function(ka){
+	return (-1i* sin(ka))
+}
+#assume periodic and smooth gauge
+phase_valence_vector <- phase_valence(ka_vector)
+phase_conduction_vector <- phase_conduction(ka_vector)
+d_vv <- d_vv + 1i*grad_k_midpoint(phase_valence_vector)
+d_cc <- d_cc + 1i*grad_k_midpoint(phase_conduction_vector)
+d_vc <- exp(-phase_valence_vector+phase_conduction_vector)*d_vc
+#exp(-phase_valence_vector+phase_conduction_vector)
+phase_valence_vector
+}
+if(1){
 print("Exporting debug_dipole_transition.png ...")
+dd <- c(d_vv, d_cc, d_vc)
+krange <- c(-pi,pi)
+drange <- c(-max(abs(dd)),max(abs(dd)))
 png("./debug_dipole_transition.png", width = 700, height = 500)  
-plot(ka_vector, Re(d_vv) , xlim=krange, xlab="ka (rad)", ylab= "dipole_transition", col="red", type="l")  
+plot(ka_vector, Re(d_vv) , xlim=krange, xlab="ka (rad)", ylab= "dipole_transition", ylim=drange, col="red", type="l")  
 par(new=T)
-plot(ka_vector,Re(d_cc), xlim=krange, xlab="", ylab="", col="blue", type="l")
+plot(ka_vector,Re(d_cc), xlim=krange, xlab="", ylab="", ylim=drange, col="blue", type="l")
 par(new=T)
-plot(ka_vector,Re(d_vc), xlim=krange, xlab="", ylab="", col="green", type="l")
+plot(ka_vector,Re(d_vc), xlim=krange, xlab="", ylab="", ylim=drange, col="green", type="l")
 dev.off()   
 }
 
@@ -159,7 +178,7 @@ print( Courant_number )
 gauge <- "length"
 #gauge <- "velocity"
 #relaxation
-relaxation_constant_length <-  20 *10^(-15) # 7fs 
+#relaxation_constant_length <-  20 *10^(-15) # 7fs 
 #dephasing
 dephasing_constant <- 50000 *10^(-15) # 1.1fs 
 #relxation time
@@ -228,20 +247,27 @@ for( j in 1:(div_num_t) ){
 Current_valence_length <- rep(0, (div_num_t+1))
 Current_conduction_length <- rep(0, (div_num_t+1))
 Polarization_current_length <- rep(0, (div_num_t+1))
+Energy_free_length <- rep(0, (div_num_t+1))
+Energy_interaction_length <- rep(0, (div_num_t+1))
 for(i in 1:(div_num_ka)){
 	Current_valence_length <-  Current_valence_length - elementary_charge/Plank_constant_bar* grad_enegy_valence_vector[i] * nvl_kt[i,] *delta_k
 	Current_conduction_length <- Current_conduction_length - elementary_charge/Plank_constant_bar* grad_enegy_conduction_vector[i] * ncl_kt[i,] *delta_k 
 	Polarization_current_length <- Polarization_current_length + elementary_charge/Plank_constant_bar* energy_difference_vector[i]* Im(mpl_kt[i,] * d_vc[i]) *delta_k
+	Energy_free_length <- Energy_free_length + (energy_valence_vector[i] * nvl_kt[i,] + energy_conduction_vector[i] * ncl_kt[i,] ) *delta_k
+	Energy_interaction_length <- Energy_interaction_length -elementary_charge* E_vector *(d_vv[i] * nvl_kt[i,] +d_cc[i] * ncl_kt[i,] +2*Re(Conj(d_vc[i])*mpl_kt[i,])) *delta_k
 }
 
 Current_length <- Current_valence_length + Current_conduction_length
 E_HHG_length <- Current_length + Polarization_current_length
+Energy_length <- Energy_free_length + Energy_interaction_length
 
 E_spectrum <- fft(E_vector)
 E_HHG_length_spectrum <- fft(E_HHG_length)
 Current_length_spectrum <-  fft(Current_length)
 Polarization_current_length_spectrum <- fft(Polarization_current_length)
 
+print("warnings: ")
+warnings()
 }
 
 #---------------------------------------------------------------------------------------------------------------
@@ -310,30 +336,36 @@ for( j in 1:(div_num_t) ){
 
 }
 
-
 Charge_valence_velocity <- rep(0, (div_num_t+1))
 Charge_conduction_velocity <- rep(0, (div_num_t+1))
 Current_valence_velocity <- rep(0, (div_num_t+1))
 Current_conduction_velocity <- rep(0, (div_num_t+1))
 Polarization_current_velocity <- rep(0, (div_num_t+1))
 Current_vectorP_velocity <- rep(0, (div_num_t+1))
+Energy_free_velocity <- rep(0, (div_num_t+1))
+Energy_interaction_velocity <- rep(0, (div_num_t+1))
+xx <-rep(0, (div_num_t+1))
 for(i in 1:(div_num_ka)){
 	Charge_valence_velocity <- Charge_valence_velocity + nvv_kt[i,] *delta_k
 	Charge_conduction_velocity <- Charge_conduction_velocity + ncv_kt[i,]	* delta_k
 	Current_valence_velocity <-  Current_valence_velocity - elementary_charge/Plank_constant_bar* grad_enegy_valence_vector[i] * nvv_kt[i,] *delta_k
 	Current_conduction_velocity <- Current_conduction_velocity - elementary_charge/Plank_constant_bar* grad_enegy_conduction_vector[i] * ncv_kt[i,] *delta_k 
 	Polarization_current_velocity <- Polarization_current_velocity + elementary_charge/Plank_constant_bar* energy_difference_vector[i]* Im(mpv_kt[i,] * d_vc[i]) *delta_k
+	Energy_free_velocity <- Energy_free_velocity +(energy_valence_vector[i] * nvl_kt[i,] + energy_conduction_vector[i] * ncl_kt[i,] ) *delta_k
+	Energy_interaction_velocity <- Energy_interaction_velocity -elementary_charge* A_vector/Plank_constant_bar*(nvv_kt[i,]*grad_enegy_valence_vector[i] + ncv_kt[i,]*grad_enegy_conduction_vector[i] - energy_difference_vector[i] *2*Im(Conj(d_vc[i])*mpv_kt[i,])) *delta_k
 }
 Current_vectorP_velocity <- elementary_charge^2 / mass_of_electron* A_vector * (Charge_valence_velocity+ Charge_conduction_velocity)
-
 Current_velocity <- Current_valence_velocity + Current_conduction_velocity
 E_HHG_velocity <- Current_velocity +  Polarization_current_velocity #+ Current_vectorP_velocity
+Energy_velocity <- Energy_free_velocity + Energy_interaction_velocity
 
 E_spectrum <- fft(E_vector)
 E_HHG_velocity_spectrum <- fft(E_HHG_velocity)
 Current_velocity_spectrum <-  fft(Current_velocity)
 Polarization_current_velocity_spectrum <- fft(Polarization_current_velocity)
 Current_vectorP_velocity_spectrum <- fft(Current_vectorP_velocity)
+print("warnings: ")
+warnings()
 }
 #---------------------------------------------------------------------------------------------------------------
 
@@ -350,19 +382,6 @@ par(new=T)
 plot(t_vector*10^15, Re(Polarization_current_length), xlab="", ylab= "", xlim=trange, ylim=E_HHGrange, axes=FALSE, yaxt="n", col="green", type="l")  
 dev.off()    
 
-E_HHGrange <- c( min(abs(E_HHG_length_spectrum)^2), max(abs(E_HHG_length_spectrum)^2) ) 
-frange <- c(0, 20)
-png("./Bloch_lengthG/debug_spectrum_length.png", width = 700, height = 500) 
-plot(frequency/carrier_frequency, abs(E_spectrum)^2, xlim=frange, log="y", xlab="f/carrier frequency", ylab="power (arb. unit)", axes=FALSE, yaxt="n", col="black", type="l", lwd = 1)  
-par(new=T)
-plot(frequency/carrier_frequency, abs(E_HHG_length_spectrum)^2, xlim=frange, ylim=E_HHGrange, log="y", xlab="", ylab= "", col="red", type="l", lwd = 1)  
-par(new=T)
-plot(frequency/carrier_frequency, abs(Current_length_spectrum)^2, xlim=frange, ylim=E_HHGrange, log="y", axes=FALSE, yaxt="n",xlab="", ylab= "", col="blue", type="l", lwd = 1)  
-par(new=T)
-plot(frequency/carrier_frequency, abs(Polarization_current_length_spectrum)^2, xlim=frange, ylim=E_HHGrange, log="y", axes=FALSE, yaxt="n",xlab="", ylab= "", col="blue", type="l", lwd = 1)  
-abline(v=0:20, col='black', lty="dotted")
-dev.off()    
-
 E_HHGrange <- c( -max(abs(E_HHG_velocity)), max(abs(E_HHG_velocity)) ) 
 Erange <- c( -max(E_vector), max(E_vector) ) 
 trange <- c(-range_t/2, range_t/2)*10^15
@@ -374,10 +393,62 @@ par(new=T)
 plot(t_vector*10^15, Re(Current_velocity), xlab="", ylab="", xlim=trange, ylim=E_HHGrange, axes=FALSE, yaxt="n", col="blue", type="l")
 par(new=T)
 plot(t_vector*10^15, Re(Polarization_current_velocity), xlab="", ylab= "", xlim=trange, ylim=E_HHGrange, axes=FALSE, yaxt="n", col="green", type="l")  
-par(new=T)
-plot(t_vector*10^15, Re(Current_vectorP_velocity), xlab="", ylab="", xlim=trange, ylim=E_HHGrange, axes=FALSE, yaxt="n", col="orange", type="l")  
-dev.off()    
+#par(new=T)
+#plot(t_vector*10^15, Re(Current_vectorP_velocity), xlab="", ylab="", xlim=trange, ylim=E_HHGrange, axes=FALSE, yaxt="n", col="orange", type="l")  
+dev.off()  
 
+E_HHG <- c(E_HHG_length, E_HHG_velocity)
+E_HHGrange <- c( -max(abs(E_HHG)), max(abs(E_HHG)) ) 
+Erange <- c( -max(E_vector), max(E_vector) ) 
+trange <- c(-range_t/2, range_t/2)*10^15
+png("./debug_ElectricF_comparison.png", width = 700, height = 500)  
+plot(t_vector*10^15, Re(E_vector), xlab="", ylab= "Electric field (arb. unit)", xlim=trange, axes=FALSE, yaxt="n",col="black", type="l")  
+par(new=T)
+plot(t_vector*10^15, Re(E_HHG_length), xlab="t (fs)", ylab="", xlim=trange,  ylim=E_HHGrange, col="red", type="l")  
+par(new=T)
+plot(t_vector*10^15, Re(Current_length), xlab="", ylab="", xlim=trange, ylim=E_HHGrange, axes=FALSE, yaxt="n", col="blue", type="l")  
+par(new=T)
+plot(t_vector*10^15, Re(Polarization_current_length), xlab="", ylab= "", xlim=trange, ylim=E_HHGrange, axes=FALSE, yaxt="n", col="green", type="l")  
+par(new=T)
+plot(t_vector*10^15, Re(E_HHG_velocity), xlab="t (fs)", ylab="", xlim=trange,  ylim=E_HHGrange, col="red", type="l", lty="dashed")  
+par(new=T)
+plot(t_vector*10^15, Re(Current_velocity), xlab="", ylab="", xlim=trange, ylim=E_HHGrange, axes=FALSE, yaxt="n", col="blue", type="l", lty="dashed")
+par(new=T)
+plot(t_vector*10^15, Re(Polarization_current_velocity), xlab="", ylab= "", xlim=trange, ylim=E_HHGrange, axes=FALSE, yaxt="n", col="green", type="l", lty="dashed")  
+#par(new=T)
+#plot(t_vector*10^15, Re(Current_vectorP_velocity), xlab="", ylab="", xlim=trange, ylim=E_HHGrange, axes=FALSE, yaxt="n", col="orange", type="l", lty="dashed")  
+dev.off()  
+
+Energy <- Re(c(Energy_length, Energy_velocity))
+Energy_range <- c( min(Energy), max(Energy) ) 
+trange <- c(-range_t/2, range_t/2)*10^15
+png("./debug_Energy_comparison.png", width = 700, height = 500) 
+plot(t_vector*10^15, Re(Energy_free_length), xlab="", ylab="", xlim=trange, ylim=Energy_range, axes=FALSE, yaxt="n", col="blue", type="l") 
+par(new=T)
+plot(t_vector*10^15, Re(Energy_interaction_length), xlab="", ylab="", xlim=trange,  ylim=Energy_range, axes=FALSE, yaxt="n", col="blue", type="l")  
+par(new=T)
+plot(t_vector*10^15, Re(Energy_length), xlab="t (fs)", ylab= "Energy (J)", xlim=trange,  ylim=Energy_range, col="black", type="l")  
+par(new=T)
+plot(t_vector*10^15, Re(Energy_velocity), xlab="", ylab= "", xlim=trange, ylim=Energy_range, col="black", type="l", lty="dashed")  
+par(new=T)
+plot(t_vector*10^15, Re(Energy_free_velocity), xlab="", ylab="", xlim=trange,  ylim=Energy_range, axes=FALSE, yaxt="n", col="red", type="l", lty="dashed")  
+par(new=T)
+plot(t_vector*10^15, Re(Energy_interaction_velocity), xlab="", ylab="", xlim=trange, ylim=Energy_range,  axes=FALSE, yaxt="n", col="blue", type="l", lty="dashed")  
+dev.off()   
+
+E_HHGrange <- c( min(abs(E_HHG_length_spectrum)^2), max(abs(E_HHG_length_spectrum)^2) ) 
+frange <- c(0, 20)
+png("./Bloch_lengthG/debug_spectrum_length.png", width = 700, height = 500) 
+plot(frequency/carrier_frequency, abs(E_spectrum)^2, xlim=frange, log="y", xlab="f/carrier frequency", ylab="power (arb. unit)", axes=FALSE, yaxt="n", col="black", type="l", lwd = 1)  
+par(new=T)
+plot(frequency/carrier_frequency, abs(E_HHG_length_spectrum)^2, xlim=frange, ylim=E_HHGrange, log="y", xlab="", ylab= "", col="red", type="l", lwd = 1)  
+par(new=T)
+plot(frequency/carrier_frequency, abs(Current_length_spectrum)^2, xlim=frange, ylim=E_HHGrange, log="y", axes=FALSE, yaxt="n",xlab="", ylab= "", col="blue", type="l", lwd = 1)  
+par(new=T)
+plot(frequency/carrier_frequency, abs(Polarization_current_length_spectrum)^2, xlim=frange, ylim=E_HHGrange, log="y", axes=FALSE, yaxt="n",xlab="", ylab= "", col="blue", type="l", lwd = 1)  
+abline(v=0:20, col='black', lty="dotted")
+dev.off()   
+  
 E_HHGrange <- c( min(abs(E_HHG_velocity_spectrum)^2), max(abs(E_HHG_velocity_spectrum)^2) ) 
 frange <- c(0, 20)
 png("./Bloch_velocityG/debug_spectrum_velocity.png", width = 700, height = 500) 
@@ -388,11 +459,30 @@ par(new=T)
 plot(frequency/carrier_frequency, abs(Current_velocity_spectrum)^2, xlim=frange, ylim=E_HHGrange, log="y", axes=FALSE, yaxt="n",xlab="", ylab= "", col="blue", type="l")  
 par(new=T)
 plot(frequency/carrier_frequency, abs(Polarization_current_velocity_spectrum)^2, xlim=frange, ylim=E_HHGrange, log="y", axes=FALSE, yaxt="n",xlab="", ylab= "", col="green", type="l")  
-par(new=T)
-plot(frequency/carrier_frequency, abs(Current_vectorP_velocity_spectrum)^2, xlim=frange, ylim=E_HHGrange, log="y", axes=FALSE, yaxt="n",xlab="", ylab= "", col="orange", type="l") 
+#par(new=T)
+#plot(frequency/carrier_frequency, abs(Current_vectorP_velocity_spectrum)^2, xlim=frange, ylim=E_HHGrange, log="y", axes=FALSE, yaxt="n",xlab="", ylab= "", col="orange", type="l") 
 abline(v=0:20, col='black', lty="dotted")
 dev.off()     
 
+E_HHG_spectrum <- c(abs(E_HHG_length_spectrum)^2 , abs(E_HHG_velocity_spectrum)^2)
+E_HHGrange <- c( min(E_HHG_spectrum), max(E_HHG_spectrum) ) 
+frange <- c(0, 20)
+png("./debug_spectrum_comparison.png", width = 700, height = 500) 
+plot(frequency/carrier_frequency, abs(E_spectrum)^2, xlim=frange, log="y", xlab="f/carrier frequency", ylab="power (arb. unit)", axes=FALSE, yaxt="n", col="black", type="l", lwd = 1)  
+par(new=T)
+plot(frequency/carrier_frequency, abs(E_HHG_length_spectrum)^2, xlim=frange, ylim=E_HHGrange, log="y", xlab="", ylab= "", col="red", type="l")  
+par(new=T)
+plot(frequency/carrier_frequency, abs(Current_length_spectrum)^2, xlim=frange, ylim=E_HHGrange, log="y", axes=FALSE, yaxt="n",xlab="", ylab= "", col="blue", type="l")  
+par(new=T)
+plot(frequency/carrier_frequency, abs(Polarization_current_length_spectrum)^2, xlim=frange, ylim=E_HHGrange, log="y", axes=FALSE, yaxt="n",xlab="", ylab= "", col="blue", type="l")  
+par(new=T)
+plot(frequency/carrier_frequency, abs(E_HHG_velocity_spectrum)^2, xlim=frange, ylim=E_HHGrange, log="y", xlab="", ylab= "", col="red", type="l", lty="dashed")  
+par(new=T)
+plot(frequency/carrier_frequency, abs(Current_velocity_spectrum)^2, xlim=frange, ylim=E_HHGrange, log="y", axes=FALSE, yaxt="n",xlab="", ylab= "", col="blue", type="l", lty="dashed")  
+par(new=T)
+plot(frequency/carrier_frequency, abs(Polarization_current_velocity_spectrum)^2, xlim=frange, ylim=E_HHGrange, log="y", axes=FALSE, yaxt="n",xlab="", ylab= "", col="green", type="l", lty="dashed")  
+abline(v=0:20, col='black', lty="dotted")
+dev.off()     
 
 if(0){
 print("Exporting debug_np_length.gif ...")
