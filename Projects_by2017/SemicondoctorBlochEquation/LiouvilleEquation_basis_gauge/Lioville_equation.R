@@ -11,7 +11,6 @@ Plank_constant_bar <- 6.62607004 * 10^-34 #m^2 kg / s
 Boltzmann_constant <-  1.38064852 *10^-23 # m^2 kg s^-2 K^-1
 speed_of_light  <- 299792458 # m/s
 elementary_charge <- 1.60217662 * 10^-19 # Coulombs
-mass_of_electron <-  9.10938356 * 10^-31 #kg
 
 #Parameters of experiment / material properties
 Temperature <- 300 #K
@@ -20,7 +19,7 @@ lattice_constant_a_of_GaSe <- 3.755 * 2/sqrt(3) *10^-10# m (3.755 ångström)
 
 # Time t
 range_t <- 250 *10^(-15) # fs
-div_num_t <- 10000 # n
+div_num_t <- 5000 # n
 delta_t <-  range_t/ div_num_t
 t_vector <- seq( -range_t/2, range_t/2, length= (div_num_t+1))
 t_vector2 <- seq( -range_t/2, range_t/2, length= (2*div_num_t+1))
@@ -28,7 +27,7 @@ t_vector4 <- seq( -range_t/2, range_t/2, length= (4*div_num_t+1))
 frequency <- seq(0, 1/delta_t, length= (div_num_t+1))
 
 # External electric field (assuming the gaussian envelope)
-E_amplitude_max <- 10* 10^8 # V/m
+E_amplitude_max <- 2* 10^8 # V/m
 envelope_width <- 50* 10^(-15) # 1/e^2 width; 50 fs 
 carrier_frequency <- 33 *10^12 # 33 THz
 carrier_envelope_phase <- 0 # [rad]
@@ -84,24 +83,7 @@ energy_conduction <- function(ka){
 	band_width_conduction* (1 - cos( ka ) )/2  +  band_gap # J 
 }
 energy_conduction_vector <- energy_conduction(ka_vector)
-energy_difference <- function(ka){
-	energy_conduction(ka) - energy_valence(ka) # J 
-}
-energy_difference_vector <- energy_difference(ka_vector)
-if(0){
-print("Exporting debug_band_structure_velocity.png ...")
-png("./debug_band_structure.png", width = 700, height = 500)  
-krange <- c(-pi, pi)
-eVrange <- c(-2,6)
-plot(ka_vector, energy_valence_vector/(1.60218*10^-19), xlim=krange, ylim=eVrange, xlab="ka (rad)", ylab= "energy (eV)", col="red", type="l")  
-par(new=T)
-plot(ka_vector, energy_conduction_vector/(1.60218*10^-19), xlim=krange, ylim=eVrange, xlab="", ylab="", col="blue", type="l")  
-par(new=T)
-plot(ka_vector, energy_difference_vector/(1.60218*10^-19), xlim=krange, ylim=eVrange, xlab="", ylab="", col="green", type="l")  
-dev.off() 
-}
-
-#microscopic current
+energy_difference_vector <- energy_conduction_vector - energy_valence_vector
 w_1 <- rep(0, div_num_ka)
 w1 <- rep(0, div_num_ka)
 grad_k_midpoint <- function(w0){
@@ -116,6 +98,24 @@ grad_k <- function(w0){
 	w1[1:(div_num_ka-1)] <- w0[2:div_num_ka]
 	return ((w0-w1) / delta_k)
 }
+Energy_curvature_valence_vector <-  grad_k_midpoint(grad_k_midpoint(energy_valence_vector))
+effective_mass_valence <- Plank_constant_bar^2/Energy_curvature_valence_vector[round(div_num_ka/2)]
+Energy_curvature_conduction_vector <- grad_k_midpoint(grad_k_midpoint(energy_conduction_vector))
+effective_mass_conduction <- Plank_constant_bar^2/Energy_curvature_conduction_vector[round(div_num_ka/2)]
+if(0){
+print("Exporting debug_band_structure_velocity.png ...")
+png("./debug_band_structure.png", width = 700, height = 500)  
+krange <- c(-pi, pi)
+eVrange <- c(-2,6)
+plot(ka_vector, energy_valence_vector/(1.60218*10^-19), xlim=krange, ylim=eVrange, xlab="ka (rad)", ylab= "energy (eV)", col="red", type="l")  
+par(new=T)
+plot(ka_vector, energy_conduction_vector/(1.60218*10^-19), xlim=krange, ylim=eVrange, xlab="", ylab="", col="blue", type="l")  
+par(new=T)
+plot(ka_vector, energy_difference_vector/(1.60218*10^-19), xlim=krange, ylim=eVrange, xlab="", ylab="", col="green", type="l")  
+dev.off() 
+}
+
+#microscopic current
 grad_enegy_valence_vector <- grad_k_midpoint(energy_valence_vector)
 grad_enegy_conduction_vector <- grad_k_midpoint(energy_conduction_vector)
 if(0){
@@ -136,10 +136,10 @@ transition_matrix <- Rabi_energy_max/(50*10^8)/elementary_charge
 d_vv <- rep(0, div_num_ka)
 d_cc <- rep(0, div_num_ka)
 d_vc <- rep(transition_matrix, div_num_ka)
-if(0){
+if(1){
 phase_valence <- function(ka){
-	#-i* cos(ka)
-	return (-1i* cos(ka))
+	#return (-1i* cos(ka))
+	return (-1i*ka)
 }
 phase_conduction <- function(ka){
 	return (-1i* sin(ka))
@@ -147,11 +147,12 @@ phase_conduction <- function(ka){
 #assume periodic and smooth gauge
 phase_valence_vector <- phase_valence(ka_vector)
 phase_conduction_vector <- phase_conduction(ka_vector)
-d_vv <- d_vv + 1i*grad_k_midpoint(phase_valence_vector)
-d_cc <- d_cc + 1i*grad_k_midpoint(phase_conduction_vector)
+grad_phase_valence <- grad_k_midpoint(phase_valence_vector)
+grad_phase_valence <- rep(grad_phase_valence[10], div_num_ka)
+grad_phase_conduction <- grad_k_midpoint(phase_conduction_vector)
+d_vv <- d_vv + 1i*grad_phase_valence
+d_cc <- d_cc + 1i*grad_phase_conduction
 d_vc <- exp(-phase_valence_vector+phase_conduction_vector)*d_vc
-#exp(-phase_valence_vector+phase_conduction_vector)
-phase_valence_vector
 }
 if(1){
 print("Exporting debug_dipole_transition.png ...")
@@ -164,6 +165,8 @@ par(new=T)
 plot(ka_vector,Re(d_cc), xlim=krange, xlab="", ylab="", ylim=drange, col="blue", type="l")
 par(new=T)
 plot(ka_vector,Re(d_vc), xlim=krange, xlab="", ylab="", ylim=drange, col="green", type="l")
+par(new=T)
+plot(ka_vector,Im(d_vc), xlim=krange, xlab="", ylab="", ylim=drange, col="green", type="l", lty="dashed")
 dev.off()   
 }
 
@@ -186,20 +189,18 @@ dephasing_constant <- 50000 *10^(-15) # 1.1fs
 
 
 if(gauge=="length"){
-
-
 diff_number_valence_length <- function(E, mpl, nvl){
-	dnvl <- - E *elementary_charge*( grad_k_midpoint(nvl) + 2*Im( mpl* Conj(d_vc)) ) * delta_t/ Plank_constant_bar
+	dnvl <- - E *elementary_charge/ Plank_constant_bar*( grad_k_midpoint(nvl) - 2*Im( mpl* Conj(d_vc)) ) * delta_t
 	#dnvl <- dnvl - (nvl-1)* relaxation_constant_length * delta_t
 	return (dnvl)
 }
 diff_number_conduction_length <- function(E, mpl, ncl){
-	dncl <- - E *elementary_charge*( grad_k_midpoint(nvl) - 2*Im( mpl* Conj(d_vc)) ) * delta_t/ Plank_constant_bar
+	dncl <- - E *elementary_charge/ Plank_constant_bar*( grad_k_midpoint(nvl) + 2*Im( mpl* Conj(d_vc)) ) * delta_t
 	#dncl <- dncl - ncl / relaxation_constant_length * delta_t
 	return (dncl)
 }
 diff_micro_polarization_length <- function(E, mpl, nvl, ncl){
-	dmpl <- ( 1i* energy_difference_vector *mpl - elementary_charge* E*( grad_k_midpoint(mpl) + 1i*(d_vv-d_cc)*mpl +1i*d_vc*(ncl- nvl) ) ) * delta_t/ Plank_constant_bar
+	dmpl <- (1i* energy_difference_vector *mpl - elementary_charge* E*( grad_k_midpoint(mpl) + 1i*(d_cc-d_vv)*mpl -1i*d_vc*(ncl- nvl) ) ) * delta_t/ Plank_constant_bar
 	#dmpl <- dmpl -mpl / dephasing_constant * delta_t
 	return (dmpl)
 }
@@ -252,7 +253,7 @@ Energy_interaction_length <- rep(0, (div_num_t+1))
 for(i in 1:(div_num_ka)){
 	Current_valence_length <-  Current_valence_length - elementary_charge/Plank_constant_bar* grad_enegy_valence_vector[i] * nvl_kt[i,] *delta_k
 	Current_conduction_length <- Current_conduction_length - elementary_charge/Plank_constant_bar* grad_enegy_conduction_vector[i] * ncl_kt[i,] *delta_k 
-	Polarization_current_length <- Polarization_current_length + elementary_charge/Plank_constant_bar* energy_difference_vector[i]* Im(mpl_kt[i,] * d_vc[i]) *delta_k
+	Polarization_current_length <- Polarization_current_length + elementary_charge/Plank_constant_bar* energy_difference_vector[i]* 2* Im(mpl_kt[i,] * Conj(d_vc[i])) *delta_k
 	Energy_free_length <- Energy_free_length + (energy_valence_vector[i] * nvl_kt[i,] + energy_conduction_vector[i] * ncl_kt[i,] ) *delta_k
 	Energy_interaction_length <- Energy_interaction_length -elementary_charge* E_vector *(d_vv[i] * nvl_kt[i,] +d_cc[i] * ncl_kt[i,] +2*Re(Conj(d_vc[i])*mpl_kt[i,])) *delta_k
 }
@@ -277,19 +278,19 @@ gauge<-"velocity"
 if(gauge=="velocity"){
 
 diff_number_valence_velocity <- function(A, mpv){
-	dnvv <- -2i*elementary_charge* A *Re(mpv*Conj(d_vc)) *energy_difference_vector* delta_t / Plank_constant_bar^2
+	dnvv <- 2*elementary_charge/ Plank_constant_bar^2 * A *energy_difference_vector* Re(mpv*Conj(d_vc)) * delta_t 
 	#dnvv <- dnvv - (nvv-1) /relaxation_constant_velocity *delta_t
 	return (dnvv)
 }
 diff_number_conduction_velocity <- function(A, mpv){
-	dncv <- 2i*elementary_charge* A *Re(mpv*Conj(d_vc)) *energy_difference_vector* delta_t / Plank_constant_bar^2
+	dncv <- -2*elementary_charge/Plank_constant_bar^2 * A *energy_difference_vector* Re(mpv*Conj(d_vc)) * delta_t
 	#dncv <- dncv - ncv /relaxation_constant_velocity *delta_t
 	return (dncv)
 }
 diff_micro_polarization_velocity <- function(A, mpv, nvv, ncv){
 	dmpv <- ( 1i *energy_difference_vector *mpv /Plank_constant_bar
-	-1i* elementary_charge* A /Plank_constant_bar^2 * ( energy_difference_vector* d_vc * (ncv-nvv) 
-	+(grad_enegy_conduction_vector - grad_enegy_valence_vector)*mpv ) ) * delta_t
+	-1i* elementary_charge* A /Plank_constant_bar^2 * (grad_enegy_conduction_vector - grad_enegy_valence_vector)*mpv  
+	+ elementary_charge* A /Plank_constant_bar^2 * energy_difference_vector* d_vc * (ncv-nvv) ) * delta_t
 	#dmpv <- dmpv -mpv / dephasing_constant * delta_t #dephasing
 	return (dmpv)
 }
@@ -350,13 +351,13 @@ for(i in 1:(div_num_ka)){
 	Charge_conduction_velocity <- Charge_conduction_velocity + ncv_kt[i,]	* delta_k
 	Current_valence_velocity <-  Current_valence_velocity - elementary_charge/Plank_constant_bar* grad_enegy_valence_vector[i] * nvv_kt[i,] *delta_k
 	Current_conduction_velocity <- Current_conduction_velocity - elementary_charge/Plank_constant_bar* grad_enegy_conduction_vector[i] * ncv_kt[i,] *delta_k 
-	Polarization_current_velocity <- Polarization_current_velocity + elementary_charge/Plank_constant_bar* energy_difference_vector[i]* Im(mpv_kt[i,] * d_vc[i]) *delta_k
+	Polarization_current_velocity <- Polarization_current_velocity + elementary_charge/Plank_constant_bar* energy_difference_vector[i]*2* Im(mpv_kt[i,] * Conj(d_vc[i])) *delta_k
 	Energy_free_velocity <- Energy_free_velocity +(energy_valence_vector[i] * nvl_kt[i,] + energy_conduction_vector[i] * ncl_kt[i,] ) *delta_k
 	Energy_interaction_velocity <- Energy_interaction_velocity -elementary_charge* A_vector/Plank_constant_bar*(nvv_kt[i,]*grad_enegy_valence_vector[i] + ncv_kt[i,]*grad_enegy_conduction_vector[i] - energy_difference_vector[i] *2*Im(Conj(d_vc[i])*mpv_kt[i,])) *delta_k
 }
-Current_vectorP_velocity <- elementary_charge^2 / mass_of_electron* A_vector * (Charge_valence_velocity+ Charge_conduction_velocity)
+Current_vectorP_velocity <- elementary_charge^2 * A_vector * (Charge_valence_velocity/ effective_mass_valence+ Charge_conduction_velocity/effective_mass_conduction)
 Current_velocity <- Current_valence_velocity + Current_conduction_velocity
-E_HHG_velocity <- Current_velocity +  Polarization_current_velocity #+ Current_vectorP_velocity
+E_HHG_velocity <- Current_velocity +  Polarization_current_velocity + Current_vectorP_velocity
 Energy_velocity <- Energy_free_velocity + Energy_interaction_velocity
 
 E_spectrum <- fft(E_vector)
@@ -393,8 +394,8 @@ par(new=T)
 plot(t_vector*10^15, Re(Current_velocity), xlab="", ylab="", xlim=trange, ylim=E_HHGrange, axes=FALSE, yaxt="n", col="blue", type="l")
 par(new=T)
 plot(t_vector*10^15, Re(Polarization_current_velocity), xlab="", ylab= "", xlim=trange, ylim=E_HHGrange, axes=FALSE, yaxt="n", col="green", type="l")  
-#par(new=T)
-#plot(t_vector*10^15, Re(Current_vectorP_velocity), xlab="", ylab="", xlim=trange, ylim=E_HHGrange, axes=FALSE, yaxt="n", col="orange", type="l")  
+par(new=T)
+plot(t_vector*10^15, Re(Current_vectorP_velocity), xlab="", ylab="", xlim=trange, ylim=E_HHGrange, axes=FALSE, yaxt="n", col="orange", type="l")  
 dev.off()  
 
 E_HHG <- c(E_HHG_length, E_HHG_velocity)
@@ -415,8 +416,8 @@ par(new=T)
 plot(t_vector*10^15, Re(Current_velocity), xlab="", ylab="", xlim=trange, ylim=E_HHGrange, axes=FALSE, yaxt="n", col="blue", type="l", lty="dashed")
 par(new=T)
 plot(t_vector*10^15, Re(Polarization_current_velocity), xlab="", ylab= "", xlim=trange, ylim=E_HHGrange, axes=FALSE, yaxt="n", col="green", type="l", lty="dashed")  
-#par(new=T)
-#plot(t_vector*10^15, Re(Current_vectorP_velocity), xlab="", ylab="", xlim=trange, ylim=E_HHGrange, axes=FALSE, yaxt="n", col="orange", type="l", lty="dashed")  
+par(new=T)
+plot(t_vector*10^15, Re(Current_vectorP_velocity), xlab="", ylab="", xlim=trange, ylim=E_HHGrange, axes=FALSE, yaxt="n", col="orange", type="l", lty="dashed")  
 dev.off()  
 
 Energy <- Re(c(Energy_length, Energy_velocity))
@@ -484,7 +485,7 @@ plot(frequency/carrier_frequency, abs(Polarization_current_velocity_spectrum)^2,
 abline(v=0:20, col='black', lty="dotted")
 dev.off()     
 
-if(0){
+if(1){
 print("Exporting debug_np_length.gif ...")
 numt <- round( 2*10^-15 /delta_t )
 nplim=c(-1.2, 1.2)
