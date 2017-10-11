@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2015.5.24)  11 OCT 2017 05:13
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2015.5.24)  12 OCT 2017 03:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -186,40 +186,35 @@ LaTeX Font Warning: Font shape `JY1/mc/m/it' undefined
 
 [1]
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10.95> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 19.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 69.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10.95> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 19.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 69.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 20.
+(Font)              <7> on input line 75.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 20.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 20.
- [2]
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 54.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 54.
+(Font)              <5> on input line 75.
 
-
-LaTeX Warning: Reference `sec:BL' on page 3 undefined on input line 54.
-
-
-LaTeX Warning: Reference `sec:BV' on page 3 undefined on input line 54.
-
-[3]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 73.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 73.
- [4]
-Overfull \hbox (50.10297pt too wide) in alignment at lines 117--126
+Overfull \hbox (10.78542pt too wide) in alignment at lines 100--110
  [][][] []
  []
 
-[5] [6] [7] [8] [9] [10] [11] [12] [13] [14] (./Liouville_eqn_for_HHG.bbl
+[2]
+Overfull \hbox (50.10297pt too wide) in alignment at lines 130--139
+ [][][] []
+ []
+
+[3] [4] [5] [6] [7] [8]
+Overfull \hbox (48.24255pt too wide) in alignment at lines 457--462
+ [][][] []
+ []
+
+(./Liouville_eqn_for_HHG.bbl
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <10.95> on input line 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 1.
 
 
 LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
@@ -229,21 +224,18 @@ LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
 LaTeX Font Warning: Font shape `JY1/gt/m/it' undefined
 (Font)              using `JY1/gt/m/n' instead on input line 7.
 
-) [15] (./Liouville_eqn_for_HHG.aux)
+) [9] (./Liouville_eqn_for_HHG.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were undefined references.
-
  ) 
 Here is how much of TeX's memory you used:
- 2868 strings out of 493777
- 37458 string characters out of 6151334
- 128231 words of memory out of 5000000
- 6360 multiletter control sequences out of 15000+600000
- 21236 words of font info for 78 fonts, out of 8000000 for 9000
+ 2852 strings out of 493777
+ 37275 string characters out of 6151334
+ 126231 words of memory out of 5000000
+ 6345 multiletter control sequences out of 15000+600000
+ 19701 words of font info for 73 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 29i,14n,25p,443b,318s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,14n,25p,437b,311s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Liouville_eqn_for_HHG.dvi (15 pages, 60472 bytes).
+Output written on Liouville_eqn_for_HHG.dvi (9 pages, 40344 bytes).
