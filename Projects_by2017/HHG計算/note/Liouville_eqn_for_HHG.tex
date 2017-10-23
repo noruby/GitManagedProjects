@@ -1,0 +1,605 @@
+\documentclass[aps,prb,preprint]{revtex4-1}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{color}
+\makeatletter
+
+\begin{document}
+
+\title{The Liouville equation for high harmonic generation in solid: the electromagnetic gauge dependence and the Bloch/Wannier representation}
+\author{Nobuyoshi Hiramatsu}
+\affiliation{Department of Applied Physics, the University of Tokyo}
+\date{25 October 2017}
+\begin{abstract}
+We provide a derivation of of the Liouville equation in various representations and gauges .
+\end{abstract}
+\maketitle
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+\if0
+\section{Introduction}
+Let $\hat{\rho}$ be the reduced density operator and $\hat{H}$ be the hamiltonian of the system, then the time development of the system is calculated by the Liouville equation, or the von Neumann equation.
+\begin{eqnarray}
+i \hbar \frac{\partial \hat{\rho} }{\partial t } &=&  [\hat{H}, \hat{\rho}] %\\
+%#&=& \frac{\hat{H}\hat{\rho} - (\hat{H}\hat{\rho})^{\dag} }{i \hbar}  \nonumber 
+\end{eqnarray}
+The righthand side of the second line corresponds the anti-Hermite component of the $\hat{H}\hat{\rho}/ \hbar$.
+
+Let $|{\bf m}>$ be the time-independent orthonormal basis satisfying the complete relation $\sum_{\bf m} |{\bf m}><{\bf m}| = {\bf 1}$. Then we have the matrix representation of the Liouville equation as follows.
+\begin{eqnarray}
+i \hbar \frac{ \partial }{\partial t } <{\bf m}| \hat{\rho} |{\bf m'}> &=&  <{\bf m}| \hat{H} \hat{\rho} - \hat{\rho} \hat{H} |{\bf m'}> \nonumber\\
+&=&  \sum_{{\bf m''}} ( <{\bf m}| \hat{H} |{\bf m''}><{\bf m''}| \hat{\rho} |{\bf m'}> - <{\bf m}| \hat{\rho} |{\bf m''}><{\bf m''}| \hat{H} |{\bf m'}> ).\label{eq:LE2} \end{eqnarray} 
+
+The Bloch states $\{ |n{\bf k}> \}$ and Wannier states $\{ |n{\bf R}> \}$ are the time-independent orthonormal basis.
+with the band index $n$ and c,
+When we consider a system interacting with electromagnetic field, the hamiltonian of the system is
+ \begin{eqnarray}
+ \hat{H} &=&\frac{ ({\bf \hat{p}} - e{\bf A})^2 }{2m} -e \phi + \hat{V}(x) \nonumber \\ 
+ &=& H_0 + H_{int} 
+ \end{eqnarray}
+where ${\bf A}$ is the vector potential, $\phi$ is the scalar potential, $\hat{H}_0 = {\bf \hat{p}}^2/2m + \hat{V}(x)$ is the free hamiltonian without external electric filed, and $H_{int} =( - 2e{\bf A} \cdot {\bf \hat{p}} + e^2 |{\bf A}|^2)/2m -e \phi$ is the interaction hamiltonian with electric field.
+
+
+Considering the electromagnetic gauge freedom, the interaction hamiltonian is not uniqely determined (See Appendix). For convenience, we consider the length and velocity gauge from the Coulomb gauge (i.e. the divergence of the vector potential vanishes $\nabla \cdot {\bf A} = 0$). In the length gauge, the vector potential is set to be 0 (${\bf A} = {\bf 0}$). On the other hand, in the velocity gauge($\phi = 0$
+The corresponding interaction hamiltonian of the length gauge  $\hat{H}^{L}_{int}$ and that of the velocity gauge $\hat{H}^{V}_{int}$ are 
+ \begin{eqnarray}
+ \hat{H}^{L}_{int} &=&  -e{\bf E} \cdot {\bf \hat{x}}, \\
+ \hat{H}^{V}_{int} &=& \frac{- 2e{\bf A} \cdot {\bf \hat{p}} + e^2 |{\bf A}|^2}{2m}. 
+\end{eqnarray}
+where ${\bf A} = - \int {\bf E} dt$ is the vector potential determined by the external electric filed. 
+
+\textcolor{red}{emitted field is proportional to electric current flowing through the solid}
+The current is separated into two parts: the interband current and intraband current.\cite{Foldi}
+electric dipole is expressi
+
+In this report, we calculated the spectra of HHG from solid by numerically solving the Liouville equation with four scheme: the Bloch representation with the length and velocity gauges (Chap. \ref{sec:BL} and \ref{sec:BV}, respectively), and the wannier representation with the length and velocity gauges (Chap. \ref{sec:WL} and \ref{sec:WV}, respectively)
+%----------------------------------------------------------------------------------------------------------------------------------------
+
+\section{Result}
+
+\section{Discussion}
+
+\section{Conclusion}
+
+\newpage
+\fi
+
+\begin{appendix} \footnotesize
+%----------------------------------------------------------------------------------------------------------------------------------------
+\section{Fundamental formulas}
+%In this section we provide the Liouville equation in the Bloch state $|n{\bf k}>$ and we fix the length gauge (i.e. ${\bf m} = \{n, {\bf k}\}$; $H_{int} =-e{\bf E} \cdot {\bf \hat{x}}$ ). 
+%We assume that the coherence between the different momentum $ <n{\bf k}| \hat{\rho} |n'{\bf k'}> ({\bf k} \neq {\bf k})$ is negligible.
+%\textcolor{red}{dipole approx., dipole transition, derivative}
+%SBEに対応。
+%
+\begin{eqnarray}
+<n{\bf k}|\hat{\bf x}|n''{\bf k''}>&=& <n{\bf k}| \{ -i \nabla_{\bf k''} e^{i{\bf k'' \cdot \hat{x} }} \} |u_{n''{\bf k''}}>\nonumber \\
+&=&  -i \nabla_{\bf k''} <n{\bf k}|n''{\bf k''}> + i <u_{n{\bf k}}| e^{-i{\bf (k-k'') \cdot \hat{x} }} |\nabla_{\bf k''} u_{n''{\bf k''}}>\nonumber \\
+&=&  -i \nabla_{\bf k''} <n{\bf k}|n''{\bf k''}> + \delta({\bf k-k''}) {\bf d}_{nn''}({\bf k}) \\
+<n''{\bf k''}|\hat{\bf x}|n'{\bf k'}>&=& <u_{n''{\bf k''}}| \{ i \nabla_{\bf k''} e^{-i{\bf k'' \cdot \hat{x} }} \} |n'{\bf k'}>\nonumber \\
+&=&  i \nabla_{\bf k''} <n''{\bf k''}|n'{\bf k'}> - i <\nabla_{\bf k"} u_{n''{\bf k''}}| e^{-i{\bf (k''-k') \cdot \hat{x} }} |u_{n'{\bf k'}}>\nonumber \\
+&=&  i \nabla_{\bf k''} <n''{\bf k''}|n'{\bf k'}> + \delta({\bf k''-k'}) {\bf d}_{n''n'}({\bf k'})
+\end{eqnarray} 
+
+%where $\nabla_{\bf k''} <n{\bf k}|n''{\bf k''}>$ is the derivative of the generalized function.
+%\textcolor{red}{note: delta fuction; momentum; $<u_{n{\bf k}}|\nabla_{\bf k} u_{n''{\bf k}}>$ is a function?}
+%
+%Here ${\bf d}_{nn''}({\bf k})$ and ${\bf d}_{n'n''}^*({\bf k})$ is defined as follows.
+\begin{eqnarray}
+i <u_{n{\bf k}}| e^{-i{\bf (k-k'' )\cdot \hat{x}} }|\nabla_{\bf k''} u_{n''{\bf k''}}> &=& \frac{iN}{\Omega} <u_{n{\bf K}}| e^{-i{\bf (K-K'' )\cdot \hat{x}} }|{\bf \nabla}_{\bf K''} u_{n''{\bf K''}}> \nonumber  \\
+&=& \frac{iN}{\Omega} \int d{\bf x} <u_{n{\bf K}}|{\bf x}> <{\bf x}|\nabla_{\bf K''} u_{n''{\bf K''}}> e^{-i{\bf (K-K'' )\cdot {x}} }\nonumber \\
+&=& \frac{iN}{\Omega} \sum_{\bf R} e^{-i{\bf (K-K'' )\cdot {\bf R}} } \int_{BL} d{\bf y} <u_{n{\bf K}}|{\bf y}> <{\bf y}|\nabla_{\bf K''} u_{n''{\bf K''}}> e^{-i{\bf (K-K'' )\cdot {y}} } \nonumber \\
+&=& \frac{iN^2}{\Omega} \delta_{KK''}  \int_{BL} d{\bf y} <u_{n{\bf K}}|{\bf y}> <{\bf y}|\nabla_{\bf K} u_{n''{\bf K}}> \nonumber \\
+&=& i \Omega \delta({\bf k-k''})  \int_{BL} d{\bf y}  <u_{n{\bf k}}|{\bf y}> <{\bf y}|\nabla_{\bf k} u_{n{\bf k}}> \nonumber \\
+&=& \frac{i\Omega}{N} \delta({\bf k-k''})  \int d{\bf x} <u_{n{\bf k}}|{\bf x}> <{\bf x}|\nabla_{\bf k} u_{n''{\bf k}}> \nonumber \\
+&=& \delta({\bf k-k''}) \{ \frac{i \Omega}{N} <u_{n{\bf k}}|\nabla_{\bf k} u_{n''{\bf k}}>  \}\nonumber \\
+&\equiv& \delta({\bf k-k''}) {\bf d}_{nn''}({\bf k})
+ \end{eqnarray} 
+ 
+ 
+ \begin{eqnarray}
+i <\nabla_{\bf k"} u_{n''{\bf k''}}| e^{-i{\bf (k''-k') \cdot \hat{x} }} |u_{n'{\bf k'}}> &=& \frac{iN}{\Omega} < {\bf \nabla}_{\bf K''} u_{n''{\bf K''}}| e^{-i{\bf (K''-K' )\cdot \hat{x}} }| u_{n'{\bf K'}}> \nonumber  \\
+&=& \frac{iN}{\Omega} \int d{\bf x} <\nabla_{\bf K''} u_{n''{\bf K''}}|{\bf x}> <{\bf x}|u_{n'{\bf K'}}> e^{-i{\bf (K''-K' )\cdot {x}} }\nonumber \\
+&=& \frac{iN}{\Omega} \sum_{\bf R} e^{-i{\bf (K''-K' )\cdot {\bf R}} } \int_{BL} d{\bf y} <\nabla_{\bf K''} u_{n''{\bf K''}}|{\bf y}> <{\bf y}| u_{n'{\bf K'}}> e^{-i{\bf (K''-K' )\cdot {y}} } \nonumber \\
+&=& \frac{iN^2}{\Omega} \delta_{K''K'}  \int_{BL} d{\bf y} <\nabla_{\bf K'} u_{n''{\bf K'}}|{\bf y}> <{\bf y}| u_{n'{\bf K'}}> \nonumber \\
+&=& i \Omega \delta({\bf k''-k'})  \int_{BL} d{\bf y}  < \nabla_{\bf k'} u_{n''{\bf k'}}|{\bf y}> <{\bf y}| u_{n'{\bf k'}}> \nonumber \\
+&=& \frac{i\Omega}{N} \delta({\bf k''-k'})  \int d{\bf x} < \nabla_{\bf k'} u_{n''{\bf k'}}|{\bf x}> <{\bf x}|u_{n'{\bf k'}}> \nonumber \\
+&=& \delta({\bf k''-k'}) \{ \frac{i \Omega}{N} <\nabla_{\bf k'} u_{n''{\bf k'}}|u_{n'{\bf k'}}>  \}\nonumber \\
+&=& - \delta({\bf k''-k'}) \{ \frac{i \Omega}{N} <u_{n''{\bf k'}}|\nabla_{\bf k'} u_{n'{\bf k'}}>  \}\nonumber \\
+&\equiv& - \delta({\bf k''-k'}) {\bf d}_{n''n'}({\bf k'})
+ \end{eqnarray} 
+ 
+%where the integral variable x runs in the entire space while y runs in a Blavais lattice.  
+%
+%We have a relation ${\bf d}_{n'n}({\bf k}) = {\bf d}_{nn'}^*({\bf k})$. Indeed, we obtain
+\begin{eqnarray}
+0 &=& i \nabla_{\bf k} <u_{n{\bf k}}|u_{n'{\bf k}}> \nonumber \\
+ &=& i <\nabla_{\bf k} u_{n{\bf k}}|u_{n'{\bf k}}> + i <u_{n{\bf k}}|  \nabla_{\bf k} u_{n'{\bf k}}> \nonumber \\
+ &=& - ( i < u_{n'{\bf k}}| \nabla_{\bf k} u_{n{\bf k}}> )^*+ i <u_{n{\bf k}}|  \nabla_{\bf k} u_{n'{\bf k}}> \nonumber \\
+ &=& - {\bf d}_{n'n}^*({\bf k}) + {\bf d}_{nn'}({\bf k}). 
+ \end{eqnarray} 
+ 
+\begin{eqnarray}
+<nk|&&[\hat{x},\hat{\rho}]|n'k'> \nonumber \\
+=&& \sum_{n''} \int dk'' (<nk|\hat{x}|n''k''><n''k''|\hat{\rho}|n'k'> - <nk|\hat{\rho}|n''k''><n''k''|\hat{x}|n'k'>) \nonumber \\
+=&& \sum_{n''} \int dk'' [ \{ -i \nabla_{\bf k''} <n{\bf k}|n''{\bf k''}> + \delta({\bf k-k''}) {\bf d}_{nn''}({\bf k}) \}<n''k''|\hat{\rho}|n'k'> \nonumber \\
+&& - <nk|\hat{\rho}|n''k''>\{ i \nabla_{\bf k''} <n''{\bf k''}|n'{\bf k'}> + \delta({\bf k''-k'}) {\bf d}_{n''n'}({\bf k'}) \} ] \nonumber \\
+=&& i (\nabla_{\bf k} + \nabla_{\bf k'}) <nk|\hat{\rho}|n'k'> + \sum_{n''} \{ {\bf d}_{nn''}({\bf k}) <n''k|\hat{\rho}|n'k'> - <nk|\hat{\rho}|n''k'> {\bf d}_{n''n'}({\bf k'}) \}  \nonumber \\
+\end{eqnarray} 
+
+\begin{eqnarray}
+<&&nk|[\hat{x}, [\hat{x},\hat{\rho}]]|n'k'> \nonumber \\
+=&& \sum_{n'''} \int dk''' <nk|\hat{x}|n'''k'''><n'''k'''|[\hat{x},\hat{\rho}]|n'k'>  - <nk| [\hat{x},\hat{\rho}]|n'''k'''><n'''k'''|\hat{x}|n'k'>) \nonumber \\
+=&& \sum_{n'''} \int dk''' \{ -i \nabla_{k'''} <nk|n'''k'''> + \delta({\bf k-k'''}) {\bf d}_{nn'''}({k})\} \nonumber \\ 
+&& \times [ i (\nabla_{k'''} + \nabla_{k'}) <n'''k'''|\hat{\rho}|n'k'> + \sum_{n''} {\bf d}_{n'''n''}({\bf k'''}) <n''k'''|\hat{\rho}|n'k'> - <n'''k'''|\hat{\rho}|n''k'> {\bf d}_{n''n'}({\bf k'})\} ]\nonumber \\
+ && - [ i (\nabla_{k} + \nabla_{k'''}) <nk|\hat{\rho}|n'''k'''> + \sum_{n''} {\bf d}_{nn''}() <n''k|\hat{\rho}|n'''k'''> - <nk|\hat{\rho}|n''k'''> {\bf d}_{n''n'''}(k''') ]\nonumber \\
+ && \times \{ i \nabla_{k'''} <n'''k'''|n'k'> + \delta(k'''-k') {\bf d}_{n'''n'}(k')\} \nonumber \\
+ =&& - (\nabla_{k} + \nabla_{k'})^2 <nk|\hat{\rho}|n'k'> + 2i(\nabla_{k} + \nabla_{k'})\{ \sum_{n''} {\bf d}_{nn''}({k}) <n''k|\hat{\rho}|n'k'> - <nk|\hat{\rho}|n''k'> {\bf d}_{n''n'}({k'})\} \nonumber \\
+ && +\sum_{n''n'''} [ d_{nn''}(k) d_{n''n'''}(k) <n'''k|\hat{\rho}|n'k'> - 2 d_{nn''}(k) <n''k|\hat{\rho}|n'''k'> d_{n'''n'}(k') + <nk|\hat{\rho}|n''k'> d_{n''n'''}(k') d_{n'''n'}(k')]\nonumber \\
+\end{eqnarray} 
+
+
+\begin{eqnarray}
+[\hat{\bf x}, \hat{H}_0] = [\hat{\bf x}, \frac{\hat{\bf p}}{2m}]  =\frac{i \hbar}{m}\hat{\bf p}???
+\end{eqnarray} 
+
+
+\begin{eqnarray}
+<n{\bf k}|[\hat{\bf x},\hat{H}_0]|n'{\bf k'}> &=& (\epsilon_{n'{\bf k'}}-\epsilon_{n{\bf k}}) <n{\bf k}|\hat{\bf x}|n'{\bf k'}> \nonumber \\
+%&=& i\frac{m(\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}})}{\hbar}\{-i \nabla_{\bf k'} <n{\bf k}|n'{\bf k'}> + \delta({\bf k-k'}) {\bf d}_{nn'}({\bf k})\} \\
+&=&\left\{
+\begin{array}{l}
+(\epsilon_{n'{\bf k'}}-\epsilon_{n{\bf k}})\{i\nabla_{\bf k} <n{\bf k}|n'{\bf k'}> +  \delta({\bf k-k'}) {\bf d}_{nn'}({\bf k})\}  \nonumber \\
+(\epsilon_{n'{\bf k'}}-\epsilon_{n{\bf k}})\{-i\nabla_{\bf k'} <n{\bf k}|n'{\bf k'}> +  \delta({\bf k-k'}) {\bf d}_{nn'}({\bf k})\} 
+\end{array}
+\right.
+\end{eqnarray} 
+
+\begin{eqnarray}
+<n{\bf k}|\hat{\bf p}|n'{\bf k'}> &=&i \frac{m(\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}})}{\hbar} <n{\bf k}|\hat{\bf x}|n'{\bf k'}> \nonumber \\
+%&=& i\frac{m(\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}})}{\hbar}\{-i \nabla_{\bf k'} <n{\bf k}|n'{\bf k'}> + \delta({\bf k-k'}) {\bf d}_{nn'}({\bf k})\} \\
+&=&\left\{
+\begin{array}{l}
+\frac{m}{\hbar}(\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}})\{-\nabla_{\bf k} <n{\bf k}|n'{\bf k'}> + i \delta({\bf k-k'}) {\bf d}_{nn'}({\bf k})\}  \\
+\frac{m}{\hbar}(\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}})\{\nabla_{\bf k'} <n{\bf k}|n'{\bf k'}> + i \delta({\bf k-k'}) {\bf d}_{nn'}({\bf k})\} 
+\end{array}
+\right.
+\end{eqnarray} 
+
+%In particular if $\{n{\bf k}\}=\{n'{\bf k'}\}$ 
+\begin{eqnarray}
+<n{\bf k}|\hat{\bf p}|n{\bf k}> &=& \frac{m}{i \hbar} <n{\bf k}|[\hat{\bf x},\hat{H}_0]|n{\bf k}> \nonumber \\
+&=& \frac{m}{i \hbar} \{ <u_{n{\bf k}}| (i \nabla_{\bf k} e^{-i{\bf k \cdot \hat{x} }} ) \hat{H}_0 |n{\bf k}> - <n{\bf k}| \hat{H}_0 (-i\nabla_{\bf k} e^{i{\bf k \cdot \hat{x}} }) |u_{n{\bf k}}> \} \nonumber \\
+&=& \frac{m}{\hbar} \{  \nabla_{\bf k} <n{\bf k}|\hat{H}_0|n{\bf k}> - <\nabla_{\bf k} u_{n{\bf k}}| e^{-i{\bf k \cdot \hat{x}} } \hat{H}_0  |n{\bf k}> - <n{\bf k}| \hat{H}_0 e^{i{\bf k \cdot \hat{x}} }|\nabla_{\bf k} u_{n{\bf k}}> \} \nonumber \\
+&=& \frac{m}{\hbar} \{  \nabla_{\bf k} \epsilon_{n{\bf k}} -  \epsilon_{n{\bf k}} \nabla_{\bf k} <u_{n{\bf k}}| u_{n{\bf k}}>\}  \nonumber \\
+&=& \frac{m}{\hbar} \nabla_{\bf k} \epsilon_{n{\bf k}}
+\end{eqnarray} 
+
+%\begin{eqnarray}
+%<n{\bf k}|[\hat{\bf p},\hat{\rho}]|n'{\bf k'}>&=& \frac{m}{i \hbar}<n{\bf k}|[[\hat{\bf x}, \hat{H}_0],\hat{\rho}]|n'{\bf k'}> \nonumber \\
+%&=&\frac{m}{i \hbar}  \sum_{n''} \int dk'' <nk|[\hat{\bf x}, \hat{H}_0]|n''k''><n''k''|\hat{\rho}|n'k'> - <nk|\hat{\rho}|n''k''><n''k''|[\hat{\bf x}, \hat{H}_0]|n'k'>) \nonumber \\
+%\end{eqnarray} 
+
+\section{Bloch-basis and length gauge}
+\begin{eqnarray}\label{eq:BL} 
+i \hbar \frac{ \partial }{\partial t } &&<n{\bf k}| \hat{\rho} |n'{\bf k'}> \nonumber \\
+= && \sum_{n''} \int_{BZ} dk''  ( <n{\bf k}| \hat{H}_0 -e{\bf E} \cdot {\bf \hat{x}} |n''{\bf k''}><n''{\bf k''}| \hat{\rho} |n'{\bf k'}> \nonumber  \\
+&&- <n{\bf k}| \hat{\rho} |n''{\bf k''}><n''{\bf k''}| \hat{H}_0 -e{\bf E} \cdot {\bf \hat{x}}  |n'{\bf k'}> )\nonumber  \\
+= && (\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}}) <n{\bf k}| \hat{\rho} |n'{\bf k'}> \nonumber  \\
+&&-e{\bf E} \cdot \sum_{n''}\int_{BZ} dk'' ( <n{\bf k}| {\bf \hat{x}} |n''{\bf k''}> <n''{\bf k''}| \hat{\rho} |n'{\bf k'}> - <n{\bf k}| \hat{\rho} |n''{\bf k''}> <n''{\bf k''}| {\bf \hat{x}} |n'{\bf k'}> ) \nonumber  \\
+= && (\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}}) <n{\bf k}| \hat{\rho} |n'{\bf k'}> \nonumber  \\
+&&-e{\bf E} \cdot [  i ( \nabla_{\bf k} + \nabla_{\bf k'} ) <n{\bf k}|\hat{\rho}|n'{\bf k'}> + \sum_{n''}\{ {\bf d}_{nn''}({\bf k})<n''{\bf k}|\hat{\rho}|n'{\bf k'}> - {\bf d}_{n''n'}({\bf k'})<n{\bf k}|\hat{\rho}|n''{\bf k'}> \} ] \nonumber  \\
+\end{eqnarray}
+%Here it is evident that the off-diagonal matrix elements respect to ${\bf k}$ does not couple diagonal elements. 
+
+%We calculate the two band case. 
+ \begin{eqnarray}
+i \hbar \frac{ \partial }{\partial t } &&<v{\bf k}| \hat{\rho} |v{\bf k}> \nonumber \\
+= && -e{\bf E} \cdot [  i \nabla_{\bf k} <v{\bf k}|\hat{\rho}|v{\bf k}> + \{ {\bf d}_{vc}({\bf k})<c{\bf k}|\hat{\rho}|v{\bf k}> - {\bf d}_{cv}({\bf k})<v{\bf k}|\hat{\rho}|c{\bf k}> \} ] \nonumber  \\
+= && -e{\bf E} \cdot[  i \nabla_{\bf k} <v{\bf k}|\hat{\rho}|v{\bf k}> - 2i {\bf Im}\{ {\bf d}_{vc}^*({\bf k})<v{\bf k}|\hat{\rho}|c{\bf k}> \} ] \\
+%
+i \hbar \frac{ \partial }{\partial t } &&<c{\bf k}| \hat{\rho} |c{\bf k}> \nonumber \\
+=&& -e{\bf E} \cdot [ i \nabla_{\bf k} <c{\bf k}|\hat{\rho}|c{\bf k}> + \{ {\bf d}_{cv}({\bf k})<v{\bf k}|\hat{\rho}|c{\bf k}> - {\bf d}_{vc}({\bf k})<c{\bf k}|\hat{\rho}|v{\bf k}> \} ] \nonumber  \\
+=&& -e{\bf E} \cdot [ i \nabla_{\bf k} <c{\bf k}|\hat{\rho}|c{\bf k}> + 2i {\bf Im}\{ {\bf d}_{vc}^*({\bf k})<v{\bf k}|\hat{\rho}|c{\bf k}> \} ] \\
+%
+i \hbar \frac{ \partial }{\partial t } &&<v{\bf k}| \hat{\rho} |c{\bf k}> \nonumber \\
+= && (\epsilon_{v{\bf k}}-\epsilon_{c{\bf k}}) <v{\bf k}| \hat{\rho} |c{\bf k}> \nonumber  \\
+&&-e{\bf E} \cdot [  i \nabla_{\bf k} <v{\bf k}|\hat{\rho}|c{\bf k}>  + \sum_{n''}\{ {\bf d}_{vn''}({\bf k})<n''{\bf k}|\hat{\rho}|c{\bf k}> - {\bf d}_{n''c}({\bf k})<v{\bf k}|\hat{\rho}|n''{\bf k}> \} ]\nonumber  \\
+= && - (\epsilon_{c{\bf k}}-\epsilon_{v{\bf k}}) <v{\bf k}| \hat{\rho} |c{\bf k}>  - i e{\bf E} \cdot \nabla_{\bf k} <v{\bf k}|\hat{\rho}|c{\bf k}> \nonumber  \\
+&&-e{\bf E} \cdot [ -\{ {\bf d}_{cc}({\bf k})-{\bf d}_{vv}({\bf k}) \} <v{\bf k}|\hat{\rho}|c{\bf k}> + {\bf d}_{vc}({\bf k}) \{ <c{\bf k}|\hat{\rho}|c{\bf k}> - <v{\bf k}|\hat{\rho}|v{\bf k}>  \} ] 
+\end{eqnarray}
+
+ \begin{eqnarray}
+H_L &=& tr\{\hat{\rho}( \hat{H}_0 -e{\bf E \cdot \hat{x}}) \} \nonumber \\
+&=& \sum_n \int d{\bf k} <n{\bf k}| \hat{\rho} |n{\bf k}> \epsilon_{n{\bf k}} - e{\bf E} \cdot \{ \sum_{nn'} \int d{\bf k} \int d{\bf k'} <n{\bf k}| \hat{\rho} |n'{\bf k'}><n'{\bf k'}| \hat{\bf x} |n{\bf k}> \} \nonumber \\
+&=& \sum_n \int d{\bf k} <n{\bf k}| \hat{\rho} |n{\bf k}> \epsilon_{n{\bf k}} \nonumber \\
+&& - e{\bf E} \cdot [ \sum_{nn'} \int d{\bf k} \int d{\bf k'} <n{\bf k}| \hat{\rho} |n'{\bf k'}> \{ \frac{1}{2i}(\nabla_{\bf k}-\nabla_{\bf k'}) <n'{\bf k'}|n{\bf k}> + \delta({\bf k'-k}) {\bf d}_{n'n}({\bf k})\} ]\nonumber \\
+&=& \sum_n \int d{\bf k} <n{\bf k}| \hat{\rho} |n{\bf k}> \epsilon_{n{\bf k}} \nonumber \\
+&& - e{\bf E} \cdot \{ \sum_{n} \int d{\bf k} \:{\bf Im}( \nabla_{\bf k}  <n{\bf k}| \hat{\rho} |n{\bf k}> ) + \sum_{nn'} \int d{\bf k} <n{\bf k}| \hat{\rho} |n'{\bf k}> {\bf d}_{n'n}({\bf k})\} \nonumber \\
+&=& \sum_n \int d{\bf k} <n{\bf k}| \hat{\rho} |n{\bf k}> \epsilon_{n{\bf k}} - e{\bf E} \cdot \{ \sum_{nn'} \int d{\bf k} <n{\bf k}| \hat{\rho} |n'{\bf k}> {\bf d}_{n'n}({\bf k})\} 
+\end{eqnarray}
+
+ \begin{eqnarray}
+H_L^2 &=& \sum_n \int d{\bf k} <n{\bf k}| \hat{\rho} |n{\bf k}> \epsilon_{n{\bf k}} - e{\bf E} \cdot \{ \sum_{nn'} \int d{\bf k} <n{\bf k}| \hat{\rho} |n'{\bf k}> {\bf d}_{n'n}({\bf k})\} \nonumber \\
+&=&  \int d{\bf k} ( <v{\bf k}| \hat{\rho} |v{\bf k}> \epsilon_{v{\bf k}} + <c{\bf k}| \hat{\rho} |c{\bf k}> \epsilon_{c{\bf k}} ) \nonumber \\
+&& - e{\bf E} \cdot  \int d{\bf k} [ <v{\bf k}| \hat{\rho} |v{\bf k}> {\bf d}_{vv}({\bf k}) + <c{\bf k}| \hat{\rho} |c{\bf k}> {\bf d}_{cc}({\bf k}) + 2{\bf Re}\{ <v{\bf k}| \hat{\rho} |c{\bf k}> {\bf d}_{vc}^*({\bf k}) \} ]   \nonumber \\
+\end{eqnarray}
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+\section{Bloch-basis and velocity gauge}
+%We derive general multi-band case in the velocity gauge and the Bloch representation (i.e. ${\bf m} = \{n, {\bf k}\}$; $H_{int} =( - 2e{\bf A} \cdot {\bf \hat{p}} + e^2 |{\bf A}|^2)/2m$ ), and apply the dipole approximation that we ignores the |${\bf A}|^2$ term. Then the Liouville equation become 
+\begin{eqnarray}
+i \hbar \frac{ \partial }{\partial t } &&<n{\bf k}| \hat{\rho} |n'{\bf k'}> \nonumber \\
+= &&  \sum_{n''} \int d{\bf k''} ( <n{\bf k}| \hat{H}_0 - \frac{e{\bf A} \cdot {\bf \hat{p}} }{m} |n''{\bf k''}><n''{\bf k''}| \hat{\rho} |n'{\bf k'}>  \nonumber \\
+&&-<n{\bf k}| \hat{\rho} |n''{\bf k''}><n''{\bf k''}| \hat{H}_0 - \frac{e{\bf A} \cdot {\bf \hat{p}} }{m}  |n'{\bf k'}> )\nonumber \\
+= && (\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}}) <n{\bf k}| \hat{\rho} |n'{\bf k'}> \nonumber \\
+&& -\frac{e{\bf A}}{m} \cdot \sum_{n''} \int d{\bf k''}\{ <n{\bf k}|\hat{\bf p}|n''{\bf k''}> <n''{\bf k''}| \hat{\rho} |n'{\bf k'}> - <n{\bf k}| \hat{\rho} |n''{\bf k''}><n''{\bf k''}|\hat{\bf p} |n'{\bf k'}> \}  \nonumber \\
+= && (\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}}) <n{\bf k}| \hat{\rho} |n'{\bf k'}> \nonumber  \\
+&& -\frac{e{\bf A}}{\hbar} \cdot \sum_{n''} \int d{\bf k''} [(\epsilon_{n{\bf k}}-\epsilon_{n''{\bf k''}})\{\nabla_{\bf k''} <n{\bf k}|n''{\bf k''}> + i \delta({\bf k-k''}) {\bf d}_{nn''}({\bf k})\} <n''{\bf k''}| \hat{\rho} |n'{\bf k'}>\nonumber  \\
+&& - <n{\bf k}| \hat{\rho} |n''{\bf k''}>(\epsilon_{n''{\bf k''}}-\epsilon_{n'{\bf k'}})\{-\nabla_{\bf k''} <n''{\bf k''}|n'{\bf k'}> + i \delta({\bf k''-k'}) {\bf d}_{n''n'}({\bf k'})\} ] \nonumber \\
+= && (\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}}) <n{\bf k}| \hat{\rho} |n'{\bf k'}> \nonumber  \\
+&& -\frac{e{\bf A}}{\hbar} \cdot (\nabla_{\bf k} \epsilon_{n{\bf k}} - \nabla_{\bf k'} \epsilon_{n'{\bf k'}}) <n{\bf k}| \hat{\rho} |n'{\bf k'}> \nonumber  \\
+&& -\frac{ie{\bf A}}{\hbar} \cdot  \sum_{n''} [ (\epsilon_{n{\bf k}}-\epsilon_{n''{\bf k}}) {\bf d}_{nn''}({\bf k}) <n''{\bf k}| \hat{\rho} |n'{\bf k'}>  -  (\epsilon_{n''{\bf k'}}-\epsilon_{n'{\bf k'}})<n{\bf k}| \hat{\rho} |n''{\bf k'}> {\bf d}_{n''n'}({\bf k'}) ] \nonumber \\
+\end{eqnarray}
+%Here it is evident that the off-diagonal matrix elements respect to ${\bf k}$ does not couple diagonal elements. 
+
+%We calculate the two band case. 
+\begin{eqnarray}
+i \hbar \frac{ \partial }{\partial t } &&<v{\bf k}| \hat{\rho} |v{\bf k}> \nonumber \\
+=&& -\frac{ie{\bf A}}{\hbar} \cdot  \{ (\epsilon_{v{\bf k}}-\epsilon_{c{\bf k}}) {\bf d}_{vc}({\bf k}) <c{\bf k}| \hat{\rho} |v{\bf k}>  -  (\epsilon_{c{\bf k}}-\epsilon_{v{\bf k}})<v{\bf k}| \hat{\rho} |c{\bf k}> {\bf d}_{cv}({\bf k}) \nonumber \} \\
+=&& +\frac{ie{\bf A}}{\hbar} \cdot [2 (\epsilon_{c{\bf k}}-\epsilon_{v{\bf k}}) {\bf Re}\{ {\bf d}_{vc}^*({\bf k}) <v{\bf k}| \hat{\rho} |c{\bf k}> \} ] \\
+%
+i \hbar \frac{ \partial }{\partial t } &&<c{\bf k}| \hat{\rho} |c{\bf k}> \nonumber \\
+=&& -\frac{ie{\bf A}}{\hbar} \cdot \{ (\epsilon_{c{\bf k}}-\epsilon_{v{\bf k}}) {\bf d}_{cv}({\bf k}) <v{\bf k}| \hat{\rho} |c{\bf k}>  -  (\epsilon_{v{\bf k}}-\epsilon_{c{\bf k}})<c{\bf k}| \hat{\rho} |v{\bf k}> {\bf d}_{vc}({\bf k}) \} \nonumber \\
+=&& -\frac{ie{\bf A}}{\hbar} \cdot [ 2 (\epsilon_{c{\bf k}}-\epsilon_{v{\bf k}}) {\bf Re}\{ {\bf d}_{vc}^*({\bf k}) <v{\bf k}| \hat{\rho} |c{\bf k}> \} ] \\
+%
+i \hbar \frac{ \partial }{\partial t } &&<v{\bf k}| \hat{\rho} |c{\bf k}> \nonumber \\
+= && (\epsilon_{v{\bf k}}-\epsilon_{c{\bf k}}) <v{\bf k}| \hat{\rho} |c{\bf k}>  -\frac{e{\bf A}}{\hbar} \cdot \{ (\nabla_{\bf k} \epsilon_{v{\bf k}} - \nabla_{\bf k} \epsilon_{c{\bf k}}) <v{\bf k}| \hat{\rho} |c{\bf k}> \} \nonumber  \\
+&& -\frac{ie{\bf A}}{\hbar} \cdot  \{ (\epsilon_{v{\bf k}}-\epsilon_{c{\bf k}}) {\bf d}_{vc}({\bf k}) <c{\bf k}| \hat{\rho} |c{\bf k}>  -  (\epsilon_{v{\bf k}}-\epsilon_{c{\bf k}})<v{\bf k}| \hat{\rho} |v{\bf k}> {\bf d}_{vc}({\bf k}) \} \nonumber \\
+= && - (\epsilon_{c{\bf k}}-\epsilon_{v{\bf k}}) <v{\bf k}| \hat{\rho} |c{\bf k}>  + \frac{e{\bf A}}{\hbar} \cdot \{ (\nabla_{\bf k} \epsilon_{c{\bf k}} - \nabla_{\bf k} \epsilon_{v{\bf k}}) <v{\bf k}| \hat{\rho} |c{\bf k}> \} \nonumber  \\
+&& + \frac{ie{\bf A}}{\hbar} \cdot  \{ (\epsilon_{c{\bf k}}-\epsilon_{v{\bf k}}) {\bf d}_{vc}({\bf k}) ( <c{\bf k}| \hat{\rho} |c{\bf k}> - <v{\bf k}| \hat{\rho} |v{\bf k}> ) \}
+\end{eqnarray}
+
+ \begin{eqnarray}
+H_V &=& tr\{\hat{\rho}( \hat{H}_0 - \frac{e{\bf A \cdot \hat{p}}}{m}) \} \nonumber \\
+&=& \sum_n \int d{\bf k} <n{\bf k}| \hat{\rho} |n{\bf k}> \epsilon_{n{\bf k}} - \frac{e{\bf A}}{m} \cdot \{ \sum_{nn'} \int d{\bf k} \int d{\bf k'} <n{\bf k}| \hat{\rho} |n'{\bf k'}><n'{\bf k'}| \hat{\bf p} |n{\bf k}> \} \nonumber \\
+&=& \sum_n \int d{\bf k} <n{\bf k}| \hat{\rho} |n{\bf k}> \epsilon_{n{\bf k}}\nonumber  \\
+&& - \frac{e{\bf A}}{\hbar} \cdot [ \sum_{nn'} \int d{\bf k} \int d{\bf k'}  (\epsilon_{n'{\bf k'}}-\epsilon_{n{\bf k}}) <n{\bf k}| \hat{\rho} |n'{\bf k'}>\{\nabla_{\bf k} <n'{\bf k'}|n{\bf k}> + i \delta({\bf k'-k}) {\bf d}_{n'n}({\bf k}) \} ] \nonumber \\
+&=& \sum_n \int d{\bf k} <n{\bf k}| \hat{\rho} |n{\bf k}> \epsilon_{n{\bf k}} \nonumber \\
+&& - \frac{e{\bf A}}{\hbar} \cdot [ \sum_{n} \int d{\bf k} \nabla_{\bf k} \epsilon_{n{\bf k}} <n{\bf k}| \hat{\rho} |n{\bf k}> + i \sum_{n \neq n'} \int d{\bf k} <n{\bf k}| \hat{\rho} |n'{\bf k}> (\epsilon_{n'{\bf k'}}-\epsilon_{n{\bf k}}) {\bf d}_{n'n}({\bf k})  ] 
+\end{eqnarray}
+
+ \begin{eqnarray}
+H_V^2 &=& \int d{\bf k} (<v{\bf k}| \hat{\rho} |v{\bf k}> \epsilon_{v{\bf k}}+ <c{\bf k}| \hat{\rho} |c{\bf k}> \epsilon_{c{\bf k}}) \nonumber \\
+&& - \frac{e{\bf A}}{\hbar} \cdot \int d{\bf k} ( <v{\bf k}| \hat{\rho} |v{\bf k}> \nabla_{\bf k} \epsilon_{v{\bf k}} + <c{\bf k}| \hat{\rho} |c{\bf k}> \nabla_{\bf k} \epsilon_{c{\bf k}} ) \nonumber \\
+&& + \frac{2e{\bf A}}{\hbar} \cdot \int d{\bf k} (\epsilon_{c{\bf k}}-\epsilon_{v{\bf k}}) {\bf Im}\{<v{\bf k}| \hat{\rho} |c{\bf k}> {\bf d}_{vc}^*({\bf k}) \} \nonumber \\
+\end{eqnarray}
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+\section{velocity/current and position}
+\begin{eqnarray}
+J &=&  -e\frac{\partial}{\partial t} tr(\hat{\rho}\hat{\bf x}) \nonumber \\
+&=&  -e\: tr(\frac{\partial \hat{\rho} }{\partial t}\hat{\bf x}) \nonumber \\
+&=&  -\frac{e}{i \hbar} tr([\hat{H}, \hat{\rho}] \hat{\bf x}) \nonumber \\
+&=&  -\frac{e}{i \hbar} tr(\hat{H}\hat{\rho}\hat{\bf x}-\hat{\rho}\hat{H}\hat{\bf x}) \nonumber \\
+&=&  -\frac{e}{i \hbar} tr\{\hat{\rho}(\hat{\bf x}\hat{H}-\hat{H}\hat{\bf x})\} \nonumber \\
+&=&  -\frac{e}{i \hbar} tr\{\hat{\rho}[\hat{\bf x},\hat{H}]\} \nonumber \\
+\end{eqnarray} 
+
+ \begin{eqnarray}
+ \hat{H}^{L}_{int} &=&  -e{\bf E} \cdot {\bf \hat{x}}, \\
+ \hat{H}^{V}_{int} &=& \frac{- 2e{\bf A} \cdot {\bf \hat{p}} + e^2 |{\bf A}|^2}{2m}. 
+\end{eqnarray}
+
+\begin{eqnarray}
+J^L&=&  -\frac{e}{i \hbar} tr\{\hat{\rho}[\hat{\bf x},\hat{H^L} ]\} \nonumber \\
+&=&  -\frac{e}{i \hbar} tr\{\hat{\rho}[\hat{\bf x},(\hat{H}_0 -e{\bf E} \cdot {\bf \hat{x}} )]\} \nonumber \\
+&=&  -\frac{e}{i \hbar} tr\{\hat{\rho}[\hat{\bf x},\hat{H}_0]\} \nonumber \\
+&=&   -\frac{e}{i \hbar} \sum_{nn'}\int d{\bf k} \int d{\bf k'} <n{\bf k}|\hat{\rho}|n'{\bf k'}><n'{\bf k'}|[\hat{\bf x},\hat{H}_0]|n{\bf k}> \nonumber \\
+&=&   -\frac{e}{i \hbar} \sum_{nn'}\int d{\bf k} \int d{\bf k'} <n{\bf k}|\hat{\rho}|n'{\bf k'}>(\epsilon_{n'{\bf k'}}-\epsilon_{n{\bf k}})\{-i\nabla_{\bf k} <n'{\bf k'}|n{\bf k}> +  \delta({\bf k'-k}) {\bf d}_{n'n}({\bf k})\} \nonumber \\
+&=&  -\frac{e}{\hbar} \sum_{n} \int d{\bf k} <n{\bf k}|\hat{\rho}|n{\bf k}> \nabla_{\bf k} \epsilon_{n{\bf k}}  + \frac{e}{\hbar} \sum_{nn'} \int d{\bf k} <n{\bf k}|\hat{\rho}|n'{\bf k}> (\epsilon_{n'{\bf k}}-\epsilon_{n{\bf k}}) \{i {\bf d}_{n'n}({\bf k})\}\nonumber \\
+\end{eqnarray} 
+
+\begin{eqnarray}
+J^V&=&  -\frac{e}{i \hbar} tr\{\hat{\rho}[\hat{\bf x},\hat{H^V} ]\} \nonumber \\
+&=&  -\frac{e}{i \hbar} tr\{\hat{\rho}[\hat{\bf x},(\hat{H}_0 +\frac{- 2e{\bf A} \cdot {\bf \hat{p}} + e^2 |{\bf A}|^2}{2m})]\} \nonumber \\
+&=&  -\frac{e}{i \hbar} tr\{\hat{\rho}[\hat{\bf x},\hat{H}_0]\} + \frac{e^2}{i m \hbar} {\bf A} tr\{\hat{\rho}[\hat{\bf x},\hat{\bf p}]\} \nonumber \\
+&=&  -\frac{e}{i \hbar} tr\{\hat{\rho}[\hat{\bf x},\hat{H}_0]\} + \frac{e^2}{m} {\bf A} tr(\hat{\rho}) \nonumber \\
+&=&   - \frac{e}{m} \sum_{nn'}\int d{\bf k} \int d{\bf k'} <n{\bf k}|\hat{\rho}|n'{\bf k'}><n'{\bf k'}|\hat{\bf p}|n{\bf k}> +\frac{e^2{\bf A}}{m}tr(\hat{\rho}) \nonumber \\
+&=&   -\frac{e}{\hbar} \sum_{nn'} \int d{\bf k}\int d{\bf k'} <n{\bf k}|\hat{\rho}|n'{\bf k'}> (\epsilon_{n'{\bf k'}}-\epsilon_{n{\bf k}})\{\nabla_{\bf k} <n'{\bf k'}|n{\bf k}> + i \delta({\bf k'-k}) {\bf d}_{n'n}({\bf k})\}  \nonumber \\
+&& + \frac{e^2{\bf A}}{m}tr(\hat{\rho}) \nonumber \\
+&=&   +\frac{e}{\hbar} \sum_{nn'} \int d{\bf k}\int d{\bf k'} \nabla_{\bf k}\{<n{\bf k}|\hat{\rho}|n'{\bf k'}> (\epsilon_{n'{\bf k'}}-\epsilon_{n{\bf k}})\} <n'{\bf k'}|n{\bf k}>   \nonumber \\
+&&   -\frac{e}{\hbar} \sum_{nn'} \int d{\bf k} <n{\bf k}|\hat{\rho}|n'{\bf k}> (\epsilon_{n'{\bf k}}-\epsilon_{n{\bf k}}) \{i {\bf d}_{n'n}({\bf k})\}  + \frac{e^2{\bf A}}{m}tr(\hat{\rho}) \nonumber \\
+&=&  \frac{e}{\hbar} \sum_{n} \int d{\bf k} <n{\bf k}|\hat{\rho}|n{\bf k}> \nabla_{\bf k} \epsilon_{n{\bf k}}  -\frac{e}{\hbar} \sum_{nn'} \int d{\bf k} <n{\bf k}|\hat{\rho}|n'{\bf k}> (\epsilon_{n'{\bf k}}-\epsilon_{n{\bf k}}) \{i {\bf d}_{n'n}({\bf k})\}  + \frac{e^2{\bf A}}{m}tr(\hat{\rho}) \nonumber \\
+\end{eqnarray} 
+
+\begin{eqnarray}
+J^{2} &=&  -\frac{e}{\hbar} \int d{\bf k} (<v{\bf k}|\hat{\rho}|v{\bf k}> \nabla_{\bf k} \epsilon_{v{\bf k}} +<c{\bf k}|\hat{\rho}|c{\bf k}> \nabla_{\bf k} \epsilon_{c{\bf k}} ) + \frac{e^2{\bf A}}{m}tr(\hat{\rho}) \nonumber \\
+&& -\frac{e}{\hbar} \int d{\bf k} [ <v{\bf k}|\hat{\rho}|c{\bf k}> (\epsilon_{c{\bf k}}-\epsilon_{v{\bf k}}) \{i {\bf d}_{cv}({\bf k})\} + <c{\bf k}|\hat{\rho}|v{\bf k}> (\epsilon_{v{\bf k}}-\epsilon_{c{\bf k}}) \{i {\bf d}_{vc}({\bf k})\} ]  \nonumber \\
+&=&  -\frac{e}{\hbar} \int d{\bf k} (<v{\bf k}|\hat{\rho}|v{\bf k}> \nabla_{\bf k} \epsilon_{v{\bf k}} +<c{\bf k}|\hat{\rho}|c{\bf k}> \nabla_{\bf k} \epsilon_{c{\bf k}} ) + \frac{e^2{\bf A}}{m}tr(\hat{\rho}) \nonumber \\
+&& + \frac{e}{\hbar} \int d{\bf k} (\epsilon_{c{\bf k}}-\epsilon_{v{\bf k}}) {\bf Im}[ <v{\bf k}|\hat{\rho}|c{\bf k}>{\bf d}_{vc} ]  
+\end{eqnarray} 
+
+\begin{eqnarray}
+J^L &=&  -e\frac{\partial}{\partial t} tr(\hat{\rho}\hat{\bf x}) \nonumber \\
+&=&  -e\: tr(\frac{\partial \hat{\rho} }{\partial t}\hat{\bf x}) \nonumber \\
+&=&  -\frac{e}{i \hbar} tr([\hat{H}_0 -e{\bf E \cdot \hat{x}}, \hat{\rho}] \hat{\bf x}) \nonumber \\
+\end{eqnarray} 
+
+\begin{eqnarray}
+{\bf x} &=&  tr(\hat{\rho}\hat{\bf x}) \nonumber \\
+&=&  \sum_{nn'} \int d{\bf k} \int d{\bf k'} <n{\bf k}|\hat{\rho}|n'{\bf k'}><n'{\bf k'}|\hat{\bf x}|n{\bf k}> \nonumber \\
+&=&  \sum_{nn'} \int d{\bf k} \int d{\bf k'} <n{\bf k}|\hat{\rho}|n'{\bf k'}>\{ \frac{1}{2i}(\nabla_{\bf k}-\nabla_{\bf k'}) <n'{\bf k'}|n{\bf k}> + \delta({\bf k'-k}) {\bf d}_{n'n}({\bf k})\} \nonumber \\
+&=& \sum_{nn'} \int d{\bf k} <n{\bf k}|\hat{\rho}|n'{\bf k}> {\bf d}_{n'n}({\bf k})
+\end{eqnarray} 
+
+\begin{eqnarray}
+{\bf x}^2 &=& \int d{\bf k} \{<v{\bf k}|\hat{\rho}|v{\bf k}> {\bf d}_{vv}({\bf k}) + <c{\bf k}|\hat{\rho}|c{\bf k}> {\bf d}_{cc}({\bf k}) + 2{\bf Re} \{ <v{\bf k}|\hat{\rho}|c{\bf k}> {\bf d}_{vc}^*({\bf k}) \}]
+\end{eqnarray} 
+
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+\if0
+\section{The gauge transformations}
+\begin{eqnarray}
+|x> &\rightarrow& |x'> = U(x) |x> \\
+|k> &\rightarrow& |k'> = U(k) |k>
+\end{eqnarray} 
+where $U(x)$ and $U(k)$ are unitary.
+\textcolor{red}{note: I have no idea if U(x) and U(k) are independent. }
+
+\begin{eqnarray}
+\phi &\rightarrow& \phi' = \phi +\frac{\hbar}{e} \frac{\partial \chi}{\partial t} \\
+{\bf A} &\rightarrow& {\bf A}' = +\frac{\hbar}{e} {\bf \nabla} \chi
+\end{eqnarray} 
+\textcolor{red}{note: $H^V$ is not the hamilton of the whole system; what is does A mean?}
+
+\begin{eqnarray}
+\hat{O} &\rightarrow& U^{\dag} \hat{O} U \nonumber 
+\end{eqnarray} 
+
+\begin{eqnarray}
+e^A B e^{-A} = B+ [A,B] +\frac{1}{2}[A,[A,B]] + ... \nonumber  
+\end{eqnarray} 
+
+By Campbell-Baker-Hausdorff formula, the hamiltonian transforms as  
+\begin{eqnarray}
+\hat{H}^V &=& \frac{ ({\bf \hat{p}} - e{\bf A})^2 }{2m} + V(\hat{x}) \nonumber \nonumber \\ 
+\rightarrow \hat{H}^L &=& exp(-\frac{ i e {\bf \widetilde{A} \cdot \hat{x}} }{\hbar}) \hat{H}^V exp( \frac{ i e {\bf \widetilde{A} \cdot \hat{x}}}{\hbar}) \nonumber \\
+&=& \hat{H}^V + \frac{i e}{\hbar}[{\bf \widetilde{A} \cdot \hat{x} }, \hat{H}^V] + o^2 \nonumber \\
+&=& \hat{H}^V + \frac{i e}{\hbar} \{ {\bf \widetilde{A}} \cdot [ {\bf \hat{x} }, \hat{H}^V] + [ {\bf \widetilde{A}} , \hat{H}^V] \cdot {\bf \hat{x} } \}+ o^2 \nonumber \\
+&=& \hat{H}^V + \frac{i e}{\hbar} \{ {\bf \widetilde{A}} \cdot (i \hbar \frac{{\bf \hat{p}} - e{\bf A}}{m}) + (- i \hbar \frac{\partial \widetilde{\bf A}}{\partial t}) \cdot {\bf \hat{x} } \}+ o^2 \nonumber \\
+&=& \frac{ \hat{\bf p}^2 }{2m} -e {\bf E \cdot \hat{\bf x}} + V(\hat{\bf x})+ (constant).\nonumber \\
+\end{eqnarray} 
+where the vector potential ${\bf \widetilde{A}}$ is formally an operator. 
+\textcolor{red}{note: $H^V$ is not the hamilton of the whole system; what does A mean?}
+
+Hereafter we consider 1-dimensional case.
+According to the Campbell-Baker-Hausdorff formula, the density operator transforms as 
+\begin{eqnarray}
+\hat{\rho}^V \rightarrow \hat{\rho}^L &=& exp(-\frac{ i e \widetilde{A} \hat{x} }{\hbar}) \hat{\rho}^V exp(\frac{ i e \widetilde{A} \hat{x} }{\hbar})\nonumber \\
+&=& \hat{\rho}^V -\frac{ i e \widetilde{A}}{\hbar} [\hat{x}, \hat{\rho}^V ] - \frac{ e^2 \widetilde{A}^2}{\hbar^2} [ \hat{x}, [\hat{x}, \hat{\rho}^V ] ]+ O(\widetilde{A}^3)
+\end{eqnarray} 
+\fi
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+%\section{variation principle and charge; the Neother's theorem}
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+\section{Wannier basis}
+$n$ is the band index, $\bf k$ is the crystal momentum, ${\bf R} $ is the Bravais Lattice
+The Bloch states $\{ |n{\bf k}> \}$ and Wannier states $\{ |n{\bf R}> \}$ are related by the Fourier expansion. 
+\begin{eqnarray}
+|n{\bf R}> &=&\frac{1}{\sqrt{N}} \sum_{\bf K} exp(-i{\bf K} \cdot {\bf R})|n{\bf K}> \nonumber\\
+&=&\frac{1}{\sqrt{\Omega}} \int_{BZ} d{\bf k} \; exp(-i{\bf k} \cdot {\bf R})|n{\bf k}> \nonumber\\
+&=&\frac{1}{\sqrt{\Omega}} \int_{BZ} d{\bf k} \; exp\{-i{\bf k} \cdot ({\bf R- \hat{x}})\}|u_{n{\bf k}}>\\
+<{\bf x}|n{\bf R}>&=& \frac{1}{\sqrt{\Omega}} \int_{BZ} d{\bf k} \; exp\{-i{\bf k} \cdot ({\bf R- x})\}<{\bf x}|u_{n{\bf k}}> \\
+|n{\bf K}>&=& \frac{1}{\sqrt{N}} \sum_{\bf R} \; exp(i{\bf k} \cdot {\bf R}) |n{\bf R}> \\
+|n{\bf k}>&=&  \sqrt{\frac{N}{\Omega}} |n{\bf K}> \nonumber \\
+&=& \frac{1}{\sqrt{\Omega}} \sum_{\bf R} \; exp(i{\bf k} \cdot {\bf R}) |n{\bf R}> \\
+ \int_{BZ} d{\bf k} &=& \frac{\Omega}{N} \sum_{\bf K}\\
+\sum_{\bf K} |n{\bf K}><n{\bf K}| &=& \int_{BZ} d{\bf k} |n{\bf k}><n{\bf k}|\\
+ \delta_{KK'} =<n{\bf K}|n{\bf K'}> &=& \frac{\Omega}{N} <n{\bf k}|n{\bf k'}> = \frac{\Omega}{N} \delta({\bf k-k'})\\
+ \nabla_{\bf k} &=& \nabla_{\bf K}
+ \end{eqnarray} 
+
+\begin{eqnarray}
+< n{\bf R}|n'{\bf R'}> &=& \frac{1}{\Omega}  \int \int_{BZ} d{\bf k} d{\bf k'} exp\{i({\bf k} \cdot {\bf R} -{\bf k'} \cdot {\bf R'})\}<n{\bf k}|n'{\bf k'}>  \nonumber \\
+&=& \frac{\delta_{nn'}}{\Omega} \int_{BZ} d{\bf k} \: exp\{i{\bf k} \cdot ({\bf R-R'})\}  \nonumber \\
+&=& \delta_{nn'}\delta_{\bf RR'} \\
+%
+|n{\bf R}>&=&\frac{1}{\Omega} \int_{BZ} d{\bf k} \; exp(-i{\bf k} \cdot {\bf R})|n{\bf k}> \nonumber \\
+&=&\frac{1}{\Omega} \sum_{\bf R'} \int_{BZ} d{\bf k} \; exp\{-i{\bf k} \cdot ({\bf R-R'}) \}|n{\bf R'}>\nonumber \\
+&=&\sum_{\bf R'} \delta_{\bf RR'} |n{\bf R'}>\nonumber \\
+&=& |n{\bf R}> \\
+%
+\int_{BZ} d{\bf k'} < n{\bf k}|n'{\bf k'}> &=& \frac{1}{\Omega} \sum_{\bf RR'} \int_{BZ} d{\bf k'}  exp\{i({\bf k}\cdot{\bf R}-{\bf k'} \cdot {\bf R'})\}<n{\bf R}|n'{\bf R'}>  \nonumber \\
+&=& \frac{\delta_{nn'}}{\Omega}\sum_{\bf R} \int_{BZ} d{\bf k'}  exp\{i({\bf k - k'})\cdot {\bf R}\} \nonumber \\
+&=& \frac{\delta_{nn'}}{N}\sum_{\bf RK'} exp\{i({\bf K - K'})\cdot {\bf R}\} \nonumber \\
+&=& \frac{\delta_{nn'}}{N}\sum_{\bf R} 1 \nonumber \\
+&=& \delta_{nn'} \\
+%
+|n{\bf k}>&=&\frac{1}{\sqrt{\Omega}} \sum_{\bf R} \; exp(i{\bf k} \cdot {\bf R}) |n{\bf R}> \nonumber \\
+&=&\frac{1}{\Omega} \sum_{\bf R} \int_{BZ} d{\bf k'} \; exp\{i({\bf k-k'}) \cdot {\bf R} \}|n{\bf k'}>\nonumber \\
+&=& \frac{1}{\sqrt{N \Omega}} \sum_{\bf RK'} exp\{i({\bf K - K'})\cdot {\bf R}\}|n{\bf K'}>\nonumber \\
+&=& \sqrt{\frac{N}{\Omega}} \sum_{\bf K'} \delta_{\bf KK'} |n{\bf K'}>\nonumber \\
+&=& \sqrt{\frac{N}{\Omega}} |n{\bf K}>\nonumber \\
+&=&|n{\bf k}>
+\end{eqnarray} 
+
+\begin{eqnarray}
+ < {\bf x}|u_{n{\bf k}}> &=& exp(-i{\bf k} \cdot {\bf x} )< {\bf x}|n{\bf k}> \nonumber \\
+&=& \frac{1}{\sqrt{\Omega}} \sum_{\bf R} exp\{-i{\bf k} \cdot ({\bf x-R} )\}< {\bf x} |n{\bf R}> \\
+ \nabla_{\bf k} < {\bf x}|u_{n{\bf k}}> &=& \frac{-i}{\sqrt{\Omega}} \sum_{\bf R} ({\bf x-R}) exp\{-i{\bf k} \cdot ({\bf x-R} )\}< {\bf x} |n{\bf R}>
+\end{eqnarray} 
+
+
+where $N$ is number of Bravais lattice points, and $\Omega$ is the volume of a Brillouin Zone. 
+The matrix element of an operator $\hat{O}$ is transferred to 
+\begin{eqnarray}
+ < n{\bf R}| \hat{O} |n'{\bf R'}> &=& \frac{1}{\Omega} \int \int_{BZ} d{\bf k} d{\bf k'} exp[i ({\bf k} \cdot {\bf R}- {\bf k'} \cdot {\bf R'} ) ]< n{\bf k}| \hat{O} |n'{\bf k'}>  \\
+ \widetilde{o}({\bf R}) &=& \frac{1}{\Omega} \int_{BZ} d{\bf k}  exp( - i{\bf k} \cdot {\bf R} ) o({\bf k}) \nonumber\\
+ &=& \frac{1}{N} \sum_{\bf K}  exp( - i{\bf K} \cdot {\bf R} ) o({\bf K})
+\end{eqnarray} 
+
+\begin{eqnarray}
+ < n{\bf R}| \hat{H}_0 |n'{\bf R'}> &=& \frac{1}{\Omega} \int \int_{BZ} d{\bf k} \:d{\bf k'} exp\{i ({\bf k} \cdot {\bf R}- {\bf k'} \cdot {\bf R'} ) \}< n{\bf k}| \hat{H}_0 |n'{\bf k'}>  \nonumber \nonumber \\
+&=& \frac{1}{\Omega} \int d{\bf k}_{BZ} \: exp\{i{\bf k} \cdot ({\bf R- R'} ) \} \delta_{nn'} \epsilon_{n{\bf k}} \nonumber\\
+&=& \delta_{nn'} \widetilde{\epsilon}_{n}({\bf R' - R} )  
+\end{eqnarray} 
+
+Assuming the 1-dimensional tight-binding model: $\epsilon_{n{\bf k}}= E^0_n + \Delta E_n \{1-cos({\bf ka})\}$, where $ \bf a$ is lattice constant,  
+\begin{eqnarray}
+ \widetilde{\epsilon}_{n}({\bf R} ) &=& \frac{1}{\Omega} \int d{\bf k} \: exp( -i{\bf k} \cdot {\bf R} ) \epsilon_{n{\bf k}} \nonumber \\
+&=& \frac{1}{\Omega} \int d{\bf k} \: exp( -i{\bf k} \cdot {\bf R} ) [E^0_n + \Delta E_n \{1-cos(ka)\} ] \nonumber\\
+&=& (E^0_n + \Delta E_n)\delta_{\bf R 0} - \frac{\Delta E_n}{2} \{ \delta_{\bf R a} + \delta_{\bf R(-a)} \} \\
+\end{eqnarray} 
+
+\begin{eqnarray}
+ < n{\bf R}| [\hat{H}_0, \hat{\rho} ]|n'{\bf R'}> = && \sum_{n''{\bf R''}} ( < n{\bf R}| \hat{H}_0 |n''{\bf R''}> < n''{\bf R''}|\hat{\rho} |n'{\bf R'}> -< n{\bf R}| \hat{\rho}|n''{\bf R''}> < n''{\bf R''}|\hat{H}_0 |n'{\bf R'}> ) \nonumber \\
+ = && \sum_{n''{\bf R''}} \{ \delta_{nn''} \widetilde{\epsilon}_{n}({\bf R''- R} )  < n''{\bf R''}|\hat{\rho} |n'{\bf R'}> - < n{\bf R}| \hat{\rho}|n''{\bf R''}> \delta_{n''n'} \widetilde{\epsilon}_{n'}({\bf R'- R''} )   \} \nonumber \\
+  = && \sum_{\bf R''} \{ \widetilde{\epsilon}_{n}({\bf R''- R} )  < n{\bf R''}|\hat{\rho} |n'{\bf R'}> - < n{\bf R}| \hat{\rho}|n'{\bf R''}> \widetilde{\epsilon}_{n'}({\bf R'- R''} )   \} \nonumber \\
+\end{eqnarray} 
+
+\begin{eqnarray}
+ < n{\bf R}| \hat{\bf x} |n'{\bf R'}> = && \frac{1}{\Omega} \int \int_{BZ} d{\bf k} \:d{\bf k'} exp\{i ({\bf k} \cdot {\bf R}- {\bf k'} \cdot {\bf R'} ) \}< n{\bf k}| \hat{\bf x} |n'{\bf k'}>  \nonumber \\
+= &&\frac{1}{\Omega}  \int \int_{BZ} d{\bf k} \:d{\bf k'} exp\{i ({\bf k} \cdot {\bf R}- {\bf k'} \cdot {\bf R'} ) \} \{ i \nabla_{\bf k} <n{\bf k}|n'{\bf k'}> + \delta({\bf k-k'}) {\bf d}_{nn'}({\bf k}) \} \nonumber \\
+= &&\frac{1}{\Omega} \int d{\bf k} \: exp\{i{\bf k} \cdot ({\bf R- R'} ) \}\{ \delta_{nn'} {\bf R}  + {\bf d}_{nn'}({\bf k}) \} \\
+= && \delta_{nn'} \delta_{\bf RR'} {\bf R}  + {\bf \widetilde d}_{nn'}({\bf R'-R})  \\
+\end{eqnarray} 
+
+\begin{eqnarray}
+ \widetilde{\bf d}_{nn'}({\bf R}) =&& \frac{1}{\Omega} \int d{\bf k} \: exp( -i{\bf k} \cdot {\bf R} ) {\bf d}_{nn'}({\bf k}) \nonumber \\
+ =&& \frac{1}{\Omega} \int d{\bf k} \: exp( -i{\bf k} \cdot {\bf R} )\{ \frac{i \Omega}{N} <u_{n{\bf k}}|\nabla_{\bf k} u_{n'{\bf k}}>  \}\nonumber \\
+ =&& \frac{i}{N} \int d{\bf x} \int d{\bf k}\: exp( -i{\bf k} \cdot {\bf R}) <u_{n{\bf k}}|{\bf x}> (\nabla_{\bf k}<{\bf x} |u_{n'{\bf k}}> )\nonumber \\
+ =&& \frac{1}{N\Omega} \int d{\bf x} \int d{\bf k}\: exp( -i{\bf k} \cdot {\bf R} ) \nonumber \\
+&& \times [\sum_{\bf R'} exp\{ i{\bf k} \cdot ({\bf x-R'} )\} <n{\bf R'}|{\bf y}> ] [ \sum_{\bf R''} ({\bf x-R''}) exp\{-i{\bf k} \cdot ({\bf x-R''} )\}< {\bf x} |n'{\bf R''}> ] \nonumber \\
+=&& \frac{1}{N\Omega} \sum_{\bf R'R''}  \int d{\bf x} ({\bf x-R''}) \int d{\bf k}\: exp\{ -i{\bf k} \cdot ({\bf R-R'+R''}) \} <n{\bf R'}|{\bf x}> < {\bf x} |n'{\bf R''}>  \nonumber \\
+=&& \frac{1}{N} \sum_{\bf R''}  \int d{\bf x} ({\bf x-R''})  <n({\bf R+R''})|{\bf x}> < {\bf x} |n'{\bf R''}>  \nonumber \\
+=&& \frac{1}{N} \sum_{\bf R''}  \int d{\bf x'} {\bf x'}  <n({\bf R+R''})|{\bf x'+R''}> < {\bf x+R''} |n'{\bf R''}>  \nonumber \\
+=&& \int d{\bf x'} {\bf x'}  <n{\bf R}|{\bf x'}> < {\bf x} |n'{\bf 0}> ? \\
+\end{eqnarray}
+
+\begin{eqnarray}
+ \widetilde{\bf d}^*_{nn'}({\bf R}) =&& \frac{1}{\Omega} \int d{\bf k} \: exp( i{\bf k} \cdot {\bf R} ) {\bf d}^*_{nn'}({\bf k}) \nonumber \\
+ =&& \frac{1}{\Omega} \int d{\bf k} \: exp( i{\bf k} \cdot {\bf R} ) {\bf d}_{n'n}({\bf k}) \nonumber \\
+ =&& \widetilde{\bf d}_{n'n}({\bf -R})
+\end{eqnarray}
+
+\begin{eqnarray}
+ < n{\bf R}| [\hat{\bf x}, \hat{\rho} ]|n'{\bf R'}> = && \sum_{n''{\bf R''}} ( < n{\bf R}| \hat{\bf x}|n''{\bf R''}> < n''{\bf R''}|\hat{\rho} |n'{\bf R'}> -< n{\bf R}| \hat{\rho}|n''{\bf R''}> < n''{\bf R''}|\hat{\bf x} |n'{\bf R'}> ) \nonumber \\
+ = && \sum_{n''{\bf R''}} [ \{ \delta_{nn''} \delta_{\bf RR''} {\bf R}  + {\bf \widetilde d}_{nn''}({\bf R''-R}) \} < n''{\bf R''}|\hat{\rho} |n'{\bf R'}> \nonumber \\
+ &&-< n{\bf R}| \hat{\rho}|n''{\bf R''}> \{ \delta_{n''n'} \delta_{\bf R''R'} {\bf R'}  + {\bf \widetilde d}_{n''n'}({\bf R'-R''}) \} ] \nonumber \\
+  = && ({\bf R-R'}) < n{\bf R}|\hat{\rho} |n'{\bf R'}>  \nonumber \\
+  && + \sum_{n''{\bf R''}} \{ {\bf \widetilde d}_{nn''}({\bf R''-R}) \} < n''{\bf R''}|\hat{\rho} |n'{\bf R'}> -< n{\bf R}| \hat{\rho}|n''{\bf R''}> {\bf \widetilde d}_{n''n'}({\bf R'-R''}) \} ] \nonumber \\
+\end{eqnarray} 
+
+\begin{eqnarray}
+ i \hbar < n{\bf R}| \hat{\rho} |n'{\bf R'}> = && \sum_{n''{\bf R''}} ( < n{\bf R}| \hat{H}_0 -e{\bf E} \cdot {\bf \hat{x}} |n''{\bf R''}> < n''{\bf R''}|\hat{\rho} |n'{\bf R'}> -< n{\bf R}| \hat{\rho}|n''{\bf R''}> < n''{\bf R''}|\hat{H}_0 -e{\bf E} \cdot {\bf \hat{x}} |n'{\bf R'}> ) \nonumber \\
+ =&& \sum_{\bf R''} \{ \widetilde{\epsilon}_{n}({\bf R''- R} )  < n{\bf R''}|\hat{\rho} |n'{\bf R'}> - < n{\bf R}| \hat{\rho}|n'{\bf R''}> \widetilde{\epsilon}_{n'}({\bf R'- R''} )   \} \nonumber \\
+ && -e{\bf E} \cdot ({\bf R-R'}) < n{\bf R}|\hat{\rho} |n'{\bf R'}>\nonumber \\
+ && -e{\bf E} \cdot \sum_{n''{\bf R''}} \{ {\bf \widetilde d}_{nn''}({\bf R''-R}) \} < n''{\bf R''}|\hat{\rho} |n'{\bf R'}> -< n{\bf R}| \hat{\rho}|n''{\bf R''}> {\bf \widetilde d}_{n''n'}({\bf R'-R''}) \} ] \nonumber \\ 
+\end{eqnarray} 
+
+\begin{eqnarray}
+ i \hbar < v{\bf R}| \hat{\rho} |v{\bf R'}> =&& \sum_{\bf R''} \{ \widetilde{\epsilon}_{v}({\bf R''- R} )  < v{\bf R''}|\hat{\rho} |v{\bf R'}> - < v{\bf R}|\hat{\rho}|v{\bf R''}> \widetilde{\epsilon}_{v}({\bf R'- R''} )   \} \nonumber \\
+ && -e{\bf E} \cdot ({\bf R-R'}) < v{\bf R}|\hat{\rho} |v{\bf R'}>\nonumber \\
+ && -e{\bf E} \cdot \sum_{n''{\bf R''}} \{ {\bf \widetilde d}_{vn''}({\bf R''-R}) \} < n''{\bf R''}|\hat{\rho} |v{\bf R'}> -< v{\bf R}| \hat{\rho}|n''{\bf R''}> {\bf \widetilde d}_{n''v}({\bf R'-R''}) \} ] \nonumber \\ 
+\end{eqnarray} 
+
+\begin{eqnarray}
+ \rho_{init} =&& \frac{1}{\Omega} \int d{\bf k} |v{\bf k}>< v{\bf k}| ? \nonumber \\ 
+ =&& \frac{1}{N} \sum_{\bf K} |v{\bf K}>< v{\bf K}| ? \nonumber \\ 
+  =&& \frac{1}{N} \sum_{\bf K} |v{\bf R}>< v{\bf R}| ??
+\end{eqnarray} 
+
+\begin{eqnarray}
+{\bf x} &=&  tr(\hat{\rho}\hat{\bf x}) \nonumber \\
+ &=&   \sum_{nn'{\bf RR'}} <n{\bf R}|\hat{\rho}|n'{\bf R'}> <n'{\bf R'}|\hat{\bf x}|n'{\bf R'}>  \nonumber \\ 
+  &=&  \sum_{nn'{\bf RR'}}  <n{\bf R}|\hat{\rho}|n'{\bf R'}>  \{ \delta_{nn'} \delta_{\bf RR'} {\bf R}  + {\bf \widetilde d}_{nn'}({\bf R'-R}) \}\nonumber \\ 
+  &=&  \sum_{n{\bf R}}  <n{\bf R}|\hat{\rho}|n{\bf R}>  {\bf R}  + \sum_{nn'{\bf RR'}} <n{\bf R}|\hat{\rho}|n'{\bf R'}> {\bf \widetilde d}_{nn'}({\bf R'-R}) 
+\end{eqnarray} 
+
+\begin{eqnarray}
+J^L &=&  -e\frac{\partial}{\partial t} tr(\hat{\rho}\hat{\bf x}) \nonumber \\
+ &=&  -e  \sum_{nn'{\bf RR'}} <n{\bf R}|\frac{\partial \hat{\rho} }{\partial t}|n'{\bf R'}> <n'{\bf R'}|\hat{\bf x}|n'{\bf R'}> \nonumber \\ 
+  &=& -\frac{e}{i\hbar} \sum_{nn'{\bf RR'}}  <n{\bf R}|[H_0-e{\bf E \cdot \hat{x}}, \rho ]|n'{\bf R'}> <n'{\bf R'}|\hat{\bf x}|n'{\bf R'}> \nonumber \\ 
+ &=& -\frac{e}{i\hbar} \sum_{nn'{\bf RR'}} [ \sum_{\bf R''} \{ \widetilde{\epsilon}_{n}({\bf R''- R} )  < n{\bf R''}|\hat{\rho} |n'{\bf R'}> - < n{\bf R}| \hat{\rho}|n'{\bf R''}> \widetilde{\epsilon}_{n'}({\bf R'- R''} )   \} -e{\bf E} \cdot ({\bf R-R'}) < n{\bf R}|\hat{\rho} |n'{\bf R'}>  \nonumber \\
+  && + \sum_{n''{\bf R''}} \{ {\bf \widetilde d}_{nn''}({\bf R''-R}) \} < n''{\bf R''}|\hat{\rho} |n'{\bf R'}> -< n{\bf R}| \hat{\rho}|n''{\bf R''}> {\bf \widetilde d}_{n''n'}({\bf R'-R''}) \} ] ] \{ \delta_{nn'} \delta_{\bf RR'} {\bf R}  + {\bf \widetilde d}_{nn'}({\bf R'-R}) \}\nonumber \\ 
+\end{eqnarray} 
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+\section{the Chern topology}
+revisited in the wannier basis. The first Chern number in two dimension is 
+\begin{eqnarray}
+C_1 %&=& \frac{i}{2\pi} \int d{\bf k} \: \nabla_{\bf k} \times <u_{n{\bf k}}|\nabla_{\bf k}u_{n{\bf k}}> \nonumber \\ 
+&=& \frac{i}{2\pi} \int d^2{\bf k} (<\nabla_{\bf kx}u_{n{\bf k}}|\nabla_{\bf ky}u_{n{\bf k}}> - <\nabla_{\bf ky}u_{n{\bf k}}|\nabla_{\bf kz}u_{n{\bf k}}> )\nonumber \\ 
+\end{eqnarray} 
+
+If the we take the periodic gauge for the Bloch basis (i.e. $|u_{n{\bf k}}>=|u_{n({\bf k+K})}>$) and assume the smooth gauge (i.e. the derivative of Bloch basis $\nabla_{\bf k}|u_{n{\bf k}}>$ exists for any ${\bf k}$.), then the first Chern number $C_1$ vanishes, since
+\begin{eqnarray}
+\int d^2{\bf k} <\nabla_{\bf kx}u_{n{\bf k}}|\nabla_{\bf ky}u_{n{\bf k}}> &=&\int d^2{\bf k} \int d^2{\bf r}  (\nabla_{\bf kx}<u_{n{\bf k}}|{\bf r}>)(\nabla_{\bf ky}<{\bf r}|u_{n{\bf k}}>)\nonumber \\ 
+&=&\frac{1}{\Omega} \int d^2{\bf k} \int d^2{\bf r} [ \sum_{\bf R} ({\bf x-R_x}) exp\{i{\bf k} \cdot ({\bf r-R} )\}<n{\bf R}|{\bf r}> ] \nonumber \\ 
+&& \times [\sum_{\bf R'} ({\bf y-R'_y}) exp\{-i{\bf k} \cdot ({\bf r- R'} )\}< {\bf r} |n{\bf R'}>] \nonumber \\ 
+&=& \frac{1}{\Omega} \sum_{\bf RR'} \int d^2{\bf k} \int d^2{\bf r} ({\bf x-R_x})({\bf y-R'_y}) exp\{- i{\bf k} \cdot ({\bf R-R'} )\} <n{\bf R}|{\bf r}>< {\bf r} |n{\bf R'}> \nonumber \\ 
+&=& \sum_{\bf R} \int d^2{\bf r} ({\bf x-R_x})({\bf y-R_y}) <n{\bf R}|{\bf r}>< {\bf r} |n{\bf R}> \nonumber \\ 
+&=& \int d^2{\bf k} <\nabla_{\bf ky}u_{n{\bf k}}|\nabla_{\bf kx}u_{n{\bf k}}>.
+\end{eqnarray} 
+
+Conversely if the first Chern number $C_1$ vanishes, then we can construct a Bloch basis satisfying the periodic and smooth gauge.
+(prove)
+
+If we define a gauge-invariant? curvature $P_{nn'}$ as follows
+\begin{eqnarray}
+P_{nn'} = \nabla_{\bf k} \times <u_{n{\bf k}}|\nabla_{\bf k}u_{n'{\bf k}}>, 
+\end{eqnarray} 
+
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+\if0
+\section{the Wannier representation -Length gauge }
+\label{sec:WL}
+\begin{eqnarray*}
+\frac{ \partial }{\partial t } &&<n{\bf R}| \hat{\rho} |n'{\bf R'}> \\
+= && \frac{1}{i \hbar}  \sum_{n''{\bf R''}} ( <n{\bf R}| \hat{H}_0 -e{\bf E} \cdot {\bf \hat{x}} |n''{\bf R''}><n''{\bf R''}| \hat{\rho} |n'{\bf R'}> \\
+&&- <n{\bf R}| \hat{\rho} |n''{\bf R''}><n''{\bf R''}| \hat{H}_0 -e{\bf E} \cdot {\bf \hat{x}}  |n'{\bf R'}> )\\
+= &&\frac{1}{i \hbar} [ (\epsilon_{n{\bf k}}-\epsilon_{n'{\bf k'}}) <n{\bf k}| \hat{\rho} |n'{\bf k'}> \\
+&& -e{\bf E} \cdot(<n{\bf k}| {\bf \hat{x}} |n{\bf k}> - <n'{\bf k'}| {\bf \hat{x}} |n'{\bf k'}> ) <n{\bf k}| \hat{\rho} |n'{\bf k'}>\\ 
+&&-e{\bf E} \cdot \{ \sum_{n'' \neq n; {\bf k''}} <n{\bf k}| {\bf \hat{x}} |n''{\bf k''}> <n''{\bf k''}| \hat{\rho} |n'{\bf k'}> \\
+&&- \sum_{n'' \neq n'; {\bf k''}} <n{\bf k}| \hat{\rho} |n''{\bf k''}> <n''{\bf k''}| {\bf \hat{x}} |n'{\bf k'}> \} ]
+\end{eqnarray*}
+
+\begin{eqnarray*}
+\frac{ \partial \rho_{n',n}(l', l; t) }{\partial t } = \frac{1}{i \hbar} \sum_{n'',l''} \{ [ \epsilon_{n'}(l'-l'') \delta_{n'n''} ] \\
+- eE_0 \cdot \Delta_{n'n''}(l'-l'') + eV_{n'n''}(l', l'')] \rho_{n'',n}\\
+- [ \epsilon_{n}(l''-l) \delta_{n'n''} ] - eE_0 \cdot \Delta_{n'n''}(l'-l'') \\
++ eV_{n'n''}(l', l'')] \rho_{n'',n} \}
+\end{eqnarray*}
+
+ここで${\bf m}(x;t) = \frac{1}{\sqrt (N)} \sum_{l} exp(iK \dot l) A_n(x-l; t)$\\
+$\epsilon_{n}(l'-l'')$と$\Delta_{nn'}(l-l')$は双極子遷移のフーリエ展開に対応\\
+$\epsilon_{n}(l'-l'') =\frac{1}{N} \sum_K exp(-ik \cdot (l-l') ) \epsilon_n(k-\frac{e}{\hbar c}A_0)$\\
+$\Delta_{nn'}(l-l')=\frac{1}{N}\sum_K exp(-ik \cdot (l-l') ) R_{nn'})(k) $\\
+$V_{n'n}(l',l)= \int dx W^*_{n'}(x,l') V(x,t) W_n (x,l) $\\
+$R_{nn'}(k) = \frac{i}{\Omega} \int dx U^*_{n'k} \nabla_k U_{nk}$\\
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+\section{the Wannier representation -Velocity gauge }\cite{Iafrate} 
+\label{sec:WV}
+
+%\begin{eqnarray}
+%A_n(x-l; t) $=$ \frac{1}{\sqrt(N)} \Sigm
+%a_{k} exp(- iK \cdot l) {\bf m}(x;t)\\
+%$=$ exp(i \frac{e}{i \hbar c} A_0 \cdot (x-l))
+%\end{eqnarray}
+
+
+\section{The Maximally localized Wannier function}
+\fi
+\end{appendix}
+
+
+\bibliographystyle{unsrt}
+\bibliography{bibtex}
+
+\end{document}
