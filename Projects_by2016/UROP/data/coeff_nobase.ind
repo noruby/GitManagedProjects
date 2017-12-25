@@ -1,0 +1,1015 @@
+
+Grating_period = 9.75
+Metal_thickness = 2
+alpha = 10
+background_index = 1
+boundary_max = 60
+boundary_min = -650
+cad_aspectratio = 1
+cad_ind_file = SPP_excit_coeff2.ind
+color_outline = 2
+delta = 0.01
+dimension = 2
+domain_max = 20
+domain_min = -50
+eim = 0
+fdtd_dispersion = 1
+fdtd_display_res_auto = DISPLAY_RES_AUTO
+fdtd_monitor_time = lambda/4
+fdtd_monitor_time_auto = MONITOR_TIME_AUTO
+fdtd_nonuniform_mem_warning = 0
+fdtd_optimize_warned = 1
+fdtd_pml_width_x = 2
+fdtd_pml_width_z = 2
+fdtd_simmemcheck_warning = 0
+fdtd_stop_time = 1200
+fdtd_time_step = 0.003531073446
+fdtd_time_step_auto = 1
+fdtd_update_time = 9*lambda/4
+fdtd_update_time_auto = DISPLAY_TIME_AUTO
+free_space_wavelength = 10
+grid_align_x = 2
+grid_align_z = 2
+grid_bulk_nonuniform_x = 1
+grid_bulk_nonuniform_z = 1
+grid_edge_x = 0.005
+grid_edge_z = 0.005
+grid_mindiv_x = 5
+grid_mindiv_z = 5
+grid_nonuniform = 1
+grid_ratio_x = 1.2
+grid_ratio_z = 1.2
+grid_size = 0.5
+height = width
+k0 = (2*pi)/free_space_wavelength
+lambda = free_space_wavelength
+launch_angle = 0
+launch_position = 5
+launch_position_z = -40
+launch_power = 16
+launch_tilt = 1
+launch_type = LAUNCH_RECTANGLE
+launch_width = 65
+mode_set_setting = 0
+polarization = 1
+prefix = coeff_nobase
+sim_tool = ST_FULLWAVE
+step_size = 0.5
+width = 5
+
+
+material 1
+	name = Au
+	origin = Path=/RSoft/Metals/Au Date=04/01/2009 Time=12:00
+	comment = Lambda_Min=0.27, Lambda_Max=6, Src=App.Optics/Vol-37/pp-5271
+	epsinf = 1
+	num_dsp = 6
+	delta_1 = 1589.516
+	a_1 = 1
+	b_1 = 0.268419
+	c_1 = 0
+	delta_2 = 50.19525
+	a_2 = 1
+	b_2 = 1.220548
+	c_2 = 4.417455
+	delta_3 = 20.91469
+	a_3 = 1
+	b_3 = 1.747258
+	c_3 = 17.66982
+	delta_4 = 148.4943
+	a_4 = 1
+	b_4 = 4.406129
+	c_4 = 226.0978
+	delta_5 = 1256.973
+	a_5 = 1
+	b_5 = 12.63
+	c_5 = 475.1387
+	delta_6 = 9169
+	a_6 = 1
+	b_6 = 11.21284
+	c_6 = 4550.765
+end material
+
+
+segment 1
+	begin.x = -22.5+2.75*Grating_period
+	begin.z = 10
+	begin.width = Grating_period/2
+	end.x = 0 rel begin segment 1
+	end.y = 0 rel begin segment 1
+	end.z = Metal_thickness rel begin segment 1
+	end.width = Grating_period/2
+	mat_name = Au
+end segment
+
+segment 2
+	begin.x = -22.5+3.75*Grating_period
+	begin.z = 10
+	begin.width = Grating_period/2
+	end.x = 0 rel begin segment 2
+	end.y = 0 rel begin segment 2
+	end.z = Metal_thickness rel begin segment 2
+	end.width = Grating_period/2
+	mat_name = Au
+end segment
+
+segment 3
+	begin.x = -22.5+1.75*Grating_period
+	begin.z = 10
+	begin.width = Grating_period/2
+	end.x = 0 rel begin segment 3
+	end.y = 0 rel begin segment 3
+	end.z = Metal_thickness rel begin segment 3
+	end.width = Grating_period/2
+	mat_name = Au
+end segment
+
+segment 4
+	begin.x = -22.5+0.75*Grating_period
+	begin.z = 10
+	begin.width = Grating_period/2
+	end.x = 0 rel begin segment 4
+	end.y = 0 rel begin segment 4
+	end.z = Metal_thickness rel begin segment 4
+	end.width = Grating_period/2
+	mat_name = Au
+end segment
+
+polygon 5
+	count = 5
+	points =
+		0.5 0
+		0.5 1
+		-0.5 1
+		-0.5 0
+		0.5 0
+	end points
+	xscale = 500
+	zscale = 2
+	begin.x = -272.25
+	begin.z = 10
+end polygon
+
+segment 6
+	begin.x = -22.5+5.75*Grating_period
+	begin.z = 10
+	begin.width = Grating_period/2
+	end.x = 0 rel begin segment 6
+	end.y = 0 rel begin segment 6
+	end.z = Metal_thickness rel begin segment 6
+	end.width = Grating_period/2
+	mat_name = Au
+end segment
+
+segment 7
+	begin.x = -22.5+4.75*Grating_period
+	begin.z = 10
+	begin.width = Grating_period/2
+	end.x = 0 rel begin segment 7
+	end.y = 0 rel begin segment 7
+	end.z = Metal_thickness rel begin segment 7
+	end.width = Grating_period/2
+	mat_name = Au
+end segment
+
+time_monitor 8
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -122.5
+	begin.z = 8
+end time_monitor
+
+time_monitor 9
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -122.5
+	begin.z = 4
+end time_monitor
+
+time_monitor 10
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -122.5
+	begin.z = 0
+end time_monitor
+
+time_monitor 11
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -122.5
+	begin.z = -4
+end time_monitor
+
+time_monitor 12
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -122.5
+	begin.z = -8
+end time_monitor
+
+time_monitor 13
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -222.5
+	begin.z = 8
+end time_monitor
+
+time_monitor 14
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -222.5
+	begin.z = 4
+end time_monitor
+
+time_monitor 15
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -222.5
+	begin.z = 0
+end time_monitor
+
+time_monitor 16
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -222.5
+	begin.z = -4
+end time_monitor
+
+time_monitor 17
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -222.5
+	begin.z = -8
+end time_monitor
+
+time_monitor 18
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -322.5
+	begin.z = 8
+end time_monitor
+
+time_monitor 19
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -322.5
+	begin.z = 4
+end time_monitor
+
+time_monitor 20
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -322.5
+	begin.z = 0
+end time_monitor
+
+time_monitor 21
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -322.5
+	begin.z = -4
+end time_monitor
+
+time_monitor 22
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -322.5
+	begin.z = -8
+end time_monitor
+
+time_monitor 23
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -422.5
+	begin.z = 8
+end time_monitor
+
+time_monitor 24
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -422.5
+	begin.z = 4
+end time_monitor
+
+time_monitor 25
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -422.5
+	begin.z = 0
+end time_monitor
+
+time_monitor 26
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -422.5
+	begin.z = -4
+end time_monitor
+
+time_monitor 27
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -422.5
+	begin.z = -8
+end time_monitor
+
+segment 28
+	begin.x = -522.5-0.75*Grating_period
+	begin.z = 10
+	begin.width = Grating_period/2
+	end.x = 0 rel begin segment 28
+	end.y = 0 rel begin segment 28
+	end.z = Metal_thickness rel begin segment 28
+	end.width = Grating_period/2
+	mat_name = Au
+end segment
+
+segment 29
+	begin.x = -522.5-2.75*Grating_period
+	begin.z = 10
+	begin.width = Grating_period/2
+	end.x = 0 rel begin segment 29
+	end.y = 0 rel begin segment 29
+	end.z = Metal_thickness rel begin segment 29
+	end.width = Grating_period/2
+	mat_name = Au
+end segment
+
+segment 30
+	begin.x = -522.5-1.75*Grating_period
+	begin.z = 10
+	begin.width = Grating_period/2
+	end.x = 0 rel begin segment 30
+	end.y = 0 rel begin segment 30
+	end.z = Metal_thickness rel begin segment 30
+	end.width = Grating_period/2
+	mat_name = Au
+end segment
+
+segment 31
+	begin.x = -522.5-4.75*Grating_period
+	begin.z = 10
+	begin.width = Grating_period/2
+	end.x = 0 rel begin segment 31
+	end.y = 0 rel begin segment 31
+	end.z = Metal_thickness rel begin segment 31
+	end.width = Grating_period/2
+	mat_name = Au
+end segment
+
+segment 32
+	begin.x = -522.5-3.75*Grating_period
+	begin.z = 10
+	begin.width = Grating_period/2
+	end.x = 0 rel begin segment 32
+	end.y = 0 rel begin segment 32
+	end.z = Metal_thickness rel begin segment 32
+	end.width = Grating_period/2
+	mat_name = Au
+end segment
+
+segment 33
+	begin.x = -522.5-5.75*Grating_period
+	begin.z = 10
+	begin.width = Grating_period/2
+	end.x = 0 rel begin segment 33
+	end.y = 0 rel begin segment 33
+	end.z = Metal_thickness rel begin segment 33
+	end.width = Grating_period/2
+	mat_name = Au
+end segment
+
+time_monitor 34
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -512.5
+	begin.z = 5
+end time_monitor
+
+time_monitor 35
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -527.5
+	begin.z = 5
+end time_monitor
+
+time_monitor 36
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -542.5
+	begin.z = 5
+end time_monitor
+
+time_monitor 37
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -557.5
+	begin.z = 5
+end time_monitor
+
+time_monitor 38
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -572.5
+	begin.z = 5
+end time_monitor
+
+time_monitor 39
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -587.5
+	begin.z = 5
+end time_monitor
+
+time_monitor 40
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -512.5
+	begin.z = 0
+end time_monitor
+
+time_monitor 41
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -527.5
+	begin.z = 0
+end time_monitor
+
+time_monitor 42
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -542.5
+	begin.z = 0
+end time_monitor
+
+time_monitor 43
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -557.5
+	begin.z = 0
+end time_monitor
+
+time_monitor 44
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -572.5
+	begin.z = 0
+end time_monitor
+
+time_monitor 45
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -587.5
+	begin.z = 0
+end time_monitor
+
+time_monitor 46
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -512.5
+	begin.z = -5
+end time_monitor
+
+time_monitor 47
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -527.5
+	begin.z = -5
+end time_monitor
+
+time_monitor 48
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -542.5
+	begin.z = -5
+end time_monitor
+
+time_monitor 49
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -557.5
+	begin.z = -5
+end time_monitor
+
+time_monitor 50
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -572.5
+	begin.z = -5
+end time_monitor
+
+time_monitor 51
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -587.5
+	begin.z = -5
+end time_monitor
+
+time_monitor 52
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -512.5
+	begin.z = -10
+end time_monitor
+
+time_monitor 53
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -527.5
+	begin.z = -10
+end time_monitor
+
+time_monitor 54
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -542.5
+	begin.z = -10
+end time_monitor
+
+time_monitor 55
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -557.5
+	begin.z = -10
+end time_monitor
+
+time_monitor 56
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -572.5
+	begin.z = -10
+end time_monitor
+
+time_monitor 57
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -587.5
+	begin.z = -10
+end time_monitor
+
+time_monitor 58
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -512.5
+	begin.z = -15
+end time_monitor
+
+time_monitor 59
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -527.5
+	begin.z = -15
+end time_monitor
+
+time_monitor 60
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -542.5
+	begin.z = -15
+end time_monitor
+
+time_monitor 61
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -557.5
+	begin.z = -15
+end time_monitor
+
+time_monitor 62
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -572.5
+	begin.z = -15
+end time_monitor
+
+time_monitor 63
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -587.5
+	begin.z = -15
+end time_monitor
+
+time_monitor 64
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -512.5
+	begin.z = -20
+end time_monitor
+
+time_monitor 65
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -527.5
+	begin.z = -20
+end time_monitor
+
+time_monitor 66
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -542.5
+	begin.z = -20
+end time_monitor
+
+time_monitor 67
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -557.5
+	begin.z = -20
+end time_monitor
+
+time_monitor 68
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -572.5
+	begin.z = -20
+end time_monitor
+
+time_monitor 69
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -587.5
+	begin.z = -20
+end time_monitor
+
+time_monitor 70
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -512.5
+	begin.z = -25
+end time_monitor
+
+time_monitor 71
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -527.5
+	begin.z = -25
+end time_monitor
+
+time_monitor 72
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -542.5
+	begin.z = -25
+end time_monitor
+
+time_monitor 73
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -557.5
+	begin.z = -25
+end time_monitor
+
+time_monitor 74
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -572.5
+	begin.z = -25
+end time_monitor
+
+time_monitor 75
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -587.5
+	begin.z = -25
+end time_monitor
+
+time_monitor 76
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -512.5
+	begin.z = -30
+end time_monitor
+
+time_monitor 77
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -527.5
+	begin.z = -30
+end time_monitor
+
+time_monitor 78
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -542.5
+	begin.z = -30
+end time_monitor
+
+time_monitor 79
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -557.5
+	begin.z = -30
+end time_monitor
+
+time_monitor 80
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -572.5
+	begin.z = -30
+end time_monitor
+
+time_monitor 81
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -587.5
+	begin.z = -30
+end time_monitor
+
+time_monitor 82
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = 22.5
+	begin.z = -30
+end time_monitor
+
+time_monitor 83
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = 2.5
+	begin.z = -30
+end time_monitor
+
+time_monitor 84
+	profile_type = PROF_INACTIVE
+	color = 2
+	type = TIMEMON_EXTENDED
+	timeaverage = 2
+	monitoroutputmask = 10
+	begin.x = -17.5
+	begin.z = -30
+end time_monitor
+
+
+
+
+launch_field 1
+	launch_pathway = 0
+	launch_type = LAUNCH_RECTANGLE
+	launch_tilt = 1
+	launch_angle = 0
+	launch_width = 65
+	launch_position = 5
+	launch_position_z = -40
+	launch_power = 16
+end launch_field
+
+
+text_block 1
+	name = MOST
+	text =
+RSScanOptFormat1
+
+[MODE] 
+SCAN
+
+PREFIX SPP_excit_coeff
+PREFIX_STYLE 0
+CLUSTER 0 0 0 0 1 ""
+USERSIM_CALLSTYLE 0 0
+
+[SIMULATION]
+SIMTOOL ST_DEFAULT 
+WINDOW_SIZE 0
+VERBOSITY 0
+PRE_WHOLE_CMD 
+POST_WHOLE_CMD 
+PRE_CMD 
+POST_CMD 
+PREPOST_ACTIVE 0
+PREPOST_ERRCODES 0
+EXTRA_DATAINDEX_CMDS 
+
+[ALGORITHM]
+NAME root_1d_brent
+MAXSTEPS DEFAULT  1000
+CONVERGENCE DEFAULT  1.0e-7
+
+[INDEPENDENT_VARIABLES_SCAN]
+IV_Declarations
+SYMTAB_SCALAR Grating_period Y :  IV_LINEAR_STEPS : 8 : 12 : 0.25 : 17 :  :  :
+
+[INDEPENDENT_VARIABLES_OPT]
+IV_Declarations
+
+IV_InitialValues
+
+[MEASUREMENTS:ST_FULLWAVE]
+STANDARD fw_mon_all_last Y 
+
+[MEASUREMENTS:ST_FWMPI]
+STANDARD fw_mon_all_last Y 
+
+[METRICS]
+
+	end text
+end text_block
+

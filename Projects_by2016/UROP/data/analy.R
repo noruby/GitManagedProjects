@@ -1,0 +1,33 @@
+x <- c()
+ramda <- c()
+for( j in 2:61 ) {
+  for( i in 0:16 ) {
+    string <- paste("./SPP_excit_coeff_work/raw/SPP_excit_coeff_" , as.character(i) , ".tmn", sep="")
+    #string <- "./SPP_excit_coeff_work/raw/SPP_excit_coeff_0.tmn"
+    data <- read.table(string,sep=" ",skip=3)
+    #print(string)
+    ramda[i] = 8.0+0.25*i
+    #print(as.character(i))
+    x[i]=data[390,j] 
+  }
+  print(ramda)
+  print(x)
+
+if ( j%%2 == 0 ) {
+  k <- j/2 
+  pol <- "Ex"
+} else {
+  k <- (j-1)/2
+  pol <- "Ez"
+}
+
+  l <- (k-1)%%5
+  m <- as.integer((k-1)/5+1)
+  xcord <- m*100
+  zcord <- 4*l +2
+
+  string2 <- paste("./SPP_excit_coeff_work/plot/plot" ,pol,"_",xcord,"_",zcord, ".png", sep="") 
+  png(string2)
+  plot(ramda,x,type="l") 
+  dev.off()
+}
