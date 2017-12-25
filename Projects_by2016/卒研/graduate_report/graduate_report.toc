@@ -1,0 +1,16 @@
+\contentsline {section}{\numberline {1}はじめに}{2}
+\contentsline {section}{\numberline {2}解析手法}{3}
+\contentsline {subsection}{\numberline {2.1}解析モデル}{3}
+\contentsline {subsection}{\numberline {2.2}有限要素法にもとづく反復計算と変分法}{4}
+\contentsline {section}{\numberline {3}被加工管内面での磁束密度の大きさ}{5}
+\contentsline {section}{\numberline {4}解析結果と加工実験結果との比較}{10}
+\contentsline {subsection}{\numberline {4.1}磁束密度と加工量との比較}{10}
+\contentsline {subsection}{\numberline {4.2}磁束密度の勾配と加工量との比較}{10}
+\contentsline {subsection}{\numberline {4.3}解析結果と加工実験結果との比較まとめ}{14}
+\contentsline {subsection}{\numberline {4.4}鉄粉に働く力の概算}{14}
+\contentsline {section}{\numberline {5}様々な寸法の工具についての体系的な解析}{16}
+\contentsline {subsection}{\numberline {5.1}実験工具の設計}{16}
+\contentsline {subsection}{\numberline {5.2}解析結果の応用}{16}
+\contentsline {subsection}{\numberline {5.3}解析システム}{17}
+\contentsline {subsection}{\numberline {5.4}工具の形状による磁束密度の特性への一般的な考察}{17}
+\contentsline {section}{\numberline {6}おわりに}{21}

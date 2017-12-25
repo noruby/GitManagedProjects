@@ -1,0 +1,97 @@
+\documentclass[12pt]{jarticle}
+\usepackage{graphicx}
+\usepackage{bm}
+\begin{document}
+
+よく知られているように一粒子あたりに働く力について次の関係式がある。$\delta Q$は溶媒であるケロシンと考えている粒子に関してのある物理量$Q$の差であるとする。表\ref{tab:tab2}工具諸元に諸量をまとめた。\\
+鉄粉に関して、磁力による影響が支配的に大きいことが確認できた。逆に砥粒に関しては \\
+これは実験的にも確認できる。図\ref{fig:Takeda}に研磨加工時の円管内面での圧力測定結果を示す。工具回転数1000rpmでの工具TypeA、TypeB、 TypeCそれぞれにおいて、大気圧を基準とするゲージ圧の最大値は50kPa程度以下であり大気圧101.3kPaにくらべ小さく、負圧はほとんど観測されない。すなわち流体研削特有の 円管内面にかかる大気圧程度の研削圧は、最大50パーセント程度の増化にとどまっており円管内面の研削に及ぼす影響は支配的ではないと考えることができる。またHuiru Guo らが行った実験\cite{Huiru}によると、研削量は剪断応力の支配的な影響を受けており研削圧力の影響は小さいと考えられる。したがって本研究では磁気浮力によって円管内面に及ぼされる圧力の変化を考慮しなかった。なお遠心力や重力による圧力の影響はMCFの体積が小さいことから、極めて小さく無視できる。
+ 
+
+単位体積あたりの重力$f_{grav}$, 遠心力$f_{cent}$, 磁力$f_{mag}$, 1粒子あたりの重力$F_{grav}$, 遠心力$F_{cent}$, 磁力$F_{mag}$についてそれぞれ
+      \begin{eqnarray}
+        f_{grav} & = & \rho g  \\ 
+        F_{grav} & = & m g \nonumber \\ 
+                 & = & \frac{ \rho \pi d^3 g }{6} \label{grav} \\ \nonumber \\
+        f_{cent} & = & \frac{\rho R \omega^2 }{2}   \\
+        F_{cent} & = & \frac{m R \omega^2 }{2} \nonumber \\
+                 & = & \frac{ \rho \pi d^3 R \omega^2 }{12} \label{cent} \\ \nonumber \\
+        f_{mag} & = & - \bm{M} \cdot \nabla \bm{H} \nonumber \\
+                & = & - \mu_0 \chi \bm{H} \cdot \nabla \bm{H}  \\
+        F_{mag} & = & - v \bm{M} \cdot \nabla \bm{H} \nonumber \\
+                & = & - \frac{ \mu_0 \pi d^3 \chi \bm{H} \cdot \nabla \bm{H} }{6} \label{mag} 
+      \end{eqnarray}　
+
+%計算データなど
+    \subsubsection{鉄粉について}　
+　式\ref{grav},\ref{cent},\ref{mag},表\ref{tab:tab2}より鉄粉に働く力$f^{iron}$は、
+      \begin{eqnarray}
+        f^{iron}_{grav} & = & \rho g\nonumber \\
+                        & = & (7.86\times10^3) \times 9.8 [N/m^3]\nonumber \\ 
+                        & = & 7.70 \times 10^4 [N/m^3], \\ 
+        F^{iron}_{grav} & = & \frac{ \rho \pi d^3 g }{6} \nonumber \\
+                        & = & \frac{ (7.86\times10^3) \times \pi \times (1.2\times10^{-6})^3 \times 9.8 }{6} [N]\nonumber \\ 
+                        & = & 6.97 \times 10^{-14} [N], \\ \nonumber \\
+        f^{iron}_{cent} & = & \frac{ \rho R \omega^2 }{2}\nonumber \\
+                        & = & \frac{ (7.86\times10^3) \times (15\times10^{-3}) \times (\frac{1000\times2\pi}{60})^2 }{2}[N/m^3]\nonumber \\
+                        & = & 6.46 \times 10^5 [N/m^3], \\ 
+        F^{iron}_{cent} & = & \frac{ \rho \pi d^3 R \omega^2 }{12}\nonumber \\
+                        & = & \frac{ (7.86\times10^3) \times \pi \times (1.2\times10^{-6})^3 \times (15\times10^{-3}) \times (\frac{1000\times2\pi}{60})^2 }{12} [N]\nonumber \\
+                        & = & 5.85 \times 10^{-13} [N], \\ \nonumber \\
+        f^{iron}_{mag} & = & - \mu_0 \chi \bm{H} \cdot \nabla \bm{H} \nonumber \\
+                       & = & - (4\pi \times 10^{-7}) \times 2000 \times (1.6\times10^5) \times (1.2\times10^8) [N/m^3] \nonumber \\
+                       & = & - 4.83 \times 10^{10} [N/m^3], \\
+        F^{iron}_{mag} & = & - \frac{ \mu_0 \pi d^3 \chi \bm{H} \cdot \nabla \bm{H} }{6}  \nonumber \\
+                       & = & - \frac{ (4\pi \times 10^{-7}) \times \pi \times (1.2\times10^{-6})^3 \times 2000 \times (1.6\times10^5) \times (1.2\times10^8) }{6} [N] \nonumber \\
+                       & = & - 4.36 \times 10^{-8}[N].
+      \end{eqnarray}　
+
+%計算データなど
+    \subsubsection{砥粒について}
+　式\ref{grav},\ref{cent},\ref{mag},表\ref{tab:tab2}より砥粒にはたらく力$f^{abr}$は、
+      \begin{eqnarray}
+        f^{abr}_{grav} & = & \rho g\nonumber \\
+                        & = & (3.4\times10^3) \times 9.8 [N/m^3]\nonumber \\ 
+                        & = & 3.33 \times 10^4 [N/m^3], \\ 
+        F^{abr}_{grav} & = & \frac{ \rho \pi d^3 g }{6} \nonumber \\
+                        & = & \frac{ (3.4\times10^3) \times \pi \times (3\times10^{-6})^3 \times 9.8 }{6} [N]\nonumber \\ 
+                        & = & 4.71 \times 10^{-13} [N], \\ \nonumber \\
+        f^{abr}_{cent} & = & \frac{ \rho R \omega^2 }{2}\nonumber \\
+                        & = & \frac{ (3.4\times10^3) \times (15\times10^{-3}) \times (\frac{1000\times2\pi}{60})^2 }{2}[N/m^3]\nonumber \\
+                        & = & 2.80 \times 10^5 [N/m^3], \\ 
+        F^{abr}_{cent} & = & \frac{ \rho \pi d^3 R \omega^2 }{12}\nonumber \\
+                        & = & \frac{ (3.4\times10^3) \times \pi \times (3\times10^{-6})^3 \times (15\times10^{-3}) \times (\frac{1000\times2\pi}{60})^2 }{12} [N] \nonumber \\
+                        & = & 3.95 \times 10^{-12} [N] , \\ \nonumber \\
+        f^{abr}_{mag} & = & - \mu_0 \chi \bm{H} \cdot \nabla \bm{H} \nonumber \\
+                       & = & - (4\pi \times 10^{-7}) \times (-0.098) \times (1.6\times10^5) \times (1.2\times10^8) [N/m^3] \nonumber \\
+                       & = & 2.36 \times 10^6 [N/m^3], \\
+        F^{abr}_{mag} & = & - \frac{ \mu_0 \pi d^3 \chi \bm{H} \cdot \nabla \bm{H} }{6}  \nonumber \\
+                       & = & - \frac{ (4\pi \times 10^{-7}) \times \pi \times (3\times10^{-6})^3 \times (-0.098) \times (1.6\times10^5) \times (1.2\times10^8) }{6} [N]\nonumber \\
+                       & = & 3.34 \times 10^{-11} [N].
+      \end{eqnarray}
+
+
+%工具諸元など
+  \begin{table}[htb]
+    \begin{tabular}{|l|c||l|c|} \hline 
+         工具外径R[mm] & 15 & 工具回転数[rpm] & 1000 \\ \hline
+         磁場の強さH[A/m] & $1.6\times10^5$ & 磁場の強さの勾配$\nabla H[A/m^2]$ & $1.8\times10^8$ \\ \hline
+         外径(鉄粉)$d^{iron}[\mu m]$ & $1.2$ & 外径(砥粒)$d^{abr}[\mu m]$ & $3$ \\ \hline
+         密度(鉄粉)$\rho^{iron}[g/cm^3]$ & $7.86$ & 密度(砥粒)$\rho^{abr}[g/cm^3]$ & $3.4$  \\ \hline
+         磁化率(鉄粉)$\chi^{iron}$ & $2000$ & 磁化率(砥粒)$\chi^{abr}$ & $-0.098$  \\ \hline
+    \end{tabular}
+    \centering
+    \label{tab:tab2}
+    \caption{MCF諸元}
+  \end{table}
+
+  \begin{table}[htb]
+    \begin{tabular}{|c|c||c|c|} \hline
+      重力加速度g $[m/s^2]$ & 9.8 & 真空の透磁率$\mu_0[H/m]$ & $4\pi\times10^{-7}$ \\ \hline
+    \end{tabular}
+    \centering
+    \label{tab:tab3}
+    \caption{物理諸量}
+  \end{table}
+
+\end{document}
