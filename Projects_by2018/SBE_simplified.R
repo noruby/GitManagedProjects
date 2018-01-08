@@ -4,9 +4,10 @@
 
 #assumptions
 #1 dimention
+#2 band
 #the dipole transition amplitude is independent on the crystal momentum k
-#
-#
+#tight binding model is assumed 
+#the Berry phase is small: the Wannier function is localized near the Bravais lattice
 #
 
 #Physical constants 
@@ -22,15 +23,15 @@ effective_mass_conduction <- mass_of_electron
 lattice_constant <- 3.755 * 2/sqrt(3) *10^-10# m (3.755 ångström)
 
 # Time t
-range_t <- 300 *10^(-15) # fs
-div_num_t <- 500 # n
+range_t <- 50 *10^(-15) # 300fs
+div_num_t <- 300 # n
 delta_t <-  range_t/ div_num_t
 t_vector <- seq( -range_t/2, range_t/2, length= (div_num_t+1))
 t_vector2 <- seq( -range_t/2, range_t/2, length= (2*div_num_t+1))
 frequency <- seq(0, 1/delta_t, length= (div_num_t+1))
 
 # External electric field (assuming the gaussian envelope)
-E_amplitude_max <- 30* 10^8 # V/m
+E_amplitude_max <- 5* 10^8 # V/m
 envelope_width <- 50* 10^(-15) # 1/e^2 width; 50 fs 
 carrier_frequency <- 33 *10^12 # 33 THz
 carrier_envelope_phase <- 0 # [rad]
@@ -41,13 +42,13 @@ E_vector <-  Electric_field(t_vector)
 E_vector2 <-  Electric_field(t_vector2)
 
 # fixed k normalized by inverse lattice constant 1/a in length gauge
-div_num_ka <- 50 # m
+div_num_ka <- 40 # m
 delta_k <- 2*pi / lattice_constant / div_num_ka 
 ka_vector0_redundant <- seq( -pi, pi, length= (div_num_ka+1)) #BZの両端で冗長
 ka_vector0 <- ka_vector0_redundant[1:div_num_ka]
 k_vector0 <- ka_vector0 / lattice_constant
 
-#band structure of GaSe (two band model assuming the Tight binding model (1D))
+#band structure
 band_gap <- 2 *1.60218*10^-19 # J (2eV) 
 band_width_valence <- 1 *1.60218*10^-19 # J (1eV)
 band_width_conduction <- -1.5 *1.60218*10^-19 # J (1.5eV) 
@@ -62,6 +63,18 @@ energy_conduction <- function(ka){
 energy_valence_vector0 <- energy_valence(ka_vector0)
 energy_conduction_vector0 <- energy_conduction(ka_vector0)
 energy_difference_vector0 <- energy_conduction_vector0 - energy_valence_vector0
+
+if(0){
+print("Exporting band_structure.png ...")
+png("./band_structure.png", width = 700, height = 500)  
+krange <- c(-pi, pi)
+Energy_range <- c(mean_energy_valence-band_width_valence,mean_energy_conduction-band_width_conduction)
+plot(ka_vector0, energy_valence_vector0, xlim=krange, ylim=Energy_range, xlab="BZ", ylab= "energy (eV)", col="red", type="l")  
+par(new=T)
+plot(ka_vector0,energy_conduction_vector0, xlim=krange, ylim=Energy_range, xlab="", ylab="", col="blue", type="l")  
+dev.off() 
+}
+
 w_1 <- rep(0, div_num_ka)
 w1 <- rep(0, div_num_ka)
 grad_k_midpoint <- function(w0){
@@ -101,34 +114,31 @@ print( Courant_number )
 #---------------------------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------------------------
 #calculate ---------------------------------------------------------------------------------------------------------------
-calc_bloch <- "no"
+calc_bloch <- "yes"
 #dephasing
-#dephasing_constant <- 500 *10^(-15) # 1.1fs 
+dephasing_time <- 5 *10^(-15) # 1.1fs 
 
 if(calc_bloch=="yes"){
 diff_fc <- function(E, p, fc){
-	dfc <- E/Planck_constant_bar*(-2*Im(p*Conj(d)) +elementary_charge*grad_k_midpoint(fc))*delta_t
-	return (dfc)
+	dfc <- -2*Im(p*Conj(d)) +elementary_charge*grad_k_midpoint(fc)
+	return (dfc*E/Planck_constant_bar*delta_t)
 }
 diff_fv <- function(E, p, fv){
-	dfv <- E/Planck_constant_bar*(2*Im(p*Conj(d)) +elementary_charge*grad_k_midpoint(fv))*delta_t
-	return (dfv)
+	dfv <- 2*Im(p*Conj(d)) +elementary_charge*grad_k_midpoint(fv)
+	return (dfv*E/Planck_constant_bar*delta_t)
 }
 diff_p <- function(E, p, fc, fv){
-	dp <- (1i*energy_difference_vector0*p +elementary_charge*E*grad_k_midpoint(p)-1i*E*d*(fv-fc))*delta_t/Planck_constant_bar
-	#dp <- dp -p/dephasing_constant*delta_t
-	return (dp)
+	dp <- 1i*energy_difference_vector0*p +elementary_charge*E*grad_k_midpoint(p)-1i*E*d*(fv-fc)
+	dp <- dp -p/dephasing_time*Planck_constant_bar
+	return (dp/Planck_constant_bar*delta_t)
 }
 
-fv_kt <- array(1, dim=c(div_num_ka, (div_num_t+1))) #number_valence_length
-fc_kt <- array(0, dim=c(div_num_ka, (div_num_t+1))) #number_conduction_length
-p_kt  <- array(0, dim=c(div_num_ka, (div_num_t+1))) #micro_polarization_length
-
+p_kt<-fv_kt<-fc_kt <- array(0, dim=c(div_num_ka, (div_num_t+1))) 
 fv <- rep(1, div_num_ka)
-fc <- rep(0, div_num_ka) 
-p <- rep(0, div_num_ka)
+p<-fc <- rep(0, div_num_ka) 
 
 print("starting calculation with length gauge")
+nn <- 0.1
 for( j in 1:(div_num_t) ){
 	E <- E_vector2[2*j-1]
 	E_0 <- E_vector2[2*j]
@@ -158,6 +168,11 @@ for( j in 1:(div_num_t) ){
 	fc_kt[,j+1] <- fc
 	fv_kt[,j+1] <- fv
 	p_kt[,j+1] <- p
+
+       if((j/div_num_t)>nn){
+         print(nn*100)
+         nn <- nn + 0.1 
+       }
 }
 
 if(0){
@@ -229,7 +244,7 @@ dir.exists <- function(d) {
     ifelse(is.na(de), FALSE, de)
 }
 print("Exporting fp.gif ...")
-numt <- round( 2*10^-15 /delta_t )
+numt <- round( 1*10^-15/delta_t )
 nplim=c(-1.2, 1.2)
 library(animation)
 saveGIF({
@@ -257,11 +272,11 @@ CV_kt<-V_kt<-C_kt<- array(0, dim=c(div_num_ka,div_num_ka,(div_num_t+1)))
 pW_kt<-fvW_kt<-fcW_kt<- array(0, dim=c(div_num_ka,(div_num_t+1)))
 
 Blavais_lattice <- seq(-lattice_constant*div_num_ka/2, by=lattice_constant, length=div_num_ka)
-RsubR <- rep(1,length=div_num_ka)%*%t(Blavais_lattice)-Blavais_lattice%*%t(rep(1,length=div_num_ka)) 
+RsubR <- Blavais_lattice%*%t(rep(1,length=div_num_ka))-rep(1,length=div_num_ka)%*%t(Blavais_lattice) #the lower elements are positive; R-R'
 eRsubR <- elementary_charge* RsubR
 expF<- array(0, dim=c(div_num_ka,div_num_ka,div_num_ka))
 for(i in 1:div_num_ka){
-  expF[,,i] <- exp(1i*k_vector0[i]*RsubR)
+  expF[,,i] <- exp(-1i*k_vector0[i]*RsubR)
 }
 EV <- EC <- matrix(0,ncol=div_num_ka, nrow=div_num_ka)
 for(i in 1:div_num_ka){
@@ -271,25 +286,26 @@ for(j in 1:div_num_ka){
     EV[i,j] <- mean_energy_valence
   }
   if(i==(j+1)||(i+1)==j){
-    EC[i,j] <- band_width_conduction/2
-    EV[i,j] <- band_width_valence/2
+    EC[i,j] <- band_width_conduction/4
+    EV[i,j] <- band_width_valence/4
   }
 }
 }
-EC[1,div_num_ka] <- EC[div_num_ka,1]<- band_width_conduction/2
-EV[1,div_num_ka] <- EV[div_num_ka,1]<- band_width_valence/2
+EC[1,div_num_ka] <- EC[div_num_ka,1]<- band_width_conduction/4
+EV[1,div_num_ka] <- EV[div_num_ka,1]<- band_width_valence/4
 
 diff_C <- function(E,C,CV){
- dC <- C%*%EC-EC%*%C -E*2i*Im(Conj(d_vc)*CV) +E*eRsubR*C 
-		  return (dC/1i/Planck_constant_bar*delta_t)
+  dC <- C%*%EC-EC%*%C -E*2i*Im(Conj(d_vc)*CV) +E*eRsubR*C 
+  return (dC/1i/Planck_constant_bar*delta_t)
 }
 diff_V <- function(E,V,CV){
- dC <- V%*%EV-EV%*%V +E*2i*Im(Conj(d_vc)*CV) +E*eRsubR*V 
-		  return (dV/1i/Planck_constant_bar*delta_t)
+  dV <- V%*%EV-EV%*%V +E*2i*Im(Conj(d_vc)*CV) +E*eRsubR*V 
+  return (dV/1i/Planck_constant_bar*delta_t)
 }
 diff_CV <- function(E,C,V,CV){
- dCV <- CV%*%EV-EC%*%CV -E*Conj(d_vc)*(C-V) +E*eRsubR*CV 
-		  return (dV/1i/Planck_constant_bar*delta_t)
+  dCV <- (CV%*%EV-EC%*%CV-E*d_vc*(C-V)+E*eRsubR*CV)/1i/Planck_constant_bar*delta_t
+  dCV <- dCV -CV/dephasing_time*delta_t
+  return (dCV)
 }
 
 print("starting calculation with the Wannier basis")
@@ -365,7 +381,7 @@ dir.exists <- function(d) {
     ifelse(is.na(de), FALSE, de)
 }
 print("Exporting fpW.gif ...")
-numt <- round( 2*10^-15 /delta_t )
+numt <- round( 1*10^-15 /delta_t )
 nplim=c(-1.2, 1.2)
 library(animation)
 saveGIF({
@@ -378,7 +394,7 @@ saveGIF({
     par(new=T)    
     plot(ka_vector0, Re(pW_kt[,i]), xlim=c(-pi,pi), ylim=nplim, xlab="BZ", ylab= "polarization", main=.main,col="red" , type="l")
   }
-}, movie.name="fp.gif", interval=0.2)
+}, movie.name="fpW.gif", interval=0.2)
 }
 
 print("warnings: ")
@@ -390,20 +406,42 @@ dir.exists <- function(d) {
     de <- file.info(d)$isdir
     ifelse(is.na(de), FALSE, de)
 }
-print("Exporting contour.gif ...")
-numt <- round( 2*10^-15 /delta_t )
+print("Exporting fp_fpW_comparison.gif ...")
+numt <- round( 1*10^-15 /delta_t )
 nplim=c(-1.2, 1.2)
 library(animation)
 saveGIF({
   ani.options(loop = TRUE)
   for (i in seq(1,(div_num_t+1), by=numt)) {
     .main = paste(t_vector[i]*10^15,"(fs)", seq="")
-    contour(Re(V_kt[,,i]), main=.main)
+    plot(ka_vector0, fcW_kt[,i], xlim=c(-pi,pi), ylim=nplim, xlab="BZ", ylab= "numbers", main=.main,col="green", type="l")
+    par(new=T)
+    plot(ka_vector0, fvW_kt[,i], xlim=c(-pi,pi), ylim=nplim, xlab="", ylab= "", main=.main, col="blue", type="l")
+    par(new=T)    
+    plot(ka_vector0, Re(pW_kt[,i]), xlim=c(-pi,pi), ylim=nplim, xlab="BZ", ylab= "polarization", main=.main,col="red" , type="l")
+  }
+}, movie.name="fpW.gif", interval=0.2)
+}
+
+if(1){
+dir.exists <- function(d) {
+    de <- file.info(d)$isdir
+    ifelse(is.na(de), FALSE, de)
+}
+print("Exporting contour.gif ...")
+numt <- round( 1*10^-15 /delta_t )
+nplim=c(-1.2, 1.2)
+library(animation)
+saveGIF({
+  ani.options(loop = TRUE)
+  for (i in seq(1,(div_num_t+1), by=numt)) {
+    .main = paste(t_vector[i]*10^15,"(fs)", seq="")
+    image(Re(V_kt[,,i]-diag(div_num_ka)), main=.main)
   }
 }, movie.name="contour.gif", interval=0.2)
 }
 
-print("warnings: ")
-warnings()
+#print("warnings: ")
+#warnings()
 }
 
