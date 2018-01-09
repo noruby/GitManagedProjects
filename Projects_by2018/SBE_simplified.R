@@ -23,15 +23,15 @@ effective_mass_conduction <- mass_of_electron
 lattice_constant <- 3.755 * 2/sqrt(3) *10^-10# m (3.755 ångström)
 
 # Time t
-range_t <- 50 *10^(-15) # 300fs
-div_num_t <- 300 # n
+range_t <- 100 *10^(-15) # 300fs
+div_num_t <- 500 # n
 delta_t <-  range_t/ div_num_t
 t_vector <- seq( -range_t/2, range_t/2, length= (div_num_t+1))
 t_vector2 <- seq( -range_t/2, range_t/2, length= (2*div_num_t+1))
 frequency <- seq(0, 1/delta_t, length= (div_num_t+1))
 
 # External electric field (assuming the gaussian envelope)
-E_amplitude_max <- 5* 10^8 # V/m
+E_amplitude_max <- 10* 10^8 # V/m
 envelope_width <- 50* 10^(-15) # 1/e^2 width; 50 fs 
 carrier_frequency <- 33 *10^12 # 33 THz
 carrier_envelope_phase <- 0 # [rad]
@@ -42,7 +42,7 @@ E_vector <-  Electric_field(t_vector)
 E_vector2 <-  Electric_field(t_vector2)
 
 # fixed k normalized by inverse lattice constant 1/a in length gauge
-div_num_ka <- 40 # m
+div_num_ka <- 100 # m
 delta_k <- 2*pi / lattice_constant / div_num_ka 
 ka_vector0_redundant <- seq( -pi, pi, length= (div_num_ka+1)) #BZの両端で冗長
 ka_vector0 <- ka_vector0_redundant[1:div_num_ka]
@@ -108,7 +108,7 @@ d <- d_vc <- rep(dipole_transition_amplitude, div_num_ka)
 
 #parameters of calculation
 Courant_number <- delta_t * E_amplitude_max *  elementary_charge / Planck_constant_bar / delta_k 
-print("Courant number (length gauge): " )
+print("Courant number (calculation may diverge if it is bigger than 1): " )
 print( Courant_number )
 
 #---------------------------------------------------------------------------------------------------------------
@@ -116,7 +116,7 @@ print( Courant_number )
 #calculate ---------------------------------------------------------------------------------------------------------------
 calc_bloch <- "yes"
 #dephasing
-dephasing_time <- 5 *10^(-15) # 1.1fs 
+dephasing_time <- 100 *10^(-15) # 1.1fs 
 
 if(calc_bloch=="yes"){
 diff_fc <- function(E, p, fc){
@@ -137,7 +137,7 @@ p_kt<-fv_kt<-fc_kt <- array(0, dim=c(div_num_ka, (div_num_t+1)))
 fv <- rep(1, div_num_ka)
 p<-fc <- rep(0, div_num_ka) 
 
-print("starting calculation with length gauge")
+print("starting calculation in the Bloch basis")
 nn <- 0.1
 for( j in 1:(div_num_t) ){
 	E <- E_vector2[2*j-1]
@@ -238,7 +238,7 @@ dev.off()
 }
 
 #
-if(1){
+if(0){
 dir.exists <- function(d) {
     de <- file.info(d)$isdir
     ifelse(is.na(de), FALSE, de)
@@ -269,7 +269,7 @@ CV<-C<- matrix(0, nrow=div_num_ka,ncol=div_num_ka)
 V <- diag(div_num_ka)
 dCV<-dV<-dC<- matrix(0, nrow=div_num_ka,ncol=div_num_ka)
 CV_kt<-V_kt<-C_kt<- array(0, dim=c(div_num_ka,div_num_ka,(div_num_t+1)))
-pW_kt<-fvW_kt<-fcW_kt<- array(0, dim=c(div_num_ka,(div_num_t+1)))
+pW_kt<-fvW_kt<-fcW_kt　<- array(0, dim=c(div_num_ka,(div_num_t+1)))
 
 Blavais_lattice <- seq(-lattice_constant*div_num_ka/2, by=lattice_constant, length=div_num_ka)
 RsubR <- Blavais_lattice%*%t(rep(1,length=div_num_ka))-rep(1,length=div_num_ka)%*%t(Blavais_lattice) #the lower elements are positive; R-R'
@@ -308,7 +308,7 @@ diff_CV <- function(E,C,V,CV){
   return (dCV)
 }
 
-print("starting calculation with the Wannier basis")
+print("starting calculation in the Wannier basis")
 nn <- 0.1
 for( j in 1:(div_num_t) ){
 	E <- E_vector2[2*j-1]
@@ -317,19 +317,19 @@ for( j in 1:(div_num_t) ){
 	E_2 <- E_vector2[2*j+1]	
 
    dC_0 <- diff_C(E,C,CV)
-   dV_0 <- diff_C(E,V,CV)
+   dV_0 <- diff_V(E,V,CV)
    dCV_0 <- diff_CV(E,C,V,CV)
 
    dC_1 <- diff_C(E_0,C+dC_0/2,CV+dCV_0/2)
-   dV_1 <- diff_C(E_0,V+dV_0/2,CV+dCV_0/2)
+   dV_1 <- diff_V(E_0,V+dV_0/2,CV+dCV_0/2)
    dCV_1 <- diff_CV(E_0,C+dC_0/2,V+dV_0/2,CV+dCV_0/2)
 
    dC_2 <- diff_C(E_1,C+dC_1/2,CV+dCV_1/2)
-   dV_2 <- diff_C(E_1,V+dV_1/2,CV+dCV_1/2)
+   dV_2 <- diff_V(E_1,V+dV_1/2,CV+dCV_1/2)
    dCV_2 <- diff_CV(E_1,C+dC_1/2,V+dV_1/2,CV+dCV_1/2)
 
    dC_3 <- diff_C(E_2,C+dC_2,CV+dCV_2)
-   dV_3 <- diff_C(E_2,V+dV_2,CV+dCV_2)
+   dV_3 <- diff_V(E_2,V+dV_2,CV+dCV_2)
    dCV_3 <- diff_CV(E_2,C+dC_2,V+dV_2,CV+dCV_2)
 
    C <- C + (dC_0 +2*dC_1+ 2*dC_2+ dC_3)/6
@@ -337,11 +337,10 @@ for( j in 1:(div_num_t) ){
    CV <- CV + (dCV_0 +2*dCV_1+ 2*dCV_2+ dCV_3)/6
    
    for(i in 1:div_num_ka){
-     fcW_kt[i,j] <- sum(C*expF[,,i])/div_num_ka
-     fvW_kt[i,j] <- sum(V*expF[,,i])/div_num_ka
-     pW_kt[i,j] <- sum(CV*expF[,,i])/div_num_ka
+     fcW_kt[i,j+1] <- sum(C*expF[,,i])/div_num_ka
+     fvW_kt[i,j+1] <- sum(V*expF[,,i])/div_num_ka
+     pW_kt[i,j+1] <- sum(CV*expF[,,i])/div_num_ka
    }
-
    V_kt[,,j] <- V
 
    if((j/div_num_t)>nn){
@@ -375,7 +374,7 @@ Current_length_spectrum <-  fft(Current_length)
 Polarization_current_length_spectrum <- fft(Polarization_current_length)
 }
 
-if(1){
+if(0){
 dir.exists <- function(d) {
     de <- file.info(d)$isdir
     ifelse(is.na(de), FALSE, de)
@@ -408,22 +407,31 @@ dir.exists <- function(d) {
 }
 print("Exporting fp_fpW_comparison.gif ...")
 numt <- round( 1*10^-15 /delta_t )
-nplim=c(-1.2, 1.2)
+nplim<-c(-1.2, 1.2)
+kalim<-c(-2*pi,2*pi) 
 library(animation)
 saveGIF({
   ani.options(loop = TRUE)
   for (i in seq(1,(div_num_t+1), by=numt)) {
     .main = paste(t_vector[i]*10^15,"(fs)", seq="")
-    plot(ka_vector0, fcW_kt[,i], xlim=c(-pi,pi), ylim=nplim, xlab="BZ", ylab= "numbers", main=.main,col="green", type="l")
+    plot(ka_vector0-pi, fc_kt[,i], xlim=kalim, ylim=nplim, xlab="BZ", ylab= "numbers/polarization", main=.main,col="green", type="l")
     par(new=T)
-    plot(ka_vector0, fvW_kt[,i], xlim=c(-pi,pi), ylim=nplim, xlab="", ylab= "", main=.main, col="blue", type="l")
+    plot(ka_vector0-pi, fv_kt[,i], xlim=kalim, ylim=nplim, xlab="", ylab= "", main=.main, col="blue", type="l")
     par(new=T)    
-    plot(ka_vector0, Re(pW_kt[,i]), xlim=c(-pi,pi), ylim=nplim, xlab="BZ", ylab= "polarization", main=.main,col="red" , type="l")
+    plot(ka_vector0-pi, Re(p_kt[,i]), xlim=kalim, ylim=nplim, xlab="", ylab= "", main=.main,col="red" , type="l")
+    par(new=T) 
+    plot(ka_vector0+pi, fcW_kt[,i], xlim=kalim, ylim=nplim, xlab="", ylab= "", main=.main,col="green", type="l")
+    par(new=T)
+    plot(ka_vector0+pi, fvW_kt[,i], xlim=kalim, ylim=nplim, xlab="", ylab= "", main=.main, col="blue", type="l")
+    par(new=T)    
+    plot(ka_vector0+pi, Re(pW_kt[,i]), xlim=kalim, ylim=nplim, xlab="", ylab= "", main=.main,col="red" , type="l")
+    par(new=T)    
+　　　　abline(v=c(0))
   }
-}, movie.name="fpW.gif", interval=0.2)
+}, movie.name="fp_fpW_comparison.gif", interval=0.2, ani.width = 1100, ani.height = 600)
 }
 
-if(1){
+if(0){
 dir.exists <- function(d) {
     de <- file.info(d)$isdir
     ifelse(is.na(de), FALSE, de)
@@ -436,7 +444,7 @@ saveGIF({
   ani.options(loop = TRUE)
   for (i in seq(1,(div_num_t+1), by=numt)) {
     .main = paste(t_vector[i]*10^15,"(fs)", seq="")
-    image(Re(V_kt[,,i]-diag(div_num_ka)), main=.main)
+    image(Re(V_kt[,,i]), main=.main)
   }
 }, movie.name="contour.gif", interval=0.2)
 }
