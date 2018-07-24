@@ -1,10 +1,19 @@
 e_xx <- 1.5
 e_yy <- 1.6
 e_zz <- 1.4
-e_yz <- e_zy <- 0.1
-e_zx <- e_xz <- 0.2
-e_xy <- e_yx <- 0.3
+e_yz <- e_zy <- 0.01
+e_zx <- e_xz <- 0.1
+e_xy <- e_yx <- 0.01
  
+ee <- c(e_xx,e_yx,e_zx,e_xy,e_yy,e_zy,e_xz,e_yz,e_zz)
+e_tensor <- matrix(ee,3,3)   
+
+theta <- 10/180*pi
+RR <- c(cos(theta),sin(theta),0,-sin(theta),cos(theta),0,0,0,1)
+R <- matrix(RR,3,3)   
+
+#e_tensor <- t(R) %*% e_tensor %*% R
+
 u <- e_zz
 v <- (e_xx+e_yy)*e_zz -e_xz^2 -e_yz^2
 w <- e_xx*e_yy*e_zz -e_xx*e_yz^2 -e_yy*e_zx^2 -e_zz*e_xy^2 +2*e_xy*e_yz*e_zx
@@ -28,5 +37,5 @@ r_xx
 
 #fresnel coefficient
 n <- sqrt(e_xx) 
-r_fresnel <- (n-1)/(n+1)
+r_fresnel <- (1-n)/(1+n)
 r_fresnel 
